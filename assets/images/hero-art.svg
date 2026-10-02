@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 660" width="100%" height="100%">
+  <defs>
+    <radialGradient id="heroBg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#00683D" />
+      <stop offset="60%" stop-color="#004D2C" />
+      <stop offset="100%" stop-color="#00351E" />
+    </radialGradient>
+    <radialGradient id="cupGold" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFF4D0" />
+      <stop offset="50%" stop-color="#D2A51A" />
+      <stop offset="100%" stop-color="#997207" />
+    </radialGradient>
+    <linearGradient id="teaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCEFD2" />
+      <stop offset="100%" stop-color="#D49A3D" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#001F12" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="660" fill="url(#heroBg)" />
+
+  <!-- Botanical Dotted Circle Framing -->
+  <circle cx="300" cy="310" r="210" fill="none" stroke="#D2A51A" stroke-width="1.5" stroke-dasharray="4,6" opacity="0.6"/>
+  <circle cx="300" cy="310" r="230" fill="none" stroke="#D2A51A" stroke-width="1" opacity="0.4"/>
+
+  <!-- Botanical Leaves Flanking -->
+  <g stroke="#D2A51A" stroke-width="1.5" fill="none" opacity="0.85">
+    <!-- Top Left Branch -->
+    <path d="M120 180 Q160 140 210 160" />
+    <path d="M140 165 C145 150 160 148 165 158 C160 165 148 170 140 165 Z" fill="#D2A51A" opacity="0.3"/>
+    <path d="M175 150 C185 135 200 138 200 150 C192 158 180 158 175 150 Z" fill="#D2A51A" opacity="0.3"/>
+
+    <!-- Bottom Right Branch -->
+    <path d="M480 440 Q440 480 390 460" />
+    <path d="M460 455 C455 470 440 472 435 462 C440 455 452 450 460 455 Z" fill="#D2A51A" opacity="0.3"/>
+    <path d="M425 470 C415 485 400 482 400 470 C408 462 420 462 425 470 Z" fill="#D2A51A" opacity="0.3"/>
+  </g>
+
+  <!-- Saucer -->
+  <g filter="url(#shadow)">
+    <ellipse cx="300" cy="430" rx="160" ry="24" fill="#00351E" opacity="0.6"/>
+    <ellipse cx="300" cy="420" rx="150" ry="22" fill="#F8F1E7" stroke="#D2A51A" stroke-width="3"/>
+    <ellipse cx="300" cy="420" rx="110" ry="14" fill="#E8DEC9" />
+  </g>
+
+  <!-- Cup -->
+  <g filter="url(#shadow)">
+    <!-- Cup Body -->
+    <path d="M210 260 C210 370 240 395 300 395 C360 395 390 370 390 260 Z" fill="#FFF9F0" stroke="#D2A51A" stroke-width="3.5"/>
+    
+    <!-- Gold Rim -->
+    <ellipse cx="300" cy="260" rx="90" ry="20" fill="url(#cupGold)" stroke="#FFF9F0" stroke-width="1"/>
+    
+    <!-- Tea Surface -->
+    <ellipse cx="300" cy="262" rx="80" ry="16" fill="url(#teaGradient)" />
+    
+    <!-- Steam / Aroma Swirls -->
+    <path d="M270 230 Q280 200 270 170 Q260 140 275 110" stroke="#FFF9F0" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+    <path d="M300 220 Q315 190 305 160 Q295 130 310 95" stroke="#D2A51A" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.75"/>
+    <path d="M330 230 Q320 200 330 170 Q340 140 325 110" stroke="#FFF9F0" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+    <!-- Cup Handle -->
+    <path d="M380 280 C420 280 425 350 375 360" fill="none" stroke="#FFF9F0" stroke-width="14" stroke-linecap="round"/>
+    <path d="M380 280 C420 280 425 350 375 360" fill="none" stroke="#D2A51A" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Cup Emblem / Leaf Brand -->
+  <circle cx="300" cy="330" r="22" fill="#005B35" stroke="#D2A51A" stroke-width="1.5"/>
+  <path d="M300 318 C305 321 308 327 306 333 C303 338 297 341 293 338 C291 332 294 324 300 318 Z" fill="#D2A51A"/>
+
+  <!-- Poster Tagline Inset -->
+  <rect x="150" y="520" width="300" height="42" rx="21" fill="#00351E" stroke="#D2A51A" stroke-width="1.5"/>
+  <text x="300" y="546" font-family="'League Spartan', sans-serif" font-size="14" font-weight="700" letter-spacing="3" fill="#D2A51A" text-anchor="middle">AUTHENTIC FLAVOURS</text>
+  <text x="300" y="590" font-family="'Playfair Display', serif" font-style="italic" font-size="16" fill="#F8F1E7" text-anchor="middle">Karimnagar • Telangana</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <rect width="500" height="500" fill="#004D2C"/>
+  <rect x="15" y="15" width="470" height="470" rx="12" fill="none" stroke="#D2A51A" stroke-width="2" stroke-dasharray="6,6" opacity="0.6"/>
+  <!-- Fresh Coldpress Orange/Pomegranate Juice -->
+  <circle cx="250" cy="220" r="140" fill="#005B35" stroke="#D2A51A" stroke-width="2"/>
+  <!-- Glass Jar -->
+  <rect x="200" y="140" width="100" height="170" rx="20" fill="#FFF9F0" stroke="#D2A51A" stroke-width="3"/>
+  <rect x="204" y="165" width="92" height="140" rx="16" fill="#FF5722"/>
+  <circle cx="250" cy="235" r="30" fill="#FF9800"/>
+  <!-- Straw & Citrus Wheel -->
+  <line x1="265" y1="110" x2="285" y2="60" stroke="#D2A51A" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="295" cy="140" r="24" fill="#FFC107" stroke="#FFF9F0" stroke-width="2"/>
+  <path d="M295 120 L295 160 M275 140 L315 140" stroke="#FFF9F0" stroke-width="1.5"/>
+  <!-- Tag -->
+  <rect x="120" y="400" width="260" height="40" rx="20" fill="#005B35" stroke="#D2A51A" stroke-width="1.5"/>
+  <text x="250" y="425" font-family="'League Spartan', sans-serif" font-size="16" font-weight="800" letter-spacing="2" fill="#D2A51A" text-anchor="middle">COLDPRESS JUICES</text>
+</svg>

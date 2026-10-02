@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <rect width="500" height="500" fill="#004D2C"/>
+  <rect x="15" y="15" width="470" height="470" rx="12" fill="none" stroke="#D2A51A" stroke-width="2" stroke-dasharray="6,6" opacity="0.6"/>
+  <!-- Crispy Grilled Sandwich & Snacks -->
+  <circle cx="250" cy="220" r="140" fill="#005B35" stroke="#D2A51A" stroke-width="2"/>
+  <!-- Sandwich Triangular Stack -->
+  <polygon points="170,270 330,270 250,150" fill="#FFF9F0" stroke="#D2A51A" stroke-width="3"/>
+  <polygon points="180,260 320,260 250,165" fill="#E5BE42"/>
+  <line x1="200" y1="210" x2="300" y2="210" stroke="#004D2C" stroke-width="4"/>
+  <line x1="190" y1="235" x2="310" y2="235" stroke="#D32F2F" stroke-width="4"/>
+  <!-- Grill marks -->
+  <line x1="210" y1="180" x2="230" y2="250" stroke="#A07914" stroke-width="2.5"/>
+  <line x1="240" y1="165" x2="260" y2="250" stroke="#A07914" stroke-width="2.5"/>
+  <line x1="270" y1="180" x2="290" y2="250" stroke="#A07914" stroke-width="2.5"/>
+  <!-- Tag -->
+  <rect x="120" y="400" width="260" height="40" rx="20" fill="#005B35" stroke="#D2A51A" stroke-width="1.5"/>
+  <text x="250" y="425" font-family="'League Spartan', sans-serif" font-size="16" font-weight="800" letter-spacing="2" fill="#D2A51A" text-anchor="middle">CRISPY SNACKS</text>
+</svg>
