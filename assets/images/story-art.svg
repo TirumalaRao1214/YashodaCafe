@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="storyBg" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#FFFDF8" />
+      <stop offset="80%" stop-color="#F7F0E3" />
+      <stop offset="100%" stop-color="#EDE3CE" />
+    </radialGradient>
+    <filter id="stShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#002915" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="500" rx="18" fill="url(#storyBg)"/>
+  <rect x="12" y="12" width="576" height="476" rx="14" fill="none" stroke="#D5A817" stroke-width="1.2" stroke-dasharray="6,6" opacity="0.6"/>
+
+  <!-- Botanical flourishes -->
+  <g stroke="#005A32" stroke-width="1.2" fill="none" opacity="0.4">
+    <path d="M40 80 Q90 40 160 60"/>
+    <path d="M560 420 Q510 460 440 440"/>
+  </g>
+
+  <!-- Big warm illustrated gathering items: 2 cups of tea, warm bun with butter, smiling smile swoosh -->
+  <g transform="translate(180, 80)" filter="url(#stShadow)">
+    <!-- Plate -->
+    <ellipse cx="120" cy="220" rx="120" ry="24" fill="#005A32" opacity="0.15"/>
+    <ellipse cx="120" cy="210" rx="110" ry="20" fill="#FFFDF8" stroke="#D5A817" stroke-width="2"/>
+
+    <!-- Warm Golden Maska Bun -->
+    <ellipse cx="80" cy="180" rx="55" ry="32" fill="#D7995B" stroke="#8D5220" stroke-width="1.5"/>
+    <!-- Butter Melting -->
+    <polygon points="70,165 95,160 100,175 65,178" fill="#FFF176" stroke="#FBC02D" stroke-width="1"/>
+    
+    <!-- Cup 1 (Tea) -->
+    <g transform="translate(140, 110)">
+      <ellipse cx="40" cy="80" rx="36" ry="10" fill="#FFFDF8" stroke="#D5A817" stroke-width="1.5"/>
+      <path d="M10 20 L16 75 Q18 85 40 85 Q62 85 64 75 L70 20 Z" fill="#005A32" stroke="#D5A817" stroke-width="1.5"/>
+      <ellipse cx="40" cy="20" rx="30" ry="8" fill="#E2A648"/>
+      <!-- Heart Steam -->
+      <path d="M40 5 C30 -10 20 0 40 15 C60 0 50 -10 40 5 Z" fill="#D5A817" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- Smile Swoosh & Motto -->
+  <g transform="translate(300, 390)">
+    <path d="M-80 0 Q0 30 80 0" stroke="#D5A817" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    <path d="M72 -5 L86 0 L78 12" stroke="#D5A817" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="0" y="45" font-family="'League Spartan', 'Arial Black', sans-serif" font-size="16" font-weight="900" letter-spacing="2" fill="#003F25" text-anchor="middle">LITTLE BITES • BIG SMILES</text>
+  </g>
+</svg>

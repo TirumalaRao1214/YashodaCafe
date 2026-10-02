@@ -1,78 +1,245 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 660" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" width="100%" height="100%">
   <defs>
-    <radialGradient id="heroBg" cx="50%" cy="40%" r="70%">
-      <stop offset="0%" stop-color="#00683D" />
-      <stop offset="60%" stop-color="#004D2C" />
-      <stop offset="100%" stop-color="#00351E" />
+    <!-- Gradients -->
+    <radialGradient id="heroArtBg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#006138" />
+      <stop offset="60%" stop-color="#004627" />
+      <stop offset="100%" stop-color="#002E19" />
     </radialGradient>
-    <radialGradient id="cupGold" cx="35%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#FFF4D0" />
-      <stop offset="50%" stop-color="#D2A51A" />
-      <stop offset="100%" stop-color="#997207" />
+    <radialGradient id="goldRadial" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFF5D6" />
+      <stop offset="50%" stop-color="#D5A817" />
+      <stop offset="100%" stop-color="#8F6904" />
     </radialGradient>
     <linearGradient id="teaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FCEFD2" />
-      <stop offset="100%" stop-color="#D49A3D" />
+      <stop offset="0%" stop-color="#FDF4DF" />
+      <stop offset="40%" stop-color="#E2A848" />
+      <stop offset="100%" stop-color="#9C5D14" />
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#001F12" flood-opacity="0.5"/>
+    <linearGradient id="coffeeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EAD9C6" />
+      <stop offset="25%" stop-color="#6F4228" />
+      <stop offset="100%" stop-color="#361B0E" />
+    </linearGradient>
+    <linearGradient id="juiceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B4A" />
+      <stop offset="50%" stop-color="#FF9E2C" />
+      <stop offset="100%" stop-color="#F34325" />
+    </linearGradient>
+    <linearGradient id="shakeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8EC" />
+      <stop offset="45%" stop-color="#FF6584" />
+      <stop offset="100%" stop-color="#C82855" />
+    </linearGradient>
+    <linearGradient id="sundaeGlass" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="30%" stop-color="#E0F2FE" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#BAE6FD" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="saucerGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D5A817"/>
+      <stop offset="50%" stop-color="#FFF2B2"/>
+      <stop offset="100%" stop-color="#D5A817"/>
+    </linearGradient>
+
+    <!-- Shadows -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#00180D" flood-opacity="0.45"/>
+    </filter>
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="600" height="660" fill="url(#heroBg)" />
+  <!-- Background Canvas Card -->
+  <rect width="800" height="700" rx="24" fill="url(#heroArtBg)" />
+  <rect x="12" y="12" width="776" height="676" rx="20" fill="none" stroke="#D5A817" stroke-width="1.5" stroke-dasharray="6,8" opacity="0.6"/>
+  <rect x="22" y="22" width="756" height="656" rx="16" fill="none" stroke="#D5A817" stroke-width="0.75" opacity="0.3"/>
 
-  <!-- Botanical Dotted Circle Framing -->
-  <circle cx="300" cy="310" r="210" fill="none" stroke="#D2A51A" stroke-width="1.5" stroke-dasharray="4,6" opacity="0.6"/>
-  <circle cx="300" cy="310" r="230" fill="none" stroke="#D2A51A" stroke-width="1" opacity="0.4"/>
+  <!-- Botanical Backdrop Elements -->
+  <g stroke="#D5A817" stroke-width="1.4" fill="none" opacity="0.75">
+    <!-- Top-left branch -->
+    <path d="M70 140 Q130 90 220 120 T320 80" />
+    <path d="M120 115 C110 85 140 70 150 95 C140 110 125 120 120 115 Z" fill="#D5A817" fill-opacity="0.2"/>
+    <path d="M180 105 C175 75 205 60 215 85 C205 100 190 110 180 105 Z" fill="#D5A817" fill-opacity="0.25"/>
+    <path d="M250 100 C250 70 280 65 285 90 C275 105 260 110 250 100 Z" fill="#D5A817" fill-opacity="0.2"/>
+    <path d="M290 85 C305 60 330 70 325 90 C310 95 295 90 290 85 Z" fill="#D5A817" fill-opacity="0.25"/>
 
-  <!-- Botanical Leaves Flanking -->
-  <g stroke="#D2A51A" stroke-width="1.5" fill="none" opacity="0.85">
-    <!-- Top Left Branch -->
-    <path d="M120 180 Q160 140 210 160" />
-    <path d="M140 165 C145 150 160 148 165 158 C160 165 148 170 140 165 Z" fill="#D2A51A" opacity="0.3"/>
-    <path d="M175 150 C185 135 200 138 200 150 C192 158 180 158 175 150 Z" fill="#D2A51A" opacity="0.3"/>
-
-    <!-- Bottom Right Branch -->
-    <path d="M480 440 Q440 480 390 460" />
-    <path d="M460 455 C455 470 440 472 435 462 C440 455 452 450 460 455 Z" fill="#D2A51A" opacity="0.3"/>
-    <path d="M425 470 C415 485 400 482 400 470 C408 462 420 462 425 470 Z" fill="#D2A51A" opacity="0.3"/>
+    <!-- Bottom-right branch -->
+    <path d="M730 560 Q670 610 580 580 T460 620" />
+    <path d="M680 585 C690 615 660 630 650 605 C660 590 675 580 680 585 Z" fill="#D5A817" fill-opacity="0.2"/>
+    <path d="M620 595 C625 625 595 640 585 615 C595 600 610 590 620 595 Z" fill="#D5A817" fill-opacity="0.25"/>
+    <path d="M550 590 C550 620 520 625 515 600 C525 585 540 580 550 590 Z" fill="#D5A817" fill-opacity="0.2"/>
   </g>
 
-  <!-- Saucer -->
-  <g filter="url(#shadow)">
-    <ellipse cx="300" cy="430" rx="160" ry="24" fill="#00351E" opacity="0.6"/>
-    <ellipse cx="300" cy="420" rx="150" ry="22" fill="#F8F1E7" stroke="#D2A51A" stroke-width="3"/>
-    <ellipse cx="300" cy="420" rx="110" ry="14" fill="#E8DEC9" />
+  <!-- Golden Radiance Circles -->
+  <circle cx="390" cy="380" r="230" fill="none" stroke="#D5A817" stroke-width="1" stroke-dasharray="4,8" opacity="0.35"/>
+  <circle cx="390" cy="380" r="255" fill="none" stroke="#D5A817" stroke-width="0.75" opacity="0.2"/>
+
+  <!-- =========================================================
+       FOOD & DRINK COMPOSITION ITEMS
+       1. Left: Coldpress Fresh Juice Bottle & Glass (Citrus Orange)
+       2. Center-Back: Tall Strawberry Milkshake with Cream & Cherry
+       3. Center-Front: Iconic Yashoda Tea Cup on Gold Saucer with Steam
+       4. Right-Back: Premium Coffee Mug with Frothy Latte Art
+       5. Right-Front: Ice Cream Sundae & Fresh Waffle / Snacks
+  ========================================================= -->
+
+  <!-- 1. LEFT: Fresh Coldpress Juice -->
+  <g transform="translate(90, 220)" filter="url(#softShadow)">
+    <!-- Juice Glass Silhouette -->
+    <path d="M40 90 L52 280 Q53 295 75 295 L115 295 Q137 295 138 280 L150 90 Z" fill="url(#juiceGradient)" opacity="0.95"/>
+    <path d="M40 90 L52 280 Q53 295 75 295 L115 295 Q137 295 138 280 L150 90 Z" fill="url(#sundaeGlass)"/>
+    <!-- Liquid Surface -->
+    <ellipse cx="95" cy="92" rx="55" ry="12" fill="#FFA53C" stroke="#FFF" stroke-width="1"/>
+    <!-- Ice cubes in juice -->
+    <rect x="70" y="130" width="30" height="30" rx="6" fill="#FFF" fill-opacity="0.35" transform="rotate(15 85 145)"/>
+    <rect x="90" y="180" width="28" height="28" rx="5" fill="#FFF" fill-opacity="0.3" transform="rotate(-12 104 194)"/>
+    <!-- Orange Slice on rim -->
+    <path d="M30 80 A 35 35 0 0 1 75 50 L52 95 Z" fill="#FFA827" stroke="#FFE9B3" stroke-width="3"/>
+    <circle cx="52" cy="72" r="16" fill="none" stroke="#FFF" stroke-width="1.5" stroke-dasharray="2,3"/>
+    <!-- Drinking Straw -->
+    <line x1="95" y1="92" x2="60" y2="-20" stroke="#D5A817" stroke-width="7" stroke-linecap="round"/>
+    <line x1="60" y1="-20" x2="35" y2="-40" stroke="#D5A817" stroke-width="7" stroke-linecap="round"/>
+    <!-- Badge -->
+    <rect x="42" y="305" width="106" height="26" rx="13" fill="#003F25" stroke="#D5A817" stroke-width="1.2"/>
+    <text x="95" y="322" font-family="Georgia, serif" font-size="10.5" font-weight="700" letter-spacing="1" fill="#FFF9ED" text-anchor="middle">COLDPRESS</text>
   </g>
 
-  <!-- Cup -->
-  <g filter="url(#shadow)">
-    <!-- Cup Body -->
-    <path d="M210 260 C210 370 240 395 300 395 C360 395 390 370 390 260 Z" fill="#FFF9F0" stroke="#D2A51A" stroke-width="3.5"/>
-    
-    <!-- Gold Rim -->
-    <ellipse cx="300" cy="260" rx="90" ry="20" fill="url(#cupGold)" stroke="#FFF9F0" stroke-width="1"/>
-    
-    <!-- Tea Surface -->
-    <ellipse cx="300" cy="262" rx="80" ry="16" fill="url(#teaGradient)" />
-    
-    <!-- Steam / Aroma Swirls -->
-    <path d="M270 230 Q280 200 270 170 Q260 140 275 110" stroke="#FFF9F0" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
-    <path d="M300 220 Q315 190 305 160 Q295 130 310 95" stroke="#D2A51A" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.75"/>
-    <path d="M330 230 Q320 200 330 170 Q340 140 325 110" stroke="#FFF9F0" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <!-- 2. CENTER-BACK: Milkshake Glass -->
+  <g transform="translate(240, 130)" filter="url(#softShadow)">
+    <!-- Tall Sundae/Shake Glass -->
+    <path d="M50 80 Q55 200 45 270 Q45 285 70 290 L70 340 L45 350 L45 360 L135 360 L135 350 L110 340 L110 290 Q135 285 135 270 Q125 200 130 80 Z" fill="url(#shakeGradient)"/>
+    <path d="M50 80 Q55 200 45 270 Q45 285 70 290 L70 340 L45 350 L45 360 L135 360 L135 350 L110 340 L110 290 Q135 285 135 270 Q125 200 130 80 Z" fill="url(#sundaeGlass)"/>
+    <!-- Whipped Cream Swirl -->
+    <path d="M50 80 Q90 20 130 80 Q140 40 100 10 Q80 2 90 -10 Q60 30 50 80 Z" fill="#FFFDF8"/>
+    <!-- Strawberry Drizzle -->
+    <path d="M75 35 Q85 70 80 120 Q88 170 82 220" stroke="#B81440" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+    <path d="M105 40 Q115 80 108 140" stroke="#B81440" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.75"/>
+    <!-- Red Cherry on Top -->
+    <circle cx="90" cy="-12" r="14" fill="#C41230" stroke="#7A0014" stroke-width="1"/>
+    <path d="M92 -24 Q115 -45 130 -35" stroke="#486D32" stroke-width="2.5" fill="none"/>
+    <!-- Wafer Stick -->
+    <line x1="120" y1="40" x2="165" y2="-45" stroke="#C99156" stroke-width="9" stroke-linecap="round"/>
+    <line x1="120" y1="40" x2="165" y2="-45" stroke="#683411" stroke-width="2" stroke-dasharray="6,8"/>
+  </g>
+
+  <!-- 3. RIGHT-BACK: Artisan Coffee Mug with Latte Art -->
+  <g transform="translate(480, 180)" filter="url(#softShadow)">
+    <!-- Mug Handle -->
+    <path d="M160 80 C210 80 210 170 160 170" fill="none" stroke="#FFFDF8" stroke-width="16" stroke-linecap="round"/>
+    <path d="M160 80 C210 80 210 170 160 170" fill="none" stroke="#D5A817" stroke-width="2" stroke-linecap="round"/>
+    <!-- Mug Body -->
+    <path d="M30 40 L45 190 Q47 215 80 215 L140 215 Q173 215 175 190 L190 40 Z" fill="#003F25" stroke="#D5A817" stroke-width="2"/>
+    <ellipse cx="110" cy="40" rx="80" ry="24" fill="#FFFDF8" stroke="#D5A817" stroke-width="2"/>
+    <!-- Coffee Surface -->
+    <ellipse cx="110" cy="40" rx="72" ry="20" fill="url(#coffeeGradient)"/>
+    <!-- Latte Art Rosette / Heart -->
+    <path d="M110 50 C95 32 75 35 85 24 C95 14 110 28 110 32 C110 28 125 14 135 24 C145 35 125 32 110 50 Z" fill="#FFFDF8" opacity="0.95"/>
+    <line x1="110" y1="18" x2="110" y2="54" stroke="#FFFDF8" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Coffee steam -->
+    <path d="M90 10 Q80 -20 95 -45" stroke="#FFFDF8" stroke-width="2" fill="none" opacity="0.4" stroke-linecap="round"/>
+    <path d="M125 12 Q140 -18 125 -50" stroke="#D5A817" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- 4. RIGHT-FRONT: Ice Cream Delights Bowl -->
+  <g transform="translate(470, 370)" filter="url(#softShadow)">
+    <!-- Glass Footed Bowl -->
+    <ellipse cx="120" cy="210" rx="70" ry="14" fill="#002E19" opacity="0.5"/>
+    <path d="M90 190 L90 208 L150 208 L150 190 Q120 196 90 190 Z" fill="url(#sundaeGlass)" stroke="#D5A817" stroke-width="1.5"/>
+    <path d="M30 90 Q30 190 120 190 Q210 190 210 90 Z" fill="url(#sundaeGlass)" stroke="#D5A817" stroke-width="2"/>
+    <!-- Scoops -->
+    <!-- Chocolate scoop (left) -->
+    <circle cx="85" cy="85" r="42" fill="#5A3118" stroke="#381D0C" stroke-width="1.5"/>
+    <!-- Vanilla scoop (center) -->
+    <circle cx="120" cy="65" r="44" fill="#FFFDF8" stroke="#E5DEC9" stroke-width="1.5"/>
+    <!-- Strawberry scoop (right) -->
+    <circle cx="155" cy="85" r="42" fill="#FF5E7E" stroke="#C2294B" stroke-width="1.5"/>
+    <!-- Chocolate Sauce Drizzle -->
+    <path d="M60 70 Q90 110 115 65 Q140 105 180 80" stroke="#3A1D0B" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- Golden Nuts / Sprinkles -->
+    <circle cx="105" cy="55" r="2.5" fill="#D5A817"/>
+    <circle cx="125" cy="50" r="2" fill="#D5A817"/>
+    <circle cx="140" cy="65" r="2.5" fill="#D5A817"/>
+    <circle cx="80" cy="75" r="2" fill="#D5A817"/>
+    <!-- Sundae Spoon -->
+    <path d="M190 30 L220 -20 Q225 -26 230 -20 Q235 -14 228 -8 L185 60 Z" fill="#D5A817" stroke="#FFF" stroke-width="0.5"/>
+    <!-- Badge -->
+    <rect x="55" y="215" width="130" height="26" rx="13" fill="#003F25" stroke="#D5A817" stroke-width="1.2"/>
+    <text x="120" y="232" font-family="Georgia, serif" font-size="10.5" font-weight="700" letter-spacing="1" fill="#FFF9ED" text-anchor="middle">SUNDAE DELIGHT</text>
+  </g>
+
+  <!-- 5. CENTER-FRONT: HERO YASHODA TEA (Master Piece) -->
+  <g transform="translate(180, 310)" filter="url(#softShadow)">
+    <!-- Ambient Saucer Glow -->
+    <ellipse cx="210" cy="280" rx="200" ry="32" fill="#002413" opacity="0.6"/>
+
+    <!-- Large Gold-Rimmed Saucer -->
+    <ellipse cx="210" cy="270" rx="190" ry="30" fill="url(#saucerGold)"/>
+    <ellipse cx="210" cy="268" rx="182" ry="26" fill="#FFFDF8"/>
+    <ellipse cx="210" cy="268" rx="140" ry="18" fill="#EDE4CE" stroke="#D5A817" stroke-width="1.5"/>
 
     <!-- Cup Handle -->
-    <path d="M380 280 C420 280 425 350 375 360" fill="none" stroke="#FFF9F0" stroke-width="14" stroke-linecap="round"/>
-    <path d="M380 280 C420 280 425 350 375 360" fill="none" stroke="#D2A51A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M330 140 C410 140 410 235 330 235" fill="none" stroke="#FFFDF8" stroke-width="22" stroke-linecap="round"/>
+    <path d="M330 140 C410 140 410 235 330 235" fill="none" stroke="#D5A817" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Cup Body (Fluted Luxury Porcelain) -->
+    <path d="M85 100 L110 245 Q115 265 210 265 Q305 265 310 245 L335 100 Z" fill="#FFFDF8" stroke="#D5A817" stroke-width="3"/>
+
+    <!-- Cup Botanical Gold Emblem -->
+    <g transform="translate(210, 185) scale(0.9)">
+      <circle cx="0" cy="0" r="32" fill="#005A32" stroke="#D5A817" stroke-width="2"/>
+      <!-- Yashoda Leaf Crest -->
+      <path d="M-12 10 C-18 -2 -6 -18 8 -20 C10 -6 2 8 -12 10 Z" fill="#D5A817"/>
+      <path d="M4 6 C-2 -4 6 -14 18 -12 C18 -2 12 6 4 6 Z" fill="#FFFDF8"/>
+      <path d="M-10 18 Q0 24 12 18" stroke="#D5A817" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- Cup Gold Rim & Tea Surface -->
+    <ellipse cx="210" cy="100" rx="125" ry="32" fill="url(#saucerGold)"/>
+    <ellipse cx="210" cy="100" rx="120" ry="28" fill="#FFFDF8"/>
+    <ellipse cx="210" cy="101" rx="112" ry="24" fill="url(#teaGradient)"/>
+    <!-- Fresh Milk/Chai swirl -->
+    <ellipse cx="195" cy="100" rx="55" ry="12" fill="#FFF4D4" opacity="0.6"/>
+    <path d="M170 100 Q200 92 230 102" stroke="#FFF" stroke-width="2" fill="none" opacity="0.8"/>
+
+    <!-- Rising Aromatic Steam -->
+    <g stroke="url(#saucerGold)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.75" filter="url(#subtleGlow)">
+      <path d="M170 65 Q150 15 180 -30 T165 -90"/>
+      <path d="M210 60 Q235 10 205 -35 T220 -100"/>
+      <path d="M250 68 Q275 25 245 -25 T260 -85"/>
+    </g>
+
+    <!-- Master Product Pill -->
+    <g transform="translate(125, 298)">
+      <rect x="0" y="0" width="170" height="34" rx="17" fill="#005A32" stroke="#D5A817" stroke-width="2"/>
+      <circle cx="18" cy="17" r="10" fill="#D5A817"/>
+      <text x="18" y="21" font-family="Arial, sans-serif" font-size="11" font-weight="900" fill="#003F25" text-anchor="middle">★</text>
+      <text x="96" y="22" font-family="'League Spartan', 'Arial Black', sans-serif" font-size="12" font-weight="900" letter-spacing="1.5" fill="#FFF9ED" text-anchor="middle">YASHODA SPECIAL</text>
+    </g>
   </g>
 
-  <!-- Cup Emblem / Leaf Brand -->
-  <circle cx="300" cy="330" r="22" fill="#005B35" stroke="#D2A51A" stroke-width="1.5"/>
-  <path d="M300 318 C305 321 308 327 306 333 C303 338 297 341 293 338 C291 332 294 324 300 318 Z" fill="#D2A51A"/>
+  <!-- Floating Spices & Herbs Accent -->
+  <!-- Cardamom Pod Left -->
+  <g transform="translate(140, 560) rotate(-25)">
+    <ellipse cx="0" cy="0" rx="14" ry="8" fill="#5F7D3A" stroke="#3D5520" stroke-width="1.5"/>
+    <line x1="-12" y1="0" x2="12" y2="0" stroke="#D5A817" stroke-width="1"/>
+  </g>
+  <!-- Cinnamon Stick Right -->
+  <g transform="translate(680, 310) rotate(35)">
+    <rect x="-8" y="-35" width="16" height="70" rx="5" fill="#8B4513" stroke="#5C2D0C" stroke-width="1.5"/>
+    <line x1="-3" y1="-30" x2="-3" y2="30" stroke="#D5A817" stroke-width="1.2" opacity="0.6"/>
+  </g>
+  <!-- Mint Leaves -->
+  <g transform="translate(200, 240) rotate(40)">
+    <path d="M0 0 C-15 -10 -15 -30 0 -40 C15 -30 15 -10 0 0 Z" fill="#2E7D32" stroke="#1B5E20" stroke-width="1"/>
+    <line x1="0" y1="0" x2="0" y2="-36" stroke="#81C784" stroke-width="1"/>
+  </g>
 
-  <!-- Poster Tagline Inset -->
-  <rect x="150" y="520" width="300" height="42" rx="21" fill="#00351E" stroke="#D2A51A" stroke-width="1.5"/>
-  <text x="300" y="546" font-family="'League Spartan', sans-serif" font-size="14" font-weight="700" letter-spacing="3" fill="#D2A51A" text-anchor="middle">AUTHENTIC FLAVOURS</text>
-  <text x="300" y="590" font-family="'Playfair Display', serif" font-style="italic" font-size="16" fill="#F8F1E7" text-anchor="middle">Karimnagar • Telangana</text>
+  <!-- Editorial Brand Tag Bottom Center -->
+  <g transform="translate(400, 665)">
+    <text x="0" y="0" font-family="Georgia, serif" font-style="italic" font-size="13" letter-spacing="2" fill="#D5A817" text-anchor="middle">Artisan Teas • Coldpress Juices • Shakes • Sundaes • Snacks</text>
+  </g>
 </svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cardBurger" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#00663B" />
+      <stop offset="100%" stop-color="#00351E" />
+    </radialGradient>
+    <filter id="fShadow5">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#00180D" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" rx="16" fill="url(#cardBurger)"/>
+  <rect x="10" y="10" width="580" height="430" rx="12" fill="none" stroke="#D5A817" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.6"/>
+
+  <g transform="translate(160, 60)" filter="url(#fShadow5)">
+    <!-- Plate -->
+    <ellipse cx="140" cy="270" rx="150" ry="26" fill="#FFFDF8" stroke="#D5A817" stroke-width="2"/>
+    <ellipse cx="140" cy="268" rx="110" ry="16" fill="#EFE8D6"/>
+
+    <!-- Bottom Bun -->
+    <path d="M50 230 Q140 240 230 230 Q230 260 140 260 Q50 260 50 230 Z" fill="#D7995B" stroke="#8D5220" stroke-width="1.5"/>
+    
+    <!-- Patty -->
+    <rect x="45" y="205" width="190" height="24" rx="12" fill="#5D3A1A" stroke="#3E240D" stroke-width="1.5"/>
+
+    <!-- Melted Cheese -->
+    <polygon points="50,205 230,205 210,225 180,210 140,230 100,210 65,225" fill="#FFC107"/>
+
+    <!-- Tomato Slice -->
+    <rect x="55" y="180" width="170" height="22" rx="11" fill="#E53935"/>
+
+    <!-- Crisp Lettuce -->
+    <path d="M40 175 Q60 160 80 180 Q110 160 140 180 Q170 160 200 180 Q220 160 240 175" stroke="#4CAF50" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+    <!-- Top Brioche Bun -->
+    <path d="M50 165 C50 80 230 80 230 165 Z" fill="#E4A463" stroke="#8D5220" stroke-width="1.5"/>
+
+    <!-- Sesame seeds -->
+    <circle cx="100" cy="115" r="3" fill="#FFFDF8"/>
+    <circle cx="140" cy="100" r="3" fill="#FFFDF8"/>
+    <circle cx="170" cy="120" r="3" fill="#FFFDF8"/>
+    <circle cx="120" cy="135" r="3" fill="#FFFDF8"/>
+    <circle cx="155" cy="140" r="3" fill="#FFFDF8"/>
+  </g>
+
+  <!-- Editorial Badge -->
+  <g transform="translate(300, 395)">
+    <rect x="-140" y="-18" width="280" height="36" rx="18" fill="#00351E" stroke="#D5A817" stroke-width="1.5"/>
+    <text x="0" y="5" font-family="'League Spartan', 'Arial Black', sans-serif" font-size="14" font-weight="900" letter-spacing="2" fill="#FFF9ED" text-anchor="middle">GOURMET BURGERS &amp; BITES</text>
+  </g>
+</svg>

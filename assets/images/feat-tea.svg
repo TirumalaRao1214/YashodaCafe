@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cardChai" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#00663B" />
+      <stop offset="100%" stop-color="#00351E" />
+    </radialGradient>
+    <linearGradient id="goldL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2B2" />
+      <stop offset="50%" stop-color="#D5A817" />
+      <stop offset="100%" stop-color="#997207" />
+    </linearGradient>
+    <linearGradient id="chaiLiquid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FCECD2" />
+      <stop offset="40%" stop-color="#E2A648" />
+      <stop offset="100%" stop-color="#9C5A14" />
+    </linearGradient>
+    <filter id="fShadow">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#00180D" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" rx="16" fill="url(#cardChai)"/>
+  <rect x="10" y="10" width="580" height="430" rx="12" fill="none" stroke="#D5A817" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.6"/>
+
+  <!-- Botanical branch decor -->
+  <g stroke="#D5A817" stroke-width="1.2" fill="none" opacity="0.5">
+    <path d="M50 80 Q100 50 160 70"/>
+    <path d="M90 65 C85 45 105 35 115 50 Z" fill="#D5A817" fill-opacity="0.2"/>
+    <path d="M550 370 Q500 400 440 380"/>
+    <path d="M510 385 C515 405 495 415 485 400 Z" fill="#D5A817" fill-opacity="0.2"/>
+  </g>
+
+  <!-- Traditional Cutting Chai Glass + Saucer composition -->
+  <g transform="translate(180, 50)" filter="url(#fShadow)">
+    <!-- Brass/Gold Tray -->
+    <ellipse cx="120" cy="270" rx="130" ry="22" fill="url(#goldL)"/>
+    <ellipse cx="120" cy="268" rx="124" ry="18" fill="#FFFDF8"/>
+    <ellipse cx="120" cy="268" rx="90" ry="12" fill="#004D2C" opacity="0.3"/>
+
+    <!-- Glass Silhouette -->
+    <polygon points="75,80 85,250 155,250 165,80" fill="#FFFDF8" fill-opacity="0.15" stroke="#FFFDF8" stroke-width="2"/>
+    <polygon points="78,110 87,246 153,246 162,110" fill="url(#chaiLiquid)"/>
+    <!-- Glass Cut Facets / Ribs -->
+    <line x1="95" y1="90" x2="102" y2="245" stroke="#FFFDF8" stroke-width="2" opacity="0.4"/>
+    <line x1="120" y1="90" x2="120" y2="248" stroke="#FFFDF8" stroke-width="2.5" opacity="0.6"/>
+    <line x1="145" y1="90" x2="138" y2="245" stroke="#FFFDF8" stroke-width="2" opacity="0.4"/>
+    
+    <!-- Foam top -->
+    <ellipse cx="120" cy="110" rx="42" ry="10" fill="#FFF7E6"/>
+    <!-- Steam -->
+    <path d="M105 70 Q95 30 115 0" stroke="#FFFDF8" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+    <path d="M135 65 Q145 25 125 -5" stroke="#D5A817" stroke-width="2.5" fill="none" opacity="0.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Elaichi & Spices -->
+  <g transform="translate(120, 310)">
+    <ellipse cx="0" cy="0" rx="15" ry="9" fill="#6A8F3D" stroke="#3D5B1A" stroke-width="1.5" transform="rotate(-20)"/>
+    <ellipse cx="30" cy="10" rx="14" ry="8" fill="#6A8F3D" stroke="#3D5B1A" stroke-width="1.5" transform="rotate(35)"/>
+  </g>
+
+  <!-- Editorial Badge -->
+  <g transform="translate(300, 395)">
+    <rect x="-140" y="-18" width="280" height="36" rx="18" fill="#00351E" stroke="#D5A817" stroke-width="1.5"/>
+    <text x="0" y="5" font-family="'League Spartan', 'Arial Black', sans-serif" font-size="14" font-weight="900" letter-spacing="2.5" fill="#FFF9ED" text-anchor="middle">ARTISAN YASHODA TEA</text>
+  </g>
+</svg>

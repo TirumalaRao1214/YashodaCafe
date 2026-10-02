@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cardJuice" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#00663B" />
+      <stop offset="100%" stop-color="#00351E" />
+    </radialGradient>
+    <linearGradient id="juiceGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5252" />
+      <stop offset="50%" stop-color="#FF9800" />
+      <stop offset="100%" stop-color="#E64A19" />
+    </linearGradient>
+    <filter id="fShadow2">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#00180D" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" rx="16" fill="url(#cardJuice)"/>
+  <rect x="10" y="10" width="580" height="430" rx="12" fill="none" stroke="#D5A817" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.6"/>
+
+  <g transform="translate(200, 40)" filter="url(#fShadow2)">
+    <!-- Juice Glass -->
+    <path d="M40 70 L55 260 Q57 275 80 275 L120 275 Q143 275 145 260 L160 70 Z" fill="url(#juiceGrad2)" opacity="0.95"/>
+    <path d="M40 70 L55 260 Q57 275 80 275 L120 275 Q143 275 145 260 L160 70 Z" fill="#FFF" fill-opacity="0.12" stroke="#FFF" stroke-width="2"/>
+    <ellipse cx="100" cy="72" rx="60" ry="14" fill="#FFA726" stroke="#FFF" stroke-width="1.5"/>
+
+    <!-- Pomegranate & Citrus Garnish -->
+    <circle cx="50" cy="55" r="26" fill="#D32F2F" stroke="#FFF" stroke-width="2"/>
+    <circle cx="50" cy="55" r="20" fill="#B71C1C"/>
+    <!-- seeds -->
+    <circle cx="44" cy="50" r="3" fill="#FFF" opacity="0.8"/>
+    <circle cx="54" cy="52" r="3.5" fill="#FFF" opacity="0.8"/>
+    <circle cx="48" cy="60" r="3" fill="#FFF" opacity="0.8"/>
+
+    <!-- Mint Leaves -->
+    <path d="M145 60 C165 40 180 55 160 75 Z" fill="#4CAF50" stroke="#2E7D32" stroke-width="1.5"/>
+    <path d="M150 45 C170 30 185 40 170 60 Z" fill="#81C784"/>
+
+    <!-- Straw -->
+    <line x1="100" y1="72" x2="60" y2="-20" stroke="#D5A817" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <!-- Editorial Badge -->
+  <g transform="translate(300, 395)">
+    <rect x="-155" y="-18" width="310" height="36" rx="18" fill="#00351E" stroke="#D5A817" stroke-width="1.5"/>
+    <text x="0" y="5" font-family="'League Spartan', 'Arial Black', sans-serif" font-size="14" font-weight="900" letter-spacing="2" fill="#FFF9ED" text-anchor="middle">100% PURE COLDPRESS JUICE</text>
+  </g>
+</svg>

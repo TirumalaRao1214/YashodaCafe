@@ -1,73 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 660" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 600" width="100%" height="100%">
   <defs>
-    <radialGradient id="aboutBg" cx="50%" cy="50%" r="75%">
+    <radialGradient id="aboutBg" cx="50%" cy="50%" r="65%">
       <stop offset="0%" stop-color="#00663B" />
-      <stop offset="70%" stop-color="#004627" />
-      <stop offset="100%" stop-color="#002D1A" />
+      <stop offset="70%" stop-color="#004324" />
+      <stop offset="100%" stop-color="#002915" />
     </radialGradient>
-    <linearGradient id="warmAmber" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFDE7A" />
-      <stop offset="100%" stop-color="#D2A51A" />
-    </linearGradient>
+    <filter id="abShadow">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#00180D" flood-opacity="0.45"/>
+    </filter>
   </defs>
 
-  <rect width="600" height="660" fill="url(#aboutBg)"/>
-  
-  <!-- Outer Decorative Border -->
-  <rect x="25" y="25" width="550" height="610" rx="16" fill="none" stroke="#D2A51A" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.6"/>
-  <rect x="35" y="35" width="530" height="590" rx="12" fill="none" stroke="#D2A51A" stroke-width="1" opacity="0.3"/>
+  <rect width="700" height="600" rx="20" fill="url(#aboutBg)"/>
+  <rect x="14" y="14" width="672" height="572" rx="16" fill="none" stroke="#D5A817" stroke-width="1.5" stroke-dasharray="6,8" opacity="0.6"/>
 
-  <!-- Botanical Leaf Frame Corners -->
-  <g fill="#D2A51A" opacity="0.8">
-    <!-- Top-left -->
-    <path d="M50 50 Q80 60 90 90 Q60 80 50 50 Z" />
-    <path d="M50 50 Q60 80 90 90" stroke="#004627" stroke-width="1" fill="none"/>
-    <!-- Top-right -->
-    <path d="M550 50 Q520 60 510 90 Q540 80 550 50 Z" />
-    <!-- Bottom-left -->
-    <path d="M50 610 Q80 600 90 570 Q60 580 50 610 Z" />
-    <!-- Bottom-right -->
-    <path d="M550 610 Q520 600 510 570 Q540 580 550 610 Z" />
+  <!-- Botanical Flankers -->
+  <g stroke="#D5A817" stroke-width="1.4" fill="none" opacity="0.6">
+    <path d="M60 120 Q120 70 200 100"/>
+    <path d="M100 95 C95 70 120 60 130 80 Z" fill="#D5A817" fill-opacity="0.2"/>
+    <path d="M640 480 Q580 530 500 500"/>
+    <path d="M600 505 C605 530 580 540 570 520 Z" fill="#D5A817" fill-opacity="0.2"/>
   </g>
 
-  <!-- Central Composition: Fresh Juices, Chai Glass, Healthy Millet Bowl -->
-  <g transform="translate(50, 40)">
-    <!-- Chai Glass -->
-    <g transform="translate(60, 200)">
-      <polygon points="30,20 15,160 75,160 60,20" fill="rgba(255, 249, 240, 0.15)" stroke="#D2A51A" stroke-width="2"/>
-      <polygon points="27,45 17,150 73,150 63,45" fill="#D49A3D" opacity="0.85"/>
-      <line x1="20" y1="60" x2="70" y2="60" stroke="#FFF9F0" stroke-width="1" opacity="0.6"/>
-      <line x1="18" y1="90" x2="72" y2="90" stroke="#FFF9F0" stroke-width="1" opacity="0.6"/>
-      <text x="45" y="195" font-family="'League Spartan', sans-serif" font-size="12" font-weight="700" letter-spacing="2" fill="#D2A51A" text-anchor="middle">CHAI</text>
+  <!-- Big Illustrated Warm Kettle & Traditional Cups -->
+  <g transform="translate(230, 90)" filter="url(#abShadow)">
+    <!-- Traditional Brass Tea Kettle -->
+    <path d="M60 190 Q50 330 140 330 Q230 330 220 190 Z" fill="#FFFDF8" stroke="#D5A817" stroke-width="3"/>
+    <ellipse cx="140" cy="190" rx="80" ry="24" fill="#E8DEC9" stroke="#D5A817" stroke-width="2"/>
+    <ellipse cx="140" cy="170" rx="55" ry="16" fill="#005A32" stroke="#D5A817" stroke-width="2"/>
+    <!-- Lid Knob -->
+    <circle cx="140" cy="145" r="10" fill="#D5A817"/>
+
+    <!-- Kettle Spout -->
+    <path d="M65 240 Q10 200 20 140 Q40 140 40 155 Q30 210 75 220 Z" fill="#FFFDF8" stroke="#D5A817" stroke-width="2.5"/>
+
+    <!-- Kettle Handle -->
+    <path d="M40 180 Q30 60 140 60 Q250 60 240 180" fill="none" stroke="#422209" stroke-width="18" stroke-linecap="round"/>
+    <path d="M40 180 Q30 60 140 60 Q250 60 240 180" fill="none" stroke="#D5A817" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Yashoda Botanical Crest on Kettle -->
+    <g transform="translate(140, 260) scale(0.9)">
+      <circle cx="0" cy="0" r="28" fill="#005A32" stroke="#D5A817" stroke-width="1.5"/>
+      <path d="M-8 6 C-12 -2 -4 -12 6 -14 C8 -4 2 6 -8 6 Z" fill="#D5A817"/>
+      <path d="M4 4 C0 -2 6 -8 14 -6 C14 2 8 6 4 4 Z" fill="#FFFDF8"/>
     </g>
 
-    <!-- Center: Coldpress Juice Glass Bottle -->
-    <g transform="translate(200, 120)">
-      <rect x="25" y="20" width="50" height="30" rx="4" fill="#D2A51A"/>
-      <rect x="35" y="0" width="30" height="20" rx="3" fill="#FFF9F0"/>
-      <path d="M15 70 C15 50 25 50 25 50 L75 50 C75 50 85 50 85 70 L90 220 C90 240 75 250 50 250 C25 250 10 240 10 220 Z" fill="rgba(255,255,255,0.15)" stroke="#D2A51A" stroke-width="2.5"/>
-      <path d="M17 90 L83 90 L87 215 C87 232 73 242 50 242 C27 242 13 232 13 215 Z" fill="#E65100" opacity="0.9"/>
-      <!-- Bottle Label -->
-      <rect x="25" y="125" width="50" height="60" rx="4" fill="#FFF9F0" stroke="#D2A51A" stroke-width="1.5"/>
-      <circle cx="50" cy="148" r="10" fill="#005B35"/>
-      <path d="M50 142 C53 145 54 149 52 153 C49 156 45 157 43 154 C42 150 45 145 50 142 Z" fill="#D2A51A"/>
-      <text x="50" y="172" font-family="'League Spartan', sans-serif" font-size="8" font-weight="700" fill="#005B35" text-anchor="middle">100% PURE</text>
-      <text x="50" y="278" font-family="'League Spartan', sans-serif" font-size="12" font-weight="700" letter-spacing="2" fill="#D2A51A" text-anchor="middle">COLDPRESS</text>
-    </g>
+    <!-- Hot Chai stream pouring -->
+    <path d="M22 142 Q-30 220 -20 320" stroke="#E2A648" stroke-width="5" fill="none" opacity="0.9" stroke-linecap="round"/>
 
-    <!-- Millet / Healthy Bowl -->
-    <g transform="translate(320, 210)">
-      <path d="M10 50 C10 110 50 140 100 140 C150 140 190 110 190 50 Z" fill="#FFF9F0" stroke="#D2A51A" stroke-width="2"/>
-      <ellipse cx="100" cy="50" rx="90" ry="25" fill="#5D4037"/>
-      <circle cx="80" cy="50" r="14" fill="#E5BE42"/>
-      <circle cx="110" cy="46" r="12" fill="#8D6E63"/>
-      <circle cx="135" cy="52" r="10" fill="#D2A51A"/>
-      <text x="100" y="175" font-family="'League Spartan', sans-serif" font-size="12" font-weight="700" letter-spacing="2" fill="#D2A51A" text-anchor="middle">MILLETS &amp; JAVA</text>
+    <!-- Glass catching the tea -->
+    <g transform="translate(-50, 250)">
+      <polygon points="10,40 16,110 44,110 50,40" fill="#FFFDF8" fill-opacity="0.2" stroke="#D5A817" stroke-width="1.5"/>
+      <polygon points="12,50 17,108 43,108 48,50" fill="#D49A3D"/>
     </g>
   </g>
 
-  <!-- Bottom Brand Seal -->
-  <circle cx="300" cy="520" r="38" fill="#005B35" stroke="#D2A51A" stroke-width="2"/>
-  <text x="300" y="515" font-family="'Playfair Display', serif" font-style="italic" font-size="14" fill="#FFF9F0" text-anchor="middle">Cafe</text>
-  <text x="300" y="534" font-family="'League Spartan', sans-serif" font-size="16" font-weight="800" letter-spacing="2" fill="#D2A51A" text-anchor="middle">YASHODA</text>
+  <!-- Editorial Ribbon / Motto -->
+  <g transform="translate(350, 520)">
+    <rect x="-190" y="-22" width="380" height="44" rx="22" fill="#00351E" stroke="#D5A817" stroke-width="2"/>
+    <text x="0" y="5" font-family="'League Spartan', 'Arial Black', sans-serif" font-size="14" font-weight="900" letter-spacing="3" fill="#FFF9ED" text-anchor="middle">GOOD FOOD • BRIGHTER DAYS</text>
+  </g>
 </svg>

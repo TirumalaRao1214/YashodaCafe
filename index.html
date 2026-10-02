@@ -3,1304 +3,690 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cafe Yashoda — Good Food, Brighter Days. Premium café in Karimnagar, Telangana. Teas, Coffee, Juices, Milkshakes, Ice Cream Delights and more." />
+  <meta name="description" content="Cafe Yashoda — Good Food, Brighter Days. Premium café in Karimnagar, Telangana. Artisan Teas, Brewed Coffee, Coldpress Juices, Thick Milkshakes, Burgers and Ice Cream Delights." />
+  <meta name="theme-color" content="#003F25" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cafe Yashoda — Good Food • Brighter Days" />
+  <meta property="og:description" content="Karimnagar's premier café experience. Artisan Teas, Coldpress Juices, Gourmet Burgers, Thick Milkshakes &amp; Ice Cream Delights." />
+  <meta property="og:image" content="assets/images/hero-art.svg" />
+
   <title>Cafe Yashoda — Good Food • Brighter Days</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <style>
-/* ================================================================
-   CAFE YASHODA — PREMIUM PRINTED MENU
-   Pure HTML · CSS · Vanilla JS  |  No CDN · No frameworks
-================================================================ */
 
-/* ── Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 
-/* ── Design tokens ── */
-:root {
-  --cream:       #F7F0E3;
-  --cream-l:     #FFF9ED;
-  --cream-m:     #EDE3CE;
-  --green:       #005A32;
-  --green-d:     #003F25;
-  --gold:        #D5A817;
-  --gold-l:      #E8C84A;
-  --ink:         #173B2B;
-  --muted:       #4A6654;
-  --border:      #C8B896;
-}
-
-html { scroll-behavior: smooth; overflow-x: hidden; }
-
-body {
-  font-family: Georgia, 'Times New Roman', serif;
-  background: var(--cream);
-  color: var(--ink);
-  overflow-x: hidden;
-  line-height: 1.6;
-  /* subtle CSS paper grain */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='0.025'/%3E%3C/svg%3E");
-}
-
-/* ── Botanical corners (fixed, decorative) ── */
-.bc {
-  position: fixed; pointer-events: none; z-index: 0;
-  opacity: .16; width: 180px; height: 180px;
-}
-.bc.tl { top:0; left:0; }
-.bc.tr { top:0; right:0; transform: scaleX(-1); }
-.bc.bl { bottom:0; left:0; transform: scaleY(-1); width:130px; height:130px; }
-.bc.br { bottom:0; right:0; transform: scale(-1,-1); width:130px; height:130px; }
-@media(max-width:768px){
-  .bc { width:70px!important; height:70px!important; opacity:.09; }
-}
-
-/* ================================================================
-   HEADER
-================================================================ */
-#hdr {
-  background: var(--green-d);
-  border-bottom: 3px solid var(--gold);
-  position: sticky; top: 0; z-index: 1000;
-  transition: box-shadow .3s;
-}
-#hdr.scrolled { box-shadow: 0 3px 20px rgba(0,0,0,.4); }
-
-.hdr-in {
-  max-width: 1200px; margin: 0 auto;
-  padding: 0 20px;
-  display: flex; align-items: center;
-  justify-content: space-between;
-  height: 54px; gap: 14px;
-}
-
-.logo a { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
-.logo-cafe {
-  font-family: Georgia,serif; font-style: italic;
-  font-size: 12px; color: var(--gold-l); letter-spacing: 1px;
-}
-.logo-yashoda {
-  font-family: 'Arial Black', Impact, sans-serif;
-  font-size: 17px; font-weight: 900; color: #fff;
-  letter-spacing: 2.5px; text-transform: uppercase;
-}
-
-.dnav { display: flex; gap: 2px; list-style: none; }
-.dnav a {
-  color: rgba(255,255,255,.8); text-decoration: none;
-  font-family: Arial,sans-serif; font-size: 11.5px; font-weight: 600;
-  letter-spacing: .5px; text-transform: uppercase;
-  padding: 5px 9px; border-radius: 3px;
-  transition: color .2s, background .2s;
-}
-.dnav a:hover { color: var(--gold-l); background: rgba(255,255,255,.08); }
-
-.hdr-ph {
-  display: flex; align-items: center; gap: 5px;
-  color: var(--gold-l); text-decoration: none;
-  font-family: Arial,sans-serif; font-size: 12.5px; font-weight: 700;
-  white-space: nowrap;
-}
-.hdr-ph svg { width:13px; height:13px; fill:currentColor; }
-
-.ham {
-  display: none; background: none;
-  border: 1px solid rgba(255,255,255,.3);
-  border-radius: 3px; padding: 6px 8px; cursor: pointer; color: #fff;
-}
-.ham span { display: block; width:19px; height:2px; background:currentColor; margin:4px 0; }
-
-.mnav {
-  display: none; background: var(--green-d);
-  border-top: 1px solid rgba(255,255,255,.1);
-  padding: 10px 20px 14px;
-}
-.mnav a {
-  display: block; color: rgba(255,255,255,.82); text-decoration: none;
-  font-family: Arial,sans-serif; font-size: 13px; font-weight: 600;
-  letter-spacing: .5px; text-transform: uppercase;
-  padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.07);
-}
-.mnav a:last-child { border-bottom: none; }
-
-@media(max-width:860px){
-  .dnav,.hdr-ph { display:none; }
-  .ham { display:flex; flex-direction:column; }
-}
-
-/* ================================================================
-   HERO
-================================================================ */
-#hero {
-  background: var(--cream-l);
-  border-bottom: 2px solid var(--border);
-  text-align: center;
-  padding: clamp(44px,7vw,72px) 24px clamp(40px,6vw,64px);
-  position: relative; overflow: hidden;
-}
-#hero::before {
-  content:'';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(213,168,23,.07) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-in { position: relative; z-index:1; max-width: 580px; margin: 0 auto; }
-
-.h-cafe {
-  display: block; font-style: italic;
-  font-size: clamp(26px,5.5vw,44px);
-  color: var(--green); letter-spacing: 2px; line-height: 1;
-}
-.h-yashoda {
-  display: block; font-family: 'Arial Black',Impact,sans-serif;
-  font-size: clamp(52px,13vw,100px); font-weight: 900;
-  color: var(--green-d); letter-spacing: 4px;
-  text-transform: uppercase; line-height: .88;
-}
-.h-swoosh { width: clamp(100px,28vw,170px); height:14px; margin: 9px auto 0; display:block; }
-.h-tag {
-  font-family: Arial,sans-serif; font-size: clamp(10px,2.2vw,13px);
-  font-weight: 700; letter-spacing: 3.5px;
-  color: var(--muted); text-transform: uppercase; margin: 16px 0 0;
-}
-.h-tag .dot { color: var(--gold); }
-.h-art {
-  width: clamp(100px,26vw,160px); height: clamp(100px,26vw,160px);
-  margin: 20px auto 14px; display: block; opacity: .9;
-}
-.h-sub {
-  font-family: Arial,sans-serif; font-size: clamp(10px,2vw,12.5px);
-  font-weight: 700; letter-spacing: 3px;
-  color: var(--muted); text-transform: uppercase; margin-bottom: 24px;
-}
-
-.btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:16px; }
-.btn-g {
-  background: var(--green); color: var(--cream-l);
-  border: 2px solid var(--green);
-  font-family: Arial,sans-serif; font-size: 12px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 10px 22px; border-radius: 2px; text-decoration: none;
-  transition: background .2s; display: inline-block;
-}
-.btn-g:hover { background: var(--green-d); border-color: var(--green-d); }
-.btn-o {
-  background: transparent; color: var(--green);
-  border: 2px solid var(--green);
-  font-family: Arial,sans-serif; font-size: 12px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 10px 22px; border-radius: 2px; text-decoration: none;
-  transition: background .2s, color .2s; display: inline-block;
-}
-.btn-o:hover { background: var(--green); color: var(--cream-l); }
-
-.hero-ct {
-  font-family: Arial,sans-serif; font-size: 13px; color: var(--muted);
-}
-.hero-ct a { color: var(--green); font-weight: 700; text-decoration: none; }
-
-/* ================================================================
-   MENU SECTION
-================================================================ */
-#menu { background: var(--cream); }
-
-/* heading area */
-.menu-top {
-  max-width: 1160px; margin: 0 auto;
-  padding: clamp(28px,4vw,48px) 20px 0;
-}
-.menu-hdg { text-align: center; margin-bottom: 22px; }
-.menu-hdg-rule {
-  display:flex; align-items:center; justify-content:center;
-  gap:12px; margin-bottom:6px;
-}
-.menu-hdg-rule .rl {
-  flex:1; max-width:100px; height:1px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-}
-.menu-hdg h2 {
-  font-family: 'Arial Black',Impact,sans-serif;
-  font-size: clamp(22px,4.5vw,34px); font-weight:900;
-  letter-spacing: 4px; text-transform: uppercase; color: var(--green-d);
-}
-.menu-hdg p {
-  font-family: Georgia,serif; font-style: italic;
-  font-size: 13px; color: var(--muted); margin-top: 4px;
-}
-
-/* search */
-.srch-wrap { max-width:520px; margin:0 auto 20px; position:relative; }
-.srch-wrap svg {
-  position:absolute; left:12px; top:50%; transform:translateY(-50%);
-  width:15px; height:15px; fill:var(--muted); pointer-events:none;
-}
-#menu-search {
-  width:100%; padding:10px 14px 10px 38px;
-  border:1.5px solid var(--border); border-radius:2px;
-  background:var(--cream-l);
-  font-family:Georgia,serif; font-size:14px; color:var(--ink);
-  outline:none; transition:border-color .2s;
-}
-#menu-search:focus { border-color:var(--green); }
-#menu-search::placeholder { color:#9aaa96; font-style:italic; }
-
-/* category nav strip — full width */
-.cnav-wrap {
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  background:var(--cream-l);
-}
-.cnav {
-  max-width:1160px; margin:0 auto;
-  display:flex; gap:4px; flex-wrap:nowrap;
-  overflow-x:auto; -webkit-overflow-scrolling:touch;
-  scrollbar-width:none; padding:6px 12px;
-}
-.cnav::-webkit-scrollbar { display:none; }
-.cp {
-  flex-shrink:0; padding:4px 11px;
-  border:1.5px solid var(--border); border-radius:2px;
-  background:transparent; color:var(--green);
-  font-family:Arial,sans-serif; font-size:10.5px; font-weight:700;
-  letter-spacing:.8px; text-transform:uppercase;
-  cursor:pointer; white-space:nowrap;
-  transition:background .15s, color .15s, border-color .15s;
-}
-.cp:hover { background:var(--cream-m); border-color:var(--green); }
-.cp.on { background:var(--green); color:var(--cream-l); border-color:var(--gold); }
-
-/* canvas */
-.menu-body {
-  max-width:1160px; margin:0 auto;
-  padding:0 20px clamp(40px,5vw,60px);
-}
-.canvas {
-  background:var(--cream-l);
-  border:2px solid var(--border);
-  margin-top:22px;
-  padding:clamp(18px,3vw,38px) clamp(14px,3vw,38px);
-  position:relative;
-}
-.canvas::before {
-  content:'';
-  position:absolute; inset:6px;
-  border:1px solid rgba(213,168,23,.20);
-  pointer-events:none;
-}
-@media(max-width:500px){
-  .canvas{ padding:14px 10px; }
-  .canvas::before{ inset:4px; }
-}
-
-/* notices */
-#srch-note {
-  text-align:center;
-  font-family:Georgia,serif; font-style:italic;
-  font-size:13px; color:var(--muted);
-  padding:0 0 12px; display:none;
-}
-#no-res {
-  text-align:center; padding:36px 20px;
-  font-family:Georgia,serif; font-style:italic;
-  font-size:15px; color:var(--muted); display:none;
-}
-
-/* two-column grid */
-#mcols {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:0 42px;
-  align-items:start;
-}
-#mcols.solo { grid-template-columns:1fr; }
-@media(max-width:700px){ #mcols{ grid-template-columns:1fr; } }
-.mcol { min-width:0; }
-
-/* ── CATEGORY BLOCK ── */
-.cb { margin-bottom:30px; }
-
-.ch {
-  display:flex; align-items:center; justify-content:center;
-  gap:8px;
-  background:var(--green); color:var(--cream-l);
-  border-radius:2px; padding:8px 16px;
-  margin-bottom:13px; position:relative;
-}
-.ch-lf { font-size:12px; opacity:.8; line-height:1; }
-.ch h3 {
-  font-family:'Arial Black',Impact,sans-serif;
-  font-size:clamp(9.5px,1.7vw,12px); font-weight:900;
-  letter-spacing:2.5px; text-transform:uppercase;
-  color:var(--cream-l); text-align:center; line-height:1;
-}
-.ch-gr {
-  position:absolute; bottom:-2px; left:50%; transform:translateX(-50%);
-  width:55%; height:2px; background:var(--gold); border-radius:1px;
-}
-
-/* ── ITEM ROW — dotted leaders ── */
-.mi { margin-bottom:8px; }
-.mi-row {
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:end; gap:5px;
-}
-.mi-nm {
-  font-family:Arial,sans-serif;
-  font-size:clamp(10.5px,1.6vw,12px);
-  font-weight:700; color:var(--ink);
-  letter-spacing:.3px; text-transform:uppercase;
-  white-space:normal; line-height:1.3;
-}
-.mi-dt {
-  border-bottom:2px dotted rgba(26,64,43,.24);
-  transform:translateY(-3px); min-width:16px;
-}
-.mi-pr {
-  font-family:Arial,sans-serif;
-  font-size:clamp(10.5px,1.6vw,12px);
-  font-weight:800; color:var(--green); white-space:nowrap;
-}
-.mi-pr .r { color:var(--gold); }
-.mi-ds {
-  font-family:Georgia,serif; font-style:italic;
-  font-size:10.5px; color:var(--muted);
-  margin-top:2px; line-height:1.4;
-}
-
-/* ── section divider ── */
-.sdiv {
-  display:flex; align-items:center; gap:14px;
-  margin:28px 0 24px;
-}
-.sdiv .sl {
-  flex:1; height:1px;
-  background:linear-gradient(to right, transparent, var(--border), transparent);
-}
-.sdiv .so { font-size:15px; color:var(--gold); letter-spacing:6px; }
-
-/* ── ICE CREAM DELIGHTS ── */
-.ic-hdr {
-  text-align:center;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  padding:10px 0 12px; margin-bottom:18px;
-}
-.ic-hdr .ico { font-size:18px; margin-bottom:4px; }
-.ic-hdr h3 {
-  font-family:'Arial Black',Impact,sans-serif;
-  font-size:clamp(13px,2.8vw,18px); font-weight:900;
-  letter-spacing:3px; text-transform:uppercase; color:var(--green-d);
-}
-.ic-hdr p {
-  font-family:Georgia,serif; font-style:italic;
-  font-size:12px; color:var(--muted); margin-top:3px;
-}
-.ic-cols {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:0 38px; align-items:start;
-}
-@media(max-width:580px){ .ic-cols{ grid-template-columns:1fr; } }
-.ic-sh {
-  font-family:Georgia,serif; font-style:italic;
-  font-size:clamp(11.5px,1.9vw,13px);
-  color:var(--green); letter-spacing:1px;
-  margin:10px 0 7px;
-  display:flex; align-items:center; gap:7px;
-}
-.ic-sh::after {
-  content:''; flex:1; height:1px;
-  background:linear-gradient(to right, var(--border), transparent);
-}
-
-/* ================================================================
-   ABOUT
-================================================================ */
-#about {
-  background:var(--green-d); color:var(--cream-l);
-  padding:clamp(44px,6vw,64px) 24px;
-  text-align:center;
-  border-top:3px solid var(--gold);
-  border-bottom:3px solid var(--gold);
-}
-.abt-in { max-width:700px; margin:0 auto; }
-.abt-in h2 {
-  font-family:'Arial Black',Impact,sans-serif;
-  font-size:clamp(17px,3.5vw,27px); font-weight:900;
-  letter-spacing:3px; text-transform:uppercase; color:var(--gold-l);
-  margin-bottom:14px;
-}
-.abt-in p {
-  font-family:Georgia,serif; font-size:14px;
-  line-height:1.85; color:rgba(255,249,237,.84); margin-bottom:10px;
-}
-.abt-rl { width:65px; height:2px; background:var(--gold); margin:16px auto; }
-
-/* ================================================================
-   INSTAGRAM
-================================================================ */
-#instagram {
-  background:var(--cream);
-  padding:clamp(40px,5vw,56px) 20px;
-  border-bottom:1px solid var(--border);
-}
-.ig-in { max-width:1160px; margin:0 auto; }
-.sec-hdg { text-align:center; margin-bottom:24px; }
-.sec-hdg h2 {
-  font-family:'Arial Black',Impact,sans-serif;
-  font-size:clamp(17px,3vw,22px); font-weight:900;
-  letter-spacing:3px; text-transform:uppercase; color:var(--green-d);
-}
-.sec-hdg p {
-  font-family:Georgia,serif; font-style:italic;
-  font-size:13px; color:var(--muted); margin-top:4px;
-}
-.sec-hdg a { color:var(--green); font-weight:700; text-decoration:none; }
-
-.ig-grid {
-  display:grid; grid-template-columns:repeat(6,1fr); gap:8px;
-}
-@media(max-width:768px){ .ig-grid{ grid-template-columns:repeat(3,1fr); } }
-@media(max-width:420px){ .ig-grid{ grid-template-columns:repeat(2,1fr); } }
-
-.ig-tile {
-  aspect-ratio:1; background:var(--cream-m);
-  border:1px solid var(--border); overflow:hidden;
-  display:flex; align-items:center; justify-content:center;
-}
-.ig-tile img { width:100%; height:100%; object-fit:cover; display:block; }
-
-/* ================================================================
-   LOCATION
-================================================================ */
-#location {
-  background:var(--cream-l);
-  padding:clamp(44px,5.5vw,60px) 20px;
-  border-bottom:1px solid var(--border);
-}
-.loc-in {
-  max-width:1100px; margin:0 auto;
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:36px; align-items:start;
-}
-@media(max-width:700px){ .loc-in{ grid-template-columns:1fr; } }
-.loc-info h2 {
-  font-family:'Arial Black',Impact,sans-serif;
-  font-size:clamp(16px,3vw,24px); font-weight:900;
-  letter-spacing:3px; text-transform:uppercase; color:var(--green-d);
-  margin-bottom:14px;
-}
-.loc-info p { font-family:Georgia,serif; font-size:14px; line-height:1.7; margin-bottom:8px; }
-.loc-addr {
-  border-left:3px solid var(--gold); padding-left:13px;
-  font-style:italic; color:var(--muted); margin:13px 0;
-}
-.loc-btns { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
-.btn-mp {
-  padding:9px 17px; background:var(--green); color:var(--cream-l);
-  border:2px solid var(--green); border-radius:2px;
-  font-family:Arial,sans-serif; font-size:11.5px; font-weight:700;
-  letter-spacing:1px; text-transform:uppercase; text-decoration:none;
-  transition:background .2s;
-}
-.btn-mp:hover { background:var(--green-d); border-color:var(--green-d); }
-.btn-ms {
-  padding:9px 17px; background:transparent; color:var(--green);
-  border:2px solid var(--green); border-radius:2px;
-  font-family:Arial,sans-serif; font-size:11.5px; font-weight:700;
-  letter-spacing:1px; text-transform:uppercase; text-decoration:none;
-  transition:background .2s, color .2s;
-}
-.btn-ms:hover { background:var(--green); color:var(--cream-l); }
-.loc-map { border:2px solid var(--border); overflow:hidden; aspect-ratio:4/3; }
-.loc-map iframe { width:100%; height:100%; border:none; display:block; }
-
-/* ================================================================
-   CONTACT
-================================================================ */
-#contact {
-  background:var(--green-d); color:var(--cream-l);
-  padding:clamp(40px,5vw,56px) 24px;
-  border-top:3px solid var(--gold);
-}
-.ct-in { max-width:740px; margin:0 auto; text-align:center; }
-.ct-in h2 {
-  font-family:'Arial Black',Impact,sans-serif;
-  font-size:clamp(16px,3vw,22px); font-weight:900;
-  letter-spacing:3px; text-transform:uppercase; color:var(--gold-l);
-  margin-bottom:20px;
-}
-.ct-grid { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-.ct-card {
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(213,168,23,.3); border-radius:3px;
-  padding:14px 18px; text-decoration:none; color:var(--cream-l);
-  font-family:Arial,sans-serif; font-size:11.5px; font-weight:700;
-  letter-spacing:.5px; text-transform:uppercase;
-  display:flex; flex-direction:column; align-items:center; gap:6px;
-  transition:background .2s, border-color .2s; min-width:100px;
-}
-.ct-card:hover { background:rgba(255,255,255,.13); border-color:var(--gold-l); }
-.ct-card svg { width:19px; height:19px; fill:var(--gold-l); }
-.ct-card span { font-size:10px; color:rgba(255,249,237,.6); font-weight:400; text-transform:none; }
-
-/* ================================================================
-   FOOTER
-================================================================ */
-footer {
-  background:var(--green-d);
-  border-top:1px solid rgba(213,168,23,.2);
-  padding:24px 20px;
-  text-align:center;
-}
-.ft-in { max-width:760px; margin:0 auto; }
-.ft-cafe { font-family:Georgia,serif; font-style:italic; font-size:13px; color:var(--gold-l); }
-.ft-yashoda {
-  font-family:'Arial Black',Impact,sans-serif;
-  font-size:22px; font-weight:900; color:#fff;
-  letter-spacing:3px; text-transform:uppercase; display:block;
-}
-.ft-tag { font-family:Georgia,serif; font-style:italic; font-size:12.5px; color:rgba(255,249,237,.6); margin:5px 0 13px; }
-.ft-links {
-  display:flex; gap:14px; justify-content:center;
-  flex-wrap:wrap; margin-bottom:10px;
-}
-.ft-links a {
-  color:rgba(255,249,237,.55); text-decoration:none;
-  font-family:Arial,sans-serif; font-size:11px; font-weight:600;
-  letter-spacing:.5px; text-transform:uppercase;
-  transition:color .2s;
-}
-.ft-links a:hover { color:var(--gold-l); }
-.ft-copy { font-family:Arial,sans-serif; font-size:10.5px; color:rgba(255,249,237,.32); }
-
-/* ================================================================
-   MOBILE BOTTOM BAR
-================================================================ */
-#mbar {
-  display:none;
-  position:fixed; bottom:0; left:0; right:0; z-index:200;
-  background:var(--green-d); border-top:2px solid var(--gold);
-  height:54px; grid-template-columns:repeat(4,1fr);
-}
-#mbar a {
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:2px;
-  text-decoration:none; color:rgba(255,249,237,.8);
-  font-family:Arial,sans-serif; font-size:8px; font-weight:700;
-  letter-spacing:.5px; text-transform:uppercase;
-  transition:color .15s, background .15s;
-}
-#mbar a:hover { background:rgba(255,255,255,.05); color:var(--gold-l); }
-#mbar a+a { border-left:1px solid rgba(255,255,255,.1); }
-#mbar svg { width:16px; height:16px; fill:currentColor; }
-@media(max-width:768px){
-  #mbar { display:grid; }
-  body { padding-bottom:54px; }
-}
-  </style>
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Cafe Yashoda",
+    "image": "assets/images/hero-art.svg",
+    "telephone": "+919966818131",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3-1-546, near KEA Hospital, Vavilalapally",
+      "addressLocality": "Karimnagar",
+      "addressRegion": "Telangana",
+      "postalCode": "505001",
+      "addressCountry": "IN"
+    },
+    "servesCuisine": ["Cafe", "Indian", "Beverages", "Juices", "Desserts", "Snacks"],
+    "priceRange": "₹"
+  }
+  </script>
 </head>
 <body>
 
-<!-- Botanical corners -->
-<div class="bc tl" aria-hidden="true">
-  <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#005A32">
-      <path d="M0 0 C36 12 62 42 45 74 C28 49 5 22 0 0Z" opacity=".9"/>
-      <path d="M14 0 C52 7 78 33 65 66 C47 39 17 16 14 0Z" opacity=".5"/>
-      <path d="M40 0 C62 17 74 46 56 70 C43 46 28 20 40 0Z" opacity=".4"/>
-      <path d="M0 33 C22 56 33 89 15 110 C6 86 0 57 0 33Z" opacity=".5"/>
-      <path d="M0 63 C19 77 27 103 11 124 C4 100 0 78 0 63Z" opacity=".35"/>
-    </g>
-    <path d="M2 2 Q52 52 70 70" stroke="#D5A817" stroke-width="1" fill="none" opacity=".28"/>
-  </svg>
-</div>
-<div class="bc tr" aria-hidden="true">
-  <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#005A32" transform="scale(-1,1) translate(-180,0)">
-      <path d="M0 0 C36 12 62 42 45 74 C28 49 5 22 0 0Z" opacity=".9"/>
-      <path d="M14 0 C52 7 78 33 65 66 C47 39 17 16 14 0Z" opacity=".5"/>
-      <path d="M40 0 C62 17 74 46 56 70 C43 46 28 20 40 0Z" opacity=".4"/>
-      <path d="M0 33 C22 56 33 89 15 110 C6 86 0 57 0 33Z" opacity=".5"/>
-      <path d="M0 63 C19 77 27 103 11 124 C4 100 0 78 0 63Z" opacity=".35"/>
-    </g>
-  </svg>
-</div>
-<div class="bc bl" aria-hidden="true">
-  <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#005A32" transform="scale(1,-1) translate(0,-130)">
-      <path d="M0 0 C26 10 45 30 34 55 C20 36 4 17 0 0Z" opacity=".85"/>
-      <path d="M10 0 C37 5 57 25 47 50 C34 28 12 11 10 0Z" opacity=".45"/>
-      <path d="M0 24 C15 42 24 65 10 84 C4 65 0 44 0 24Z" opacity=".45"/>
-    </g>
-  </svg>
-</div>
-<div class="bc br" aria-hidden="true">
-  <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#005A32" transform="scale(-1,-1) translate(-130,-130)">
-      <path d="M0 0 C26 10 45 30 34 55 C20 36 4 17 0 0Z" opacity=".85"/>
-      <path d="M10 0 C37 5 57 25 47 50 C34 28 12 11 10 0Z" opacity=".45"/>
-      <path d="M0 24 C15 42 24 65 10 84 C4 65 0 44 0 24Z" opacity=".45"/>
-    </g>
-  </svg>
-</div>
-
-<!-- ══════════════════════════════════════
-     HEADER
-══════════════════════════════════════ -->
-<header id="hdr">
-  <div class="hdr-in">
-    <div class="logo">
-      <a href="#hero" aria-label="Cafe Yashoda Home">
-        <span class="logo-cafe">Cafe</span>
-        <span class="logo-yashoda">Yashoda</span>
-      </a>
-    </div>
-    <nav aria-label="Main navigation">
-      <ul class="dnav">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="#location">Location</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <a href="tel:+919966818131" class="hdr-ph" aria-label="Call us">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-      099668 18131
-    </a>
-    <button class="ham" id="ham" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <nav class="mnav" id="mnav" aria-label="Mobile navigation">
-    <a href="#hero"   class="mnl">Home</a>
-    <a href="#menu"   class="mnl">Menu</a>
-    <a href="#about"  class="mnl">About</a>
-    <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" class="mnl">Instagram</a>
-    <a href="#location" class="mnl">Location</a>
-    <a href="#contact"  class="mnl">Contact</a>
-    <a href="tel:+919966818131" class="mnl">📞 099668 18131</a>
-  </nav>
-</header>
-
-<!-- ══════════════════════════════════════
-     HERO
-══════════════════════════════════════ -->
-<section id="hero" aria-label="Cafe Yashoda">
-  <div class="hero-in">
-    <span class="h-cafe">Cafe</span>
-    <span class="h-yashoda">YASHODA</span>
-    <svg class="h-swoosh" viewBox="0 0 170 14" fill="none" aria-hidden="true">
-      <path d="M6 9 Q85 2 164 8" stroke="#D5A817" stroke-width="4" stroke-linecap="round"/>
-      <path d="M158 4 L168 8 L161 14" stroke="#D5A817" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Decorative Botanical Fixed Corners -->
+  <div class="bc tl" aria-hidden="true">
+    <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#005A32">
+        <path d="M0 0 C36 12 62 42 45 74 C28 49 5 22 0 0Z" opacity=".9"/>
+        <path d="M14 0 C52 7 78 33 65 66 C47 39 17 16 14 0Z" opacity=".5"/>
+        <path d="M40 0 C62 17 74 46 56 70 C43 46 28 20 40 0Z" opacity=".4"/>
+        <path d="M0 33 C22 56 33 89 15 110 C6 86 0 57 0 33Z" opacity=".5"/>
+        <path d="M0 63 C19 77 27 103 11 124 C4 100 0 78 0 63Z" opacity=".35"/>
+      </g>
+      <path d="M2 2 Q52 52 70 70" stroke="#D5A817" stroke-width="1" fill="none" opacity=".28"/>
     </svg>
-    <p class="h-tag">Good Food <span class="dot">•</span> Brighter Days</p>
-    <img src="assets/images/hero-art.svg" alt="Cafe Yashoda" class="h-art" width="160" height="160" />
-    <p class="h-sub">Fresh <span style="color:var(--gold)">•</span> Healthy <span style="color:var(--gold)">•</span> Refreshing</p>
-    <div class="btns">
-      <a href="#menu" class="btn-g">View Menu</a>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" class="btn-o">Get Directions</a>
-    </div>
-    <p class="hero-ct">
-      <a href="tel:+919966818131">📞 099668 18131</a>
-      &nbsp;|&nbsp; Karimnagar, Telangana
-    </p>
   </div>
-</section>
+  <div class="bc tr" aria-hidden="true">
+    <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#005A32" transform="scale(-1,1) translate(-180,0)">
+        <path d="M0 0 C36 12 62 42 45 74 C28 49 5 22 0 0Z" opacity=".9"/>
+        <path d="M14 0 C52 7 78 33 65 66 C47 39 17 16 14 0Z" opacity=".5"/>
+        <path d="M40 0 C62 17 74 46 56 70 C43 46 28 20 40 0Z" opacity=".4"/>
+        <path d="M0 33 C22 56 33 89 15 110 C6 86 0 57 0 33Z" opacity=".5"/>
+        <path d="M0 63 C19 77 27 103 11 124 C4 100 0 78 0 63Z" opacity=".35"/>
+      </g>
+    </svg>
+  </div>
+  <div class="bc bl" aria-hidden="true">
+    <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#005A32" transform="scale(1,-1) translate(0,-130)">
+        <path d="M0 0 C26 10 45 30 34 55 C20 36 4 17 0 0Z" opacity=".85"/>
+        <path d="M10 0 C37 5 57 25 47 50 C34 28 12 11 10 0Z" opacity=".45"/>
+        <path d="M0 24 C15 42 24 65 10 84 C4 65 0 44 0 24Z" opacity=".45"/>
+      </g>
+    </svg>
+  </div>
+  <div class="bc br" aria-hidden="true">
+    <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#005A32" transform="scale(-1,-1) translate(-130,-130)">
+        <path d="M0 0 C26 10 45 30 34 55 C20 36 4 17 0 0Z" opacity=".85"/>
+        <path d="M10 0 C37 5 57 25 47 50 C34 28 12 11 10 0Z" opacity=".45"/>
+        <path d="M0 24 C15 42 24 65 10 84 C4 65 0 44 0 24Z" opacity=".45"/>
+      </g>
+    </svg>
+  </div>
 
-<!-- ══════════════════════════════════════
-     MENU
-══════════════════════════════════════ -->
-<section id="menu" aria-label="Cafe Yashoda Menu">
-
-  <!-- Heading + Search -->
-  <div class="menu-top">
-    <div class="menu-hdg">
-      <div class="menu-hdg-rule">
-        <div class="rl"></div>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D5A817" opacity=".7" aria-hidden="true">
-          <path d="M12 2C8.5 2 5.5 4.5 5 8c-.5 3.5 1 6.5 3.5 8L8 22h8l-.5-6C18 14.5 19.5 11.5 19 8 18.5 4.5 15.5 2 12 2Z"/>
-        </svg>
-        <div class="rl"></div>
+  <!-- ══════════════════════════════════════
+       1. NAVBAR / HEADER
+  ══════════════════════════════════════ -->
+  <header id="hdr">
+    <div class="hdr-in">
+      <div class="logo">
+        <a href="#hero" aria-label="Cafe Yashoda Home">
+          <svg class="logo-icon" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" fill="#005A32" stroke="#D5A817" stroke-width="2"/>
+            <path d="M14 26 C12 18 20 12 28 12 C28 20 22 28 14 26 Z" fill="#D5A817"/>
+            <path d="M14 26 Q20 20 28 12" stroke="#FFFDF8" stroke-width="1.5" fill="none"/>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-cafe">Cafe</span>
+            <span class="logo-yashoda">Yashoda</span>
+          </div>
+        </a>
       </div>
-      <h2>Our Menu</h2>
-      <p>Karimnagar's favourite café — crafted with love</p>
-    </div>
-    <div class="srch-wrap">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-      </svg>
-      <input type="search" id="menu-search" placeholder="Search tea, coffee, burger, oreo…" aria-label="Search menu" autocomplete="off" />
-    </div>
-  </div>
 
-  <!-- Category nav -->
-  <div class="cnav-wrap">
-    <div class="cnav" id="cnav" role="list" aria-label="Filter by category"></div>
-  </div>
+      <nav aria-label="Main navigation">
+        <ul class="dnav">
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#signature">Favourites</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#instagram">Instagram</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#cta">Contact</a></li>
+        </ul>
+      </nav>
 
-  <!-- Menu canvas -->
-  <div class="menu-body">
-    <div id="srch-note" role="status" aria-live="polite"></div>
-    <div class="canvas">
-      <div id="mcols" class="mcols">
-        <div class="mcol" id="col-l"></div>
-        <div class="mcol" id="col-r"></div>
+      <div class="hdr-actions">
+        <a href="tel:+919966818131" class="hdr-ph" aria-label="Call 099668 18131">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          <span>099668 18131</span>
+        </a>
       </div>
-      <div id="ic-sec"></div>
-      <div id="no-res">No items found. Try a different search term.</div>
-    </div>
-  </div>
 
-</section>
-
-<!-- ══════════════════════════════════════
-     ABOUT
-══════════════════════════════════════ -->
-<section id="about" aria-label="About Cafe Yashoda">
-  <div class="abt-in">
-    <h2>About Cafe Yashoda</h2>
-    <div class="abt-rl"></div>
-    <p>Nestled in the heart of Karimnagar, Telangana, Cafe Yashoda has been serving the community with warmth, freshness and authentic flavours. From the first sip of our signature Yashoda Tea to the last spoonful of our Ice Cream Delights — every bite tells a story of quality and care.</p>
-    <p>We believe good food creates brighter days. Come in, sit down, and let us take care of the rest.</p>
-    <div class="abt-rl"></div>
-    <img src="assets/images/about-art.svg" alt="" width="100" height="100" style="opacity:.65;margin-top:8px;" aria-hidden="true" />
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     INSTAGRAM
-══════════════════════════════════════ -->
-<section id="instagram" aria-label="Cafe Yashoda on Instagram">
-  <div class="ig-in">
-    <div class="sec-hdg">
-      <h2>Follow Us on Instagram</h2>
-      <p><a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener">@cafeyashoda</a> — tag us in your moments</p>
+      <button class="ham" id="ham" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="ig-grid">
-      <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 1"><img src="assets/images/instagram/instagram-01.svg" alt="" loading="lazy"/></a>
-      <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 2"><img src="assets/images/instagram/instagram-02.svg" alt="" loading="lazy"/></a>
-      <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 3"><img src="assets/images/instagram/instagram-03.svg" alt="" loading="lazy"/></a>
-      <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 4"><img src="assets/images/instagram/instagram-04.svg" alt="" loading="lazy"/></a>
-      <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 5"><img src="assets/images/instagram/instagram-05.svg" alt="" loading="lazy"/></a>
-      <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 6"><img src="assets/images/instagram/instagram-06.svg" alt="" loading="lazy"/></a>
-    </div>
-  </div>
-</section>
 
-<!-- ══════════════════════════════════════
-     LOCATION
-══════════════════════════════════════ -->
-<section id="location" aria-label="Find Cafe Yashoda">
-  <div class="loc-in">
-    <div class="loc-info">
-      <h2>Find Us</h2>
-      <p class="loc-addr">3-1-546, near KEA Hospital,<br>Vavilalapally,<br>Karimnagar, Telangana 505001</p>
-      <p>Open every day — walk in, call ahead, or reach us on WhatsApp.</p>
-      <p><strong>Phone:</strong> <a href="tel:+919966818131" style="color:var(--green);font-weight:700;text-decoration:none;">099668 18131</a></p>
-      <div class="loc-btns">
-        <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" class="btn-mp">Get Directions</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Cafe+Yashoda+Karimnagar+Telangana" target="_blank" rel="noopener" class="btn-ms">Open in Google Maps</a>
-      </div>
-    </div>
-    <div class="loc-map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3791.5!2d79.1288!3d18.4386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334abdb63cbf3b%3A0xa33a4b24f5db4a0a!2sCafe%20Yashoda!5e0!3m2!1sen!2sin!4v1700000000000"
-        title="Cafe Yashoda on Google Maps"
-        loading="lazy" allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     CONTACT
-══════════════════════════════════════ -->
-<section id="contact" aria-label="Contact Cafe Yashoda">
-  <div class="ct-in">
-    <h2>Get in Touch</h2>
-    <div class="ct-grid">
-      <a href="tel:+919966818131" class="ct-card">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-        Call Us<span>099668 18131</span>
-      </a>
-      <a href="https://wa.me/919966818131?text=Hi%20Cafe%20Yashoda!" target="_blank" rel="noopener" class="ct-card">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp<span>Message us</span>
-      </a>
-      <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" class="ct-card">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        Instagram<span>@cafeyashoda</span>
-      </a>
-      <a href="https://qrmenu.com/menus/cafe-yashoda/?menu=1" target="_blank" rel="noopener" class="ct-card">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
-        Full Menu<span>Digital QR menu</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     FOOTER
-══════════════════════════════════════ -->
-<footer>
-  <div class="ft-in">
-    <span class="ft-cafe">Cafe</span>
-    <span class="ft-yashoda">YASHODA</span>
-    <p class="ft-tag">Good Food • Brighter Days</p>
-    <p class="ft-tag" style="margin-top:-8px;margin-bottom:13px;">Karimnagar, Telangana</p>
-    <div class="ft-links">
-      <a href="tel:+919966818131">📞 099668 18131</a>
-      <a href="https://wa.me/919966818131" target="_blank" rel="noopener">WhatsApp</a>
+    <!-- Mobile Drawer -->
+    <nav class="mnav" id="mnav" aria-label="Mobile Navigation">
+      <a href="#hero">Home</a>
+      <a href="#signature">Signature Favourites</a>
+      <a href="#menu">Our Menu</a>
+      <a href="#story">Our Story</a>
+      <a href="#about">About Us</a>
       <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://qrmenu.com/menus/cafe-yashoda/?menu=1" target="_blank" rel="noopener">QR Menu</a>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener">Directions</a>
+      <a href="#location">Find Location</a>
+      <a href="#cta">Get in Touch</a>
+      <a href="tel:+919966818131" style="color:var(--gold-l);">📞 099668 18131</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ══════════════════════════════════════
+         2. HERO SECTION — EDITORIAL TWO-COLUMN
+    ══════════════════════════════════════ -->
+    <section id="hero" aria-label="Welcome to Cafe Yashoda">
+      <div class="hero-in">
+        
+        <!-- Left Column: Editorial Typography & Actions -->
+        <div class="hero-content">
+          <div class="hero-welcome">
+            <span class="line"></span>
+            <span>Welcome To</span>
+            <span class="line"></span>
+          </div>
+
+          <div class="hero-brand">
+            <span class="h-cafe">Cafe</span>
+            <h1 class="h-yashoda">Yashoda</h1>
+          </div>
+
+          <svg class="h-swoosh" viewBox="0 0 220 16" fill="none" aria-hidden="true">
+            <path d="M8 10 Q110 2 212 9" stroke="#D5A817" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M204 4 L216 9 L208 16" stroke="#D5A817" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          <p class="h-tagline">Good Food <span class="dot">•</span> Brighter Days</p>
+          <p class="h-desc">
+            Tea, coffee, fresh juices, refreshing drinks, delicious bites and sweet treats made for every mood. Crafted with authentic care in Karimnagar.
+          </p>
+
+          <div class="hero-btns">
+            <a href="#menu" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
+              View Menu
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Get Directions
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <a href="tel:+919966818131">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+              099668 18131
+            </a>
+            <span class="gold-dot">•</span>
+            <span class="hero-meta-loc">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#D5A817" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Karimnagar, Telangana
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Column: Rich Handcrafted Food & Drink Editorial Composition -->
+        <div class="hero-visual">
+          <div class="hero-visual-card">
+            <img src="assets/images/hero-art.svg" alt="Cafe Yashoda Artisanal Food &amp; Drink Presentation" width="800" height="700" />
+            <div class="hero-leaf-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
+              <span>100% Fresh &amp; Authentic</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         3. SIGNATURE FAVOURITES (EDITORIAL CARDS)
+    ══════════════════════════════════════ -->
+    <section id="signature" aria-label="Signature Highlights">
+      <div class="sig-in">
+        <div class="sec-header">
+          <span class="subhead-label">Handcrafted Selection</span>
+          <h2>Signature Favourites</h2>
+          <div class="dec-rule">
+            <div class="rl"></div>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.5 2 5.5 4.5 5 8c-.5 3.5 1 6.5 3.5 8L8 22h8l-.5-6C18 14.5 19.5 11.5 19 8 18.5 4.5 15.5 2 12 2Z"/></svg>
+            <div class="rl"></div>
+          </div>
+          <p>Every recipe is perfected with fresh ingredients, balanced spices and love.</p>
+        </div>
+
+        <div class="sig-grid">
+          <!-- Card 1: Yashoda Tea -->
+          <article class="sig-card">
+            <div class="sig-card-img">
+              <img src="assets/images/feat-tea.svg" alt="Artisan Yashoda Tea Specials" loading="lazy" width="600" height="450" />
+            </div>
+            <div class="sig-card-body">
+              <div>
+                <span class="sig-card-tag">Special Brew</span>
+                <h3>Yashoda Tea Specials</h3>
+                <p>Authentic ginger, elaichi, and special masala chai brewed fresh in rich dairy milk for authentic warmth.</p>
+              </div>
+              <div class="sig-card-footer">
+                <span class="sig-card-tag">From ₹12</span>
+                <a href="#menu" class="sig-card-link">Explore Tea &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Coldpress Juices -->
+          <article class="sig-card">
+            <div class="sig-card-img">
+              <img src="assets/images/feat-juice.svg" alt="Coldpress Juices" loading="lazy" width="600" height="450" />
+            </div>
+            <div class="sig-card-body">
+              <div>
+                <span class="sig-card-tag">100% Coldpress</span>
+                <h3>Pure Fresh Juices</h3>
+                <p>No preservatives, no added water, no ice. Pure cold-pressed wellness from ABC juice to citrus coolers.</p>
+              </div>
+              <div class="sig-card-footer">
+                <span class="sig-card-tag">From ₹40</span>
+                <a href="#menu" class="sig-card-link">Explore Juices &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Milkshakes -->
+          <article class="sig-card">
+            <div class="sig-card-img">
+              <img src="assets/images/feat-shake.svg" alt="Signature Milkshakes" loading="lazy" width="600" height="450" />
+            </div>
+            <div class="sig-card-body">
+              <div>
+                <span class="sig-card-tag">Thick &amp; Creamy</span>
+                <h3>Signature Milkshakes</h3>
+                <p>Oreo, KitKat, Rose, Butterscotch, and Dry Fruit shakes topped with whipped cream and rich toppings.</p>
+              </div>
+              <div class="sig-card-footer">
+                <span class="sig-card-tag">From ₹99</span>
+                <a href="#menu" class="sig-card-link">Explore Shakes &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Ice Cream Delights -->
+          <article class="sig-card">
+            <div class="sig-card-img">
+              <img src="assets/images/feat-sundae.svg" alt="Ice Cream Delights &amp; Sundaes" loading="lazy" width="600" height="450" />
+            </div>
+            <div class="sig-card-body">
+              <div>
+                <span class="sig-card-tag">Dessert Specials</span>
+                <h3>Ice Cream Delights</h3>
+                <p>Single &amp; Double sundaes loaded with roasted nuts, chocolate sauce, black currant, and creamy toppings.</p>
+              </div>
+              <div class="sig-card-footer">
+                <span class="sig-card-tag">From ₹45</span>
+                <a href="#menu" class="sig-card-link">Explore Delights &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Burgers & Bites -->
+          <article class="sig-card">
+            <div class="sig-card-img">
+              <img src="assets/images/feat-burger.svg" alt="Gourmet Burgers &amp; Bites" loading="lazy" width="600" height="450" />
+            </div>
+            <div class="sig-card-body">
+              <div>
+                <span class="sig-card-tag">Savory Bites</span>
+                <h3>Burgers &amp; Sandwiches</h3>
+                <p>Crispy veg tikki, chicken garlic cheese burgers, and grilled sandwiches prepared golden &amp; fresh to order.</p>
+              </div>
+              <div class="sig-card-footer">
+                <span class="sig-card-tag">From ₹89</span>
+                <a href="#menu" class="sig-card-link">Explore Bites &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Refreshing Mocktails -->
+          <article class="sig-card">
+            <div class="sig-card-img">
+              <img src="assets/images/feat-mocktail.svg" alt="Refreshing Mocktails" loading="lazy" width="600" height="450" />
+            </div>
+            <div class="sig-card-body">
+              <div>
+                <span class="sig-card-tag">Fizzy &amp; Cool</span>
+                <h3>Refreshing Mocktails</h3>
+                <p>Blue Lagoon floats, Mint Mojitos, Strawberry Lemonades, and custom combo coolers to brighten every afternoon.</p>
+              </div>
+              <div class="sig-card-footer">
+                <span class="sig-card-tag">From ₹89</span>
+                <a href="#menu" class="sig-card-link">Explore Drinks &rarr;</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         4. PRINTED MENU CANVAS & LIVE SEARCH
+    ══════════════════════════════════════ -->
+    <section id="menu" aria-label="Cafe Yashoda Menu">
+      <!-- Top Bar: Title & Search -->
+      <div class="menu-top-bar">
+        <div class="menu-top-in">
+          <div class="menu-title-wrap">
+            <span class="subhead-label">Printed Menu Showcase</span>
+            <h2>Our Complete Menu</h2>
+            <p>Fresh • Healthy • Refreshing — 18 curated categories</p>
+          </div>
+          <div class="menu-srch-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <input type="search" id="menu-search" placeholder="Search tea, burger, shake, oreo, ginger…" aria-label="Search menu items" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter Strip -->
+      <div class="cnav-wrap">
+        <div class="cnav" id="cnav" role="tablist" aria-label="Filter menu by category"></div>
+      </div>
+
+      <!-- Printed Menu Canvas Sheet -->
+      <div class="menu-body">
+        <div id="srch-note" role="status" aria-live="polite"></div>
+
+        <div class="canvas">
+          <div id="mcols" class="mcols">
+            <div class="mcol" id="col-l"></div>
+            <div class="mcol" id="col-r"></div>
+          </div>
+          <div id="ic-sec"></div>
+          <div id="no-res">No items match your search. Try another delicious term!</div>
+        </div>
+
+        <div class="menu-explore-cta">
+          <a href="https://qrmenu.com/menus/cafe-yashoda/?menu=1" target="_blank" rel="noopener" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
+            Open Digital QR Menu
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         5. BRAND STORY ("LITTLE BITES • BIG SMILES")
+    ══════════════════════════════════════ -->
+    <section id="story" aria-label="Brand Story">
+      <div class="story-in">
+        <div class="story-img">
+          <img src="assets/images/story-art.svg" alt="Little Bites Big Smiles Artwork" loading="lazy" width="600" height="500" />
+        </div>
+        <div class="story-content">
+          <span class="subhead-label">Our Heartfelt Promise</span>
+          <h2>Little Bites.<br>Big Smiles.</h2>
+          <svg class="story-swoosh" viewBox="0 0 140 12" fill="none" aria-hidden="true">
+            <path d="M4 6 Q70 1 136 7" stroke="#D5A817" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <p class="story-quote">
+            "A cup of tea is not just a drink; it's a conversation, a pause in a busy day, and a reason to smile."
+          </p>
+          <p>
+            At Cafe Yashoda, we celebrate everyday happiness. Whether you stop by for our morning cutting chai with hot maska bun, bring family for evening sundaes, or pick up a coldpress juice during work — we craft every item to bring warmth and energy to your day.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         6. ABOUT CAFE YASHODA (EDITORIAL 2-COL)
+    ══════════════════════════════════════ -->
+    <section id="about" aria-label="About Cafe Yashoda">
+      <div class="abt-in">
+        <div class="abt-content">
+          <span class="subhead-label">Craft &amp; Heritage</span>
+          <h2>About Cafe Yashoda</h2>
+          <div class="dec-rule">
+            <div class="rl"></div>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.5 2 5.5 4.5 5 8c-.5 3.5 1 6.5 3.5 8L8 22h8l-.5-6C18 14.5 19.5 11.5 19 8 18.5 4.5 15.5 2 12 2Z"/></svg>
+            <div class="rl"></div>
+          </div>
+          <p>
+            Located conveniently near KEA Hospital in Vavilalapally, Karimnagar, Cafe Yashoda has grown into the town's beloved café hub. We pride ourselves on offering a comprehensive menu designed for every craving and every generation.
+          </p>
+          <p>
+            From hot herbal teas, strong coffees, healthy ragi and millet bowls, to loaded burgers, thick milkshakes, and indulgent sundaes — quality and hygiene are at the heart of our kitchen.
+          </p>
+          <div class="abt-pills">
+            <span class="abt-pill">☕ Fresh Teas &amp; Coffee</span>
+            <span class="abt-pill">🌿 100% Pure Coldpress</span>
+            <span class="abt-pill">🍔 Gourmet Burgers</span>
+            <span class="abt-pill">🍧 Handcrafted Sundaes</span>
+            <span class="abt-pill">🌾 Healthy Millets &amp; Java</span>
+          </div>
+          <a href="#location" class="btn-primary">Visit Our Café</a>
+        </div>
+        <div class="abt-visual">
+          <img src="assets/images/about-art.svg" alt="Cafe Yashoda Ambiance &amp; Craft" loading="lazy" width="700" height="600" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         7. DEEP GREEN FEATURE ("GOOD FOOD • BRIGHTER DAYS")
+    ══════════════════════════════════════ -->
+    <section id="feature" aria-label="Brand Philosophy">
+      <div class="feat-in">
+        <span class="subhead-label">Pure • Fresh • Authentic</span>
+        <h2>Good Food.<br><span>Brighter Days.</span></h2>
+        <div class="dec-rule">
+          <div class="rl"></div>
+          <svg viewBox="0 0 24 24" fill="#D5A817" aria-hidden="true"><path d="M12 2C8.5 2 5.5 4.5 5 8c-.5 3.5 1 6.5 3.5 8L8 22h8l-.5-6C18 14.5 19.5 11.5 19 8 18.5 4.5 15.5 2 12 2Z"/></svg>
+          <div class="rl"></div>
+        </div>
+        <p class="feat-sub">Fresh Ingredients • Traditional Flavours • Modern Refreshment</p>
+
+        <div class="feat-features">
+          <div class="feat-item">
+            <div class="feat-item-ico">🌿</div>
+            <h3>100% Pure Coldpress</h3>
+            <p>No preservatives, zero added water, zero ice — just pure nutrient-dense juice.</p>
+          </div>
+          <div class="feat-item">
+            <div class="feat-item-ico">☕</div>
+            <h3>Artisan Daily Brews</h3>
+            <p>Traditional brass-pot ginger &amp; elaichi chai brewed fresh around the clock.</p>
+          </div>
+          <div class="feat-item">
+            <div class="feat-item-ico">🍨</div>
+            <h3>Pure Dairy Delights</h3>
+            <p>Premium ice creams, thick milkshakes, and indulgent sundaes made with real cream.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 32px;">
+          <a href="tel:+919966818131" class="btn-gold">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            Call Ahead: 099668 18131
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         8. INSTAGRAM GALLERY
+    ══════════════════════════════════════ -->
+    <section id="instagram" aria-label="Follow Us On Instagram">
+      <div class="ig-in">
+        <div class="sec-header">
+          <span class="subhead-label">Social Moments</span>
+          <h2>Follow Cafe Yashoda</h2>
+          <div class="dec-rule">
+            <div class="rl"></div>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.5 2 5.5 4.5 5 8c-.5 3.5 1 6.5 3.5 8L8 22h8l-.5-6C18 14.5 19.5 11.5 19 8 18.5 4.5 15.5 2 12 2Z"/></svg>
+            <div class="rl"></div>
+          </div>
+          <p><a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" style="color:var(--green);font-weight:700;text-decoration:none;">@cafeyashoda</a> — Tag us in your café memories</p>
+        </div>
+
+        <div class="ig-grid">
+          <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Masala Chai on Instagram">
+            <img src="assets/images/instagram/instagram-01.svg" alt="Masala Chai" loading="lazy" />
+            <div class="ig-tile-hover"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+          </a>
+          <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Coldpress Juices on Instagram">
+            <img src="assets/images/instagram/instagram-02.svg" alt="Coldpress Juice" loading="lazy" />
+            <div class="ig-tile-hover"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+          </a>
+          <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Burgers on Instagram">
+            <img src="assets/images/instagram/instagram-03.svg" alt="Burger &amp; Fries" loading="lazy" />
+            <div class="ig-tile-hover"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+          </a>
+          <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Thick Shakes on Instagram">
+            <img src="assets/images/instagram/instagram-04.svg" alt="Thick Shake" loading="lazy" />
+            <div class="ig-tile-hover"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+          </a>
+          <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Sundae Delights on Instagram">
+            <img src="assets/images/instagram/instagram-05.svg" alt="Sundae Delight" loading="lazy" />
+            <div class="ig-tile-hover"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+          </a>
+          <a class="ig-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Mocktails on Instagram">
+            <img src="assets/images/instagram/instagram-06.svg" alt="Mojitos &amp; Coolers" loading="lazy" />
+            <div class="ig-tile-hover"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+          </a>
+        </div>
+
+        <div class="ig-cta">
+          <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Follow @cafeyashoda on Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         9. LOCATION & MAP (BRANDED FRAME)
+    ══════════════════════════════════════ -->
+    <section id="location" aria-label="Visit Cafe Yashoda">
+      <div class="loc-in">
+        <div class="loc-info">
+          <span class="subhead-label">Find Us In Town</span>
+          <h2>Visit Cafe Yashoda</h2>
+          <div class="dec-rule" style="justify-content: flex-start; margin-left:0;">
+            <div class="rl"></div>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.5 2 5.5 4.5 5 8c-.5 3.5 1 6.5 3.5 8L8 22h8l-.5-6C18 14.5 19.5 11.5 19 8 18.5 4.5 15.5 2 12 2Z"/></svg>
+            <div class="rl"></div>
+          </div>
+
+          <div class="loc-addr">
+            <strong>Cafe Yashoda</strong><br />
+            3-1-546, near KEA Hospital,<br />
+            Vavilalapally,<br />
+            Karimnagar, Telangana 505001
+          </div>
+
+          <p>
+            Open everyday. Walk in for breakfast, tea breaks, lunch bites, or sweet evening sundaes with friends and family.
+          </p>
+
+          <div class="loc-phone-box">
+            <strong>Direct Phone:</strong> <a href="tel:+919966818131">099668 18131</a>
+          </div>
+
+          <div class="loc-btns">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" class="btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.71 11.29l-9-9a1 1 0 00-1.41 0l-9 9a1 1 0 000 1.41l9 9a1 1 0 001.41 0l9-9a1 1 0 000-1.41zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+              Get Turn-by-Turn Directions
+            </a>
+            <a href="tel:+919966818131" class="btn-secondary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+              Call Cafe
+            </a>
+          </div>
+        </div>
+
+        <!-- Branded Framed Google Maps -->
+        <div class="loc-map-frame">
+          <div class="loc-map-inner">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3791.5!2d79.1288!3d18.4386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334abdb63cbf3b%3A0xa33a4b24f5db4a0a!2sCafe%20Yashoda!5e0!3m2!1sen!2sin!4v1700000000000"
+              title="Cafe Yashoda Location on Google Maps"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         10. INVITATION CTA HUB
+    ══════════════════════════════════════ -->
+    <section id="cta" aria-label="Come In Sit Down Enjoy">
+      <div class="cta-in">
+        <span class="subhead-label" style="color:var(--gold-l);">Your Everyday Haven</span>
+        <h2>Come In. Sit Down. Enjoy.</h2>
+        <div class="dec-rule">
+          <div class="rl"></div>
+          <svg viewBox="0 0 24 24" fill="#D5A817" aria-hidden="true"><path d="M12 2C8.5 2 5.5 4.5 5 8c-.5 3.5 1 6.5 3.5 8L8 22h8l-.5-6C18 14.5 19.5 11.5 19 8 18.5 4.5 15.5 2 12 2Z"/></svg>
+          <div class="rl"></div>
+        </div>
+        <p>"Good food, good drinks, brighter days."</p>
+
+        <div class="cta-grid">
+          <a href="tel:+919966818131" class="cta-card">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            Call Us
+            <span>099668 18131</span>
+          </a>
+
+          <a href="https://wa.me/919966818131?text=Hi%20Cafe%20Yashoda!%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener" class="cta-card">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+            <span>Instant Chat</span>
+          </a>
+
+          <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" class="cta-card">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.71 11.29l-9-9a1 1 0 00-1.41 0l-9 9a1 1 0 000 1.41l9 9a1 1 0 001.41 0l9-9a1 1 0 000-1.41zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+            Directions
+            <span>Vavilalapally</span>
+          </a>
+
+          <a href="https://qrmenu.com/menus/cafe-yashoda/?menu=1" target="_blank" rel="noopener" class="cta-card">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
+            Digital Menu
+            <span>QR Menu View</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════════════════════════════
+       11. FOOTER
+  ══════════════════════════════════════ -->
+  <footer>
+    <div class="ft-in">
+      <a href="#hero" class="ft-logo" aria-label="Cafe Yashoda Home">
+        <span class="ft-cafe">Cafe</span>
+        <span class="ft-yashoda">Yashoda</span>
+      </a>
+      <p class="ft-tag">Good Food • Brighter Days</p>
+      <p class="ft-loc">3-1-546, near KEA Hospital, Vavilalapally, Karimnagar, Telangana 505001</p>
+
+      <div class="ft-links">
+        <a href="#hero">Home</a>
+        <a href="#signature">Favourites</a>
+        <a href="#menu">Menu</a>
+        <a href="#story">Story</a>
+        <a href="#about">About</a>
+        <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/919966818131" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="tel:+919966818131">099668 18131</a>
+      </div>
+
+      <p class="ft-copy">
+        &copy; 2025 Cafe Yashoda. Handcrafted with passion in Karimnagar, Telangana.
+      </p>
     </div>
-    <p class="ft-copy">© 2025 Cafe Yashoda, Karimnagar</p>
-  </div>
-</footer>
+  </footer>
 
-<!-- ══════════════════════════════════════
-     MOBILE BOTTOM BAR
-══════════════════════════════════════ -->
-<nav id="mbar" aria-label="Quick actions">
-  <a href="tel:+919966818131">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>Call
-  </a>
-  <a href="https://wa.me/919966818131" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp
-  </a>
-  <a href="#menu">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>Menu
-  </a>
-  <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.71 11.29l-9-9a1 1 0 00-1.41 0l-9 9a1 1 0 000 1.41l9 9a1 1 0 001.41 0l9-9a1 1 0 000-1.41zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>Directions
-  </a>
-</nav>
+  <!-- ══════════════════════════════════════
+       12. MOBILE FIXED BOTTOM ACTION BAR
+  ══════════════════════════════════════ -->
+  <nav id="mbar" aria-label="Quick mobile actions">
+    <a href="tel:+919966818131" aria-label="Call Cafe">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      <span>Call</span>
+    </a>
+    <a href="https://wa.me/919966818131?text=Hi%20Cafe%20Yashoda!" target="_blank" rel="noopener" aria-label="WhatsApp message">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="#menu" aria-label="Jump to menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
+      <span>Menu</span>
+    </a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" aria-label="Open maps directions">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.71 11.29l-9-9a1 1 0 00-1.41 0l-9 9a1 1 0 000 1.41l9 9a1 1 0 001.41 0l9-9a1 1 0 000-1.41zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+      <span>Map</span>
+    </a>
+  </nav>
 
-<script>
-'use strict';
-
-/* ================================================================
-   CAFE YASHODA MENU DATA — 18 categories · 118 items
-   Single source of truth. Edit one value to change a price.
-================================================================ */
-const menuData = [
-  {
-    id:'tea-specials', cat:'YASHODA TEA SPECIALS', short:'TEA', icon:'🍃',
-    items:[
-      {n:'SINGLE TEA (PAPER CUP)',p:12},
-      {n:'YASHODA TEA',p:16},
-      {n:'GINGER TEA',p:20},
-      {n:'ELAICHI TEA',p:20},
-      {n:'LEMON TEA',p:20},
-      {n:'BLACK TEA',p:20},
-      {n:'BLACK TEA WITH HONEY',p:25},
-      {n:'BLACK TEA WITH LEMON HONEY',p:30},
-      {n:'SPECIAL TEA',p:49},
-      {n:'GREEN TEA',p:20},
-      {n:'ORGANIC GREEN TEA',p:25}
-    ]
-  },
-  {
-    id:'coffee-corner', cat:'COFFEE CORNER', short:'COFFEE', icon:'☕',
-    items:[
-      {n:'BLACK COFFEE',p:20},
-      {n:'BLACK COFFEE WITH LEMON',p:25},
-      {n:'STRONG COFFEE',p:25},
-      {n:'BLACK COFFEE WITH HONEY',p:25},
-      {n:'BLACK COFFEE WITH LEMON HONEY',p:30},
-      {n:'DOUBLE STRONG COFFEE',p:30},
-      {n:'CHOCOLATE COFFEE',p:35},
-      {n:'BLACK COFFEE WITH GHEE',p:40},
-      {n:'GHEE BULLETPROOF COFFEE',p:49},
-      {n:'BLACK ICED COFFEE',p:89},
-      {n:'COLD ICED COFFEE',p:160},
-      {n:'BASIC CAPPUCCINO',p:99}
-    ]
-  },
-  {
-    id:'milk', cat:'MILK', short:'MILK', icon:'🥛',
-    items:[
-      {n:'HOT MILK',p:25},
-      {n:'HORLICKS MILK',p:25},
-      {n:'BOOST MILK',p:25},
-      {n:'BADAM MILK',p:35},
-      {n:'HOT CHOCOLATE',p:35}
-    ]
-  },
-  {
-    id:'snacks', cat:'SNACKS', short:'SNACKS', icon:'🥐',
-    items:[
-      {n:'ALOO SAMOSA',p:20},
-      {n:'SWEET CORN SAMOSA',p:20},
-      {n:'PANEER PUFF',p:25},
-      {n:'EGG PUFF',p:25},
-      {n:'CHICKEN PUFF',p:25}
-    ]
-  },
-  {
-    id:'burgers', cat:'BURGERS', short:'BURGERS', icon:'🍔',
-    items:[
-      {n:'VEG BURGER',p:99},
-      {n:'EGG BURGER',p:109},
-      {n:'ALOO TIKKI BURGER',p:119},
-      {n:'VEG CHEESE BURGER',p:129},
-      {n:'CHICKEN BURGER',p:129},
-      {n:'CHICKEN CHEESE BURGER',p:149},
-      {n:'CHICKEN GARLIC BURGER',p:149},
-      {n:'CHICKEN CHEESE GARLIC BURGER',p:159}
-    ]
-  },
-  {
-    id:'sandwich', cat:'SANDWICH', short:'SANDWICH', icon:'🥪',
-    items:[
-      {n:'VEG SANDWICH',p:109},
-      {n:'EGG SANDWICH',p:119},
-      {n:'VEG CHEESE SANDWICH',p:129},
-      {n:'VEG GARLIC SANDWICH',p:139},
-      {n:'CHICKEN SANDWICH',p:149},
-      {n:'CHICKEN CHEESE SANDWICH',p:159},
-      {n:'CHICKEN GARLIC SANDWICH',p:179},
-      {n:'CHICKEN CHEESE GARLIC SANDWICH',p:189}
-    ]
-  },
-  {
-    id:'fries', cat:'FRIES', short:'FRIES', icon:'🍟',
-    items:[
-      {n:'FRENCH FRIES',p:109},
-      {n:'PERI PERI FRENCH FRIES',p:129},
-      {n:'POTATO GARLIC POPS',p:129}
-    ]
-  },
-  {
-    id:'bun-specials', cat:'BUN SPECIALS', short:'BUNS', icon:'🫓',
-    items:[
-      {n:'MASKA BUN',p:65},
-      {n:'BASUNDI BUN',p:69},
-      {n:'OREO BUN DELIGHT',p:69},
-      {n:'CHOCO CRUNCH BUN',p:69},
-      {n:'HIDE AND SEEK BUN BLAST',p:69}
-    ]
-  },
-  {
-    id:'maggie', cat:'MAGGIE', short:'MAGGIE', icon:'🍜',
-    items:[
-      {n:'VEG MAGGIE',p:40},
-      {n:'EGG MAGGIE',p:50},
-      {n:'CHICKEN MAGGIE',p:65}
-    ]
-  },
-  {
-    id:'soups', cat:'SOUPS', short:'SOUPS', icon:'🍲',
-    items:[
-      {n:'TOMATO SOUP',p:59},
-      {n:'SWEET CORN SOUP',p:59},
-      {n:'GARLIC SOUP',p:59}
-    ]
-  },
-  {
-    id:'milkshakes', cat:'MILKSHAKES', short:'MILKSHAKES', icon:'🥤',
-    items:[
-      {n:'BANANA SHAKE',p:99},
-      {n:'BLACK CURRENT SHAKE',p:99},
-      {n:'BUTTERSCOTCH SHAKE',p:99},
-      {n:'MANGO SHAKE',p:99},
-      {n:'SPL. ROSE SHAKE',p:99},
-      {n:'STRAWBERRY SHAKE',p:99},
-      {n:'VANILA SHAKE',p:99},
-      {n:'BLUE CHOCO SHAKE',p:109},
-      {n:'CHOCOLATE BANANA SHAKE',p:109},
-      {n:'HIDE&SEEK CRUSH SHAKE',p:109},
-      {n:'KITKAT SHAKE',p:109},
-      {n:'OREO SHAKE',p:109},
-      {n:'STRAWBERRY OREO MILKSHAKE',p:119},
-      {n:'DRY FRUIT SHAKE',p:149}
-    ]
-  },
-  {
-    id:'mocktails', cat:'MOCKTAILS', short:'MOCKTAILS', icon:'🍹',
-    items:[
-      {n:'BLUE LAGOON',p:89},
-      {n:'MINT MOJITO',p:89},
-      {n:'MINT ICED TEA',p:89},
-      {n:'STRAWBERRY SODA',p:89},
-      {n:'BLUE LAGOON FLOAT',p:99},
-      {n:'GALAXY LEMONADE',p:99},
-      {n:'STRAWBERRY MOJITO',p:99},
-      {n:'STRAWBERRY LEMONADE',p:99},
-      {n:'POMEGRANATE MOJITO',p:109}
-    ]
-  },
-  {
-    id:'detox-drinks', cat:'DETOX DRINKS', short:'DETOX', icon:'🌿',
-    items:[
-      {n:'LEMON DETOX DRINK',p:45},
-      {n:'JEERA DETOX DRINK',p:45},
-      {n:'GREEN DETOX DRINK',p:45},
-      {n:'GINGER LEMON DRINK',p:45},
-      {n:'CUCUMBER COOLER',p:45},
-      {n:'MINT DETOX DRINK',p:45}
-    ]
-  },
-  {
-    id:'special-combo-mocktails', cat:'SPECIAL COMBO MOCKTAILS', short:'COMBO', icon:'🍸',
-    items:[
-      {n:'STRAWBERRY MINT MOJITO',p:109},
-      {n:'MINT BERRY COOLER',p:109},
-      {n:'RED GREEN FIZZ',p:109}
-    ]
-  },
-  {
-    id:'kids-and-elders', cat:'KIDS & ELDERS', short:'KIDS', icon:'🌟',
-    items:[
-      {n:"KELLOGG'S WITH MILK",p:89},
-      {n:"KELLOGG'S WITH HONEY",p:99},
-      {n:'NUTELLA MILK',p:55},
-      {n:'NUTELLA BREAD',p:89},
-      {n:'NUTELLA BUN BLAST',p:99},
-      {n:'NUTELLA GRILLED SANDWICH',p:129},
-      {n:'NUTELLA MILKSHAKE',p:149},
-      {n:'VENNALA ICE CREAM WITH NUTELLA',p:60}
-    ]
-  },
-  /* ── Ice Cream sub-categories (rendered as unified block) ── */
-  {
-    id:'classic-scoops', cat:'CLASSIC SCOOPS', short:'SCOOPS', icon:'🍦', _ic:true,
-    items:[
-      {n:'VANILLA',p:45},{n:'CHOCOLATE',p:50},{n:'BUTTERSCOTCH',p:50},
-      {n:'STRAWBERRY',p:50},{n:'BLACK CURRANT',p:55},{n:'DRY FRUIT',p:65}
-    ]
-  },
-  {
-    id:'single-sundae', cat:'SINGLE SUNDAES', short:'SINGLE SUNDAE', icon:'🍨', _ic:true,
-    items:[
-      {n:'CHOCOLATE SUNDAE',   d:'Ice cream topped with rich chocolate sauce',        p:80},
-      {n:'STRAWBERRY SUNDAE',  d:'Sweet strawberry topping with creamy scoops',        p:80},
-      {n:'BUTTERSCOTCH SUNDAE',d:'Creamy butterscotch with caramel drizzle',           p:90},
-      {n:'NUTTY GRITTY SUNDAE',d:'Nut-loaded sundae with crunchy textures',            p:90},
-      {n:'CRISPY CHOCO SUNDAE',d:'Chocolate ice cream with crunchy toppings & choco drizzle', p:90}
-    ]
-  },
-  {
-    id:'double-sundae', cat:'DOUBLE SUNDAES', short:'DOUBLE SUNDAE', icon:'🍧', _ic:true,
-    items:[
-      {n:'SHOCKING CURRANT',    d:'Black currant and vanilla fusion with fruity twist',            p:110},
-      {n:'TASTE OF HEAVEN',     d:'Butterscotch and vanilla with nuts and caramel delight',        p:120},
-      {n:'AWESOME 2 SOME',      d:'Strawberry and chocolate combo with crunchy toppings',          p:120},
-      {n:'CHOCO BANANA DOUBLE', d:'Chocolate and vanilla with banana and choco drizzle',           p:120}
-    ]
-  }
-];
-
-/* Column assignment for two-col layout (non-ice-cream only) */
-const L_IDS = ['tea-specials','milk','snacks','bun-specials','maggie','soups','detox-drinks','kids-and-elders'];
-const R_IDS = ['coffee-corner','burgers','sandwich','fries','milkshakes','mocktails','special-combo-mocktails'];
-const IC_IDS = ['classic-scoops','single-sundae','double-sundae'];
-
-/* ── State ── */
-let filter = 'all';
-let query  = '';
-
-/* ── Escape HTML ── */
-function e(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-/* ── Single item row ── */
-function row(item){
-  return `<div class="mi">
-    <div class="mi-row">
-      <span class="mi-nm">${e(item.n)}</span>
-      <span class="mi-dt" aria-hidden="true"></span>
-      <span class="mi-pr"><span class="r">₹</span>${item.p}</span>
-    </div>${item.d ? `<div class="mi-ds">${e(item.d)}</div>` : ''}
-  </div>`;
-}
-
-/* ── Category block ── */
-function catBlock(c){
-  let rows = '';
-  c.items.forEach(i => { rows += row(i); });
-  return `<div class="cb">
-    <div class="ch">
-      <span class="ch-lf" aria-hidden="true">${e(c.icon)}</span>
-      <h3>${e(c.cat)}</h3>
-      <span class="ch-lf" aria-hidden="true">${e(c.icon)}</span>
-      <div class="ch-gr"></div>
-    </div>${rows}
-  </div>`;
-}
-
-/* ── Ice Cream Delights block ── */
-function icBlock(cats){
-  let left = '', right = '';
-  ['classic-scoops','single-sundae'].forEach(id => {
-    const c = cats.find(x => x.id === id); if(!c) return;
-    let rows = ''; c.items.forEach(i => { rows += row(i); });
-    left += `<div class="ic-sh">${e(c.icon)} ${e(c.cat)}</div>${rows}`;
-  });
-  const ds = cats.find(x => x.id === 'double-sundae');
-  if(ds){ let rows = ''; ds.items.forEach(i => { rows += row(i); }); right += `<div class="ic-sh">${e(ds.icon)} ${e(ds.cat)}</div>${rows}`; }
-  return `<div>
-    <div class="ic-hdr">
-      <div class="ico">🍦 🍨 🍧</div>
-      <h3>ICE CREAM DELIGHTS</h3>
-      <p>Classic Scoops &bull; Single Sundaes &bull; Double Sundaes</p>
-    </div>
-    <div class="ic-cols"><div>${left}</div><div>${right}</div></div>
-  </div>`;
-}
-
-/* ── Render category nav ── */
-function renderNav(){
-  const nav = document.getElementById('cnav');
-  if(!nav) return;
-  let h = `<button class="cp${filter==='all'?' on':''}" data-f="all" role="listitem">ALL</button>`;
-  const seen = new Set();
-  menuData.forEach(c => {
-    if(c.id==='single-sundae' || c.id==='double-sundae') return;
-    const f = c._ic ? 'ice-cream' : c.id;
-    const lbl = c._ic ? 'ICE CREAM' : c.short;
-    if(seen.has(f)) return; seen.add(f);
-    h += `<button class="cp${filter===f?' on':''}" data-f="${e(f)}" role="listitem">${e(lbl)}</button>`;
-  });
-  nav.innerHTML = h;
-  nav.querySelectorAll('.cp').forEach(b => {
-    b.addEventListener('click', () => {
-      filter = b.dataset.f;
-      query  = '';
-      document.getElementById('menu-search').value = '';
-      renderNav();
-      renderMenu();
-    });
-  });
-}
-
-/* ── Render menu ── */
-function renderMenu(){
-  const cL   = document.getElementById('col-l');
-  const cR   = document.getElementById('col-r');
-  const icS  = document.getElementById('ic-sec');
-  const nR   = document.getElementById('no-res');
-  const note = document.getElementById('srch-note');
-  const cols = document.getElementById('mcols');
-  if(!cL || !cR) return;
-
-  const q   = query.toLowerCase().trim();
-  const isQ = q.length > 0;
-  const isF = filter !== 'all';
-  const isIC = filter === 'ice-cream';
-
-  /* 1 – visible cats */
-  let vis = menuData.filter(c => {
-    if(isIC) return IC_IDS.includes(c.id);
-    if(isF)  return c.id === filter;
-    return true;
-  });
-
-  /* 2 – search */
-  let matched = [];
-  if(isQ){
-    vis.forEach(c => {
-      const cm = c.cat.toLowerCase().includes(q) || c.short.toLowerCase().includes(q);
-      const items = c.items.filter(i =>
-        i.n.toLowerCase().includes(q) ||
-        (i.d && i.d.toLowerCase().includes(q)) ||
-        cm
-      );
-      if(items.length) matched.push({...c, items: cm ? c.items : items});
-    });
-  } else { matched = vis; }
-
-  /* 3 – notice */
-  if(isQ){
-    const tot = matched.reduce((s,c) => s+c.items.length, 0);
-    note.style.display = 'block';
-    note.textContent = tot > 0 ? `Showing ${tot} item${tot!==1?'s':''} for "${q}"` : '';
-  } else {
-    note.style.display = 'none';
-    note.textContent = '';
-  }
-
-  /* 4 – no results */
-  if(!matched.length){
-    cL.innerHTML = cR.innerHTML = icS.innerHTML = '';
-    cols.classList.add('solo');
-    nR.style.display = 'block';
-    return;
-  }
-  nR.style.display = 'none';
-
-  /* 5 – single-col (search or single non-ic filter) */
-  if(isQ || (isF && !isIC)){
-    cols.classList.add('solo');
-    const nonIc = matched.filter(c => !IC_IDS.includes(c.id));
-    const ic    = matched.filter(c =>  IC_IDS.includes(c.id));
-    let h = ''; nonIc.forEach(c => { h += catBlock(c); });
-    cL.innerHTML  = h;
-    cR.innerHTML  = '';
-    icS.innerHTML = ic.length ? icBlock(ic) : '';
-    return;
-  }
-
-  /* 6 – ice cream filter only */
-  if(isIC){
-    cols.classList.add('solo');
-    cL.innerHTML = cR.innerHTML = '';
-    icS.innerHTML = icBlock(matched);
-    return;
-  }
-
-  /* 7 – full two-col ALL view */
-  cols.classList.remove('solo');
-  const nonIc = matched.filter(c => !IC_IDS.includes(c.id));
-  const ic    = matched.filter(c =>  IC_IDS.includes(c.id));
-
-  let lH = '', rH = '';
-  nonIc.forEach(c => {
-    if(L_IDS.includes(c.id))      lH += catBlock(c);
-    else if(R_IDS.includes(c.id)) rH += catBlock(c);
-    else                          rH += catBlock(c);
-  });
-  cL.innerHTML = lH;
-  cR.innerHTML = rH;
-  icS.innerHTML = ic.length
-    ? `<div class="sdiv"><div class="sl"></div><div class="so">✦ ✦ ✦</div><div class="sl"></div></div>${icBlock(ic)}`
-    : '';
-}
-
-/* ── Search input ── */
-document.getElementById('menu-search').addEventListener('input', function(){
-  query  = this.value;
-  filter = 'all';
-  renderNav();
-  renderMenu();
-});
-
-/* ── Header scroll ── */
-window.addEventListener('scroll', () => {
-  document.getElementById('hdr').classList.toggle('scrolled', window.scrollY > 20);
-}, {passive:true});
-
-/* ── Mobile nav ── */
-document.getElementById('ham').addEventListener('click', function(){
-  const open = this.getAttribute('aria-expanded') === 'true';
-  this.setAttribute('aria-expanded', String(!open));
-  document.getElementById('mnav').style.display = open ? 'none' : 'block';
-});
-document.querySelectorAll('.mnl').forEach(l => {
-  l.addEventListener('click', () => {
-    document.getElementById('mnav').style.display = 'none';
-    document.getElementById('ham').setAttribute('aria-expanded','false');
-  });
-});
-
-/* ── Init ── */
-if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', () => { renderNav(); renderMenu(); });
-} else {
-  renderNav(); renderMenu();
-}
-</script>
+  <!-- Vanilla Client Logic -->
+  <script src="js/script.js"></script>
 </body>
 </html>
