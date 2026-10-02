@@ -68,10 +68,15 @@
 
   .hero-branding-lockup {
     margin: 0 auto 20px;
+    align-items: center;
+  }
+
+  .hero-cafe-wrapper {
+    margin-left: 0;
   }
 
   .hero-swoosh {
-    margin: 8px auto 0;
+    margin: 4px auto 0;
   }
 
   .hero-description {
