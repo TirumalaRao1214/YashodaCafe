@@ -12,50 +12,46 @@
        No external fonts · No CDN · Pure HTML/CSS/JS
     ============================================================ */
 
-    /* --- Reset & Variables --- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:       #F7F0E3;
-      --cream-light: #FFF9ED;
-      --cream-mid:   #EDE3CE;
-      --green:       #005A32;
-      --green-dark:  #003F25;
-      --green-mid:   #0A6B3B;
-      --gold:        #D5A817;
-      --gold-light:  #E8C84A;
-      --dark-text:   #173B2B;
-      --muted-text:  #4A6654;
-      --white:       #FFFFFF;
-      --border:      #C8B896;
+      --cream:        #F7F0E3;
+      --cream-light:  #FFF9ED;
+      --cream-mid:    #EDE3CE;
+      --cream-dark:   #E0D4B8;
+      --green:        #005A32;
+      --green-dark:   #003F25;
+      --gold:         #D5A817;
+      --gold-light:   #E8C84A;
+      --dark-text:    #173B2B;
+      --muted-text:   #4A6654;
+      --border:       #C8B896;
+      --border-light: #DDD0B0;
     }
 
     html { scroll-behavior: smooth; overflow-x: hidden; }
-
     body {
       font-family: Georgia, 'Times New Roman', serif;
-      background-color: var(--cream);
+      background: var(--cream);
       color: var(--dark-text);
       overflow-x: hidden;
       line-height: 1.6;
+      /* subtle paper texture via CSS noise */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
     }
 
     /* ============================================================
-       BOTANICAL CORNER DECORATIONS
+       BOTANICAL CORNER DECORATIONS (FIXED)
     ============================================================ */
     .botanical-corner {
-      position: fixed;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.18;
+      position: fixed; pointer-events: none; z-index: 0; opacity: 0.16;
     }
-    .botanical-corner.tl { top: 0; left: 0; width: 160px; height: 160px; transform: none; }
-    .botanical-corner.tr { top: 0; right: 0; width: 160px; height: 160px; transform: scaleX(-1); }
-    .botanical-corner.bl { bottom: 0; left: 0; width: 160px; height: 160px; transform: scaleY(-1); }
-    .botanical-corner.br { bottom: 0; right: 0; width: 160px; height: 160px; transform: scale(-1,-1); }
-
+    .botanical-corner.tl { top: 0; left: 0; width: 180px; height: 180px; }
+    .botanical-corner.tr { top: 0; right: 0; width: 180px; height: 180px; transform: scaleX(-1); }
+    .botanical-corner.bl { bottom: 0; left: 0; width: 140px; height: 140px; transform: scaleY(-1); }
+    .botanical-corner.br { bottom: 0; right: 0; width: 140px; height: 140px; transform: scale(-1,-1); }
     @media (max-width: 768px) {
-      .botanical-corner { width: 90px; height: 90px; opacity: 0.12; }
+      .botanical-corner { width: 80px !important; height: 80px !important; opacity: 0.10; }
     }
 
     /* ============================================================
@@ -64,119 +60,65 @@
     #site-header {
       background: var(--green-dark);
       border-bottom: 3px solid var(--gold);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 1000;
       transition: box-shadow 0.3s;
     }
-    #site-header.scrolled { box-shadow: 0 2px 18px rgba(0,0,0,0.35); }
+    #site-header.scrolled { box-shadow: 0 3px 20px rgba(0,0,0,0.4); }
 
     .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px;
+      display: flex; align-items: center;
       justify-content: space-between;
-      height: 58px;
-      gap: 16px;
+      height: 56px; gap: 16px;
     }
-
-    .header-logo a {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      gap: 10px;
-    }
-    .header-logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
+    .header-logo a { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
     .header-logo-cafe {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-style: italic;
-      font-size: 13px;
-      color: var(--gold-light);
-      letter-spacing: 1px;
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 12px; color: var(--gold-light); letter-spacing: 1px;
     }
     .header-logo-yashoda {
-      font-family: 'Arial Black', 'Impact', sans-serif;
-      font-size: 19px;
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      font-family: 'Arial Black', Impact, sans-serif;
+      font-size: 18px; font-weight: 900; color: #fff;
+      letter-spacing: 2.5px; text-transform: uppercase;
     }
-
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      list-style: none;
-    }
+    .header-nav { display: flex; gap: 2px; list-style: none; }
     .header-nav a {
-      color: rgba(255,255,255,0.82);
-      text-decoration: none;
-      font-family: 'Arial', sans-serif;
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      padding: 6px 10px;
-      border-radius: 4px;
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-family: Arial, sans-serif; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      padding: 6px 10px; border-radius: 3px;
       transition: color 0.2s, background 0.2s;
     }
-    .header-nav a:hover { color: var(--gold-light); background: rgba(255,255,255,0.07); }
-
+    .header-nav a:hover { color: var(--gold-light); background: rgba(255,255,255,0.08); }
     .header-phone {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--gold-light);
-      text-decoration: none;
-      font-family: 'Arial', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
+      display: flex; align-items: center; gap: 6px;
+      color: var(--gold-light); text-decoration: none;
+      font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
       white-space: nowrap;
     }
     .header-phone svg { width: 14px; height: 14px; fill: currentColor; }
-
     .mobile-menu-toggle {
-      display: none;
-      background: none;
+      display: none; background: none;
       border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 4px;
-      padding: 6px 8px;
-      cursor: pointer;
-      color: var(--white);
+      border-radius: 3px; padding: 6px 8px; cursor: pointer; color: #fff;
     }
     .mobile-menu-toggle span {
       display: block; width: 20px; height: 2px;
       background: currentColor; margin: 4px 0;
-      transition: transform 0.3s, opacity 0.3s;
     }
-
     .mobile-nav {
-      display: none;
-      background: var(--green-dark);
+      display: none; background: var(--green-dark);
       border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 12px 20px 16px;
+      padding: 10px 24px 16px;
     }
     .mobile-nav a {
-      display: block;
-      color: rgba(255,255,255,0.82);
-      text-decoration: none;
-      font-family: 'Arial', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      text-transform: uppercase;
+      display: block; color: rgba(255,255,255,0.82); text-decoration: none;
+      font-family: Arial, sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
     }
     .mobile-nav a:last-child { border-bottom: none; }
-
     @media (max-width: 860px) {
       .header-nav, .header-phone { display: none; }
       .mobile-menu-toggle { display: flex; flex-direction: column; }
@@ -189,704 +131,435 @@
       background: var(--cream-light);
       border-bottom: 2px solid var(--border);
       text-align: center;
-      padding: 56px 24px 52px;
-      position: relative;
-      overflow: hidden;
+      padding: clamp(44px, 7vw, 72px) 24px clamp(40px, 6vw, 64px);
+      position: relative; overflow: hidden;
     }
     #hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(213,168,23,0.07) 0%, transparent 70%);
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(213,168,23,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
-
-    .hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
-
-    .hero-brand {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      margin-bottom: 8px;
-    }
+    .hero-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
     .hero-cafe {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-style: italic;
-      font-size: clamp(24px, 5vw, 40px);
-      color: var(--green);
-      letter-spacing: 2px;
-      line-height: 1;
+      font-family: Georgia, 'Times New Roman', serif; font-style: italic;
+      font-size: clamp(26px, 5.5vw, 44px);
+      color: var(--green); letter-spacing: 2px; line-height: 1; display: block;
     }
     .hero-yashoda {
       font-family: 'Arial Black', Impact, sans-serif;
-      font-size: clamp(44px, 11vw, 88px);
-      font-weight: 900;
-      color: var(--green-dark);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      line-height: 0.9;
+      font-size: clamp(52px, 13vw, 100px); font-weight: 900;
+      color: var(--green-dark); letter-spacing: 4px;
+      text-transform: uppercase; line-height: 0.88; display: block;
     }
-    .hero-underline {
-      width: 120px; height: 4px;
-      background: var(--gold);
-      border-radius: 2px;
-      margin: 10px auto 0;
+    .hero-swoosh {
+      width: clamp(100px, 30vw, 180px);
+      height: 14px; margin: 10px auto 0; display: block;
     }
     .hero-tagline {
-      font-family: 'Arial', sans-serif;
-      font-size: clamp(11px, 2.5vw, 14px);
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--muted-text);
-      text-transform: uppercase;
-      margin: 16px 0 28px;
+      font-family: Arial, sans-serif; font-size: clamp(10px, 2.2vw, 13px);
+      font-weight: 700; letter-spacing: 3.5px;
+      color: var(--muted-text); text-transform: uppercase;
+      margin: 18px 0 0;
     }
-    .hero-tagline span { color: var(--gold); }
-
+    .hero-tagline .dot { color: var(--gold); }
     .hero-art {
-      width: 160px;
-      height: 160px;
-      margin: 0 auto 20px;
-      opacity: 0.9;
+      width: clamp(110px, 28vw, 170px);
+      height: clamp(110px, 28vw, 170px);
+      margin: 22px auto 16px; display: block; opacity: 0.92;
     }
-
+    .hero-sub {
+      font-family: Arial, sans-serif; font-size: clamp(10px, 2vw, 13px);
+      font-weight: 700; letter-spacing: 3px;
+      color: var(--muted-text); text-transform: uppercase; margin-bottom: 26px;
+    }
     .hero-btns {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
+      display: flex; gap: 12px; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 18px;
     }
     .btn-primary {
-      background: var(--green);
-      color: var(--cream-light);
+      background: var(--green); color: var(--cream-light);
       border: 2px solid var(--green);
-      font-family: 'Arial', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 12px 26px;
-      border-radius: 3px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
+      font-family: Arial, sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 11px 24px; border-radius: 2px; text-decoration: none;
+      transition: background 0.2s; display: inline-block;
     }
     .btn-primary:hover { background: var(--green-dark); border-color: var(--green-dark); }
-
     .btn-secondary {
-      background: transparent;
-      color: var(--green);
+      background: transparent; color: var(--green);
       border: 2px solid var(--green);
-      font-family: 'Arial', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 12px 26px;
-      border-radius: 3px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
+      font-family: Arial, sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 11px 24px; border-radius: 2px; text-decoration: none;
+      transition: background 0.2s, color 0.2s; display: inline-block;
     }
     .btn-secondary:hover { background: var(--green); color: var(--cream-light); }
-
     .hero-contact {
-      font-family: 'Arial', sans-serif;
-      font-size: 13px;
-      color: var(--muted-text);
+      font-family: Arial, sans-serif; font-size: 13px; color: var(--muted-text);
     }
     .hero-contact a { color: var(--green); font-weight: 700; text-decoration: none; }
 
     /* ============================================================
-       MENU SECTION WRAPPER
+       MENU SECTION
     ============================================================ */
-    #menu {
-      background: var(--cream);
+    #menu { background: var(--cream); }
+
+    .menu-wrap {
+      max-width: 1160px; margin: 0 auto;
+      padding: clamp(28px,4vw,48px) 20px 0;
     }
 
-    /* --- Menu Page Heading --- */
-    .menu-page-heading {
-      text-align: center;
-      margin-bottom: 28px;
+    /* Page heading */
+    .menu-heading {
+      text-align: center; margin-bottom: 24px;
     }
-    .menu-page-heading-ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 6px;
+    .menu-heading-rule {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin-bottom: 6px;
     }
-    .menu-page-heading-ornament .line {
-      flex: 1;
-      max-width: 120px;
-      height: 1px;
+    .menu-heading-rule .rl {
+      flex: 1; max-width: 100px; height: 1px;
       background: linear-gradient(to right, transparent, var(--gold), transparent);
     }
-    .menu-page-heading h2 {
+    .menu-heading h2 {
       font-family: 'Arial Black', Impact, sans-serif;
-      font-size: clamp(26px, 5vw, 38px);
-      font-weight: 900;
-      color: var(--green-dark);
-      letter-spacing: 4px;
-      text-transform: uppercase;
+      font-size: clamp(22px, 4.5vw, 34px); font-weight: 900;
+      letter-spacing: 4px; text-transform: uppercase; color: var(--green-dark);
     }
-    .menu-page-heading p {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-style: italic;
-      font-size: 14px;
-      color: var(--muted-text);
-      margin-top: 4px;
-      letter-spacing: 1px;
+    .menu-heading p {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 13.5px; color: var(--muted-text); margin-top: 4px;
     }
 
-    /* ============================================================
-       SEARCH
-    ============================================================ */
+    /* Search */
     .menu-search-wrap {
-      max-width: 560px;
-      margin: 0 auto 28px;
-      position: relative;
+      max-width: 520px; margin: 0 auto 22px; position: relative;
     }
     .menu-search-wrap svg {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 16px; height: 16px;
-      fill: var(--muted-text);
-      pointer-events: none;
+      position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+      width: 16px; height: 16px; fill: var(--muted-text); pointer-events: none;
     }
     #menu-search {
-      width: 100%;
-      padding: 12px 16px 12px 42px;
-      border: 1.5px solid var(--border);
-      border-radius: 3px;
+      width: 100%; padding: 11px 14px 11px 40px;
+      border: 1.5px solid var(--border); border-radius: 2px;
       background: var(--cream-light);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 14px;
-      color: var(--dark-text);
-      outline: none;
-      transition: border-color 0.2s;
+      font-family: Georgia, serif; font-size: 14px; color: var(--dark-text);
+      outline: none; transition: border-color 0.2s;
     }
     #menu-search:focus { border-color: var(--green); }
     #menu-search::placeholder { color: #9aab9a; font-style: italic; }
 
-    /* ============================================================
-       CATEGORY NAVIGATION STRIP
-    ============================================================ */
-    .category-nav-wrap {
+    /* Category nav — full width strip */
+    .cat-nav-wrap {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       background: var(--cream-light);
     }
-    .category-nav {
-      display: flex;
-      gap: 4px;
-      padding: 8px 0;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-left: 6px;
-      padding-right: 6px;
+    .cat-nav {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; gap: 4px; flex-wrap: nowrap;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; padding: 7px 12px;
     }
-    .category-nav::-webkit-scrollbar { display: none; }
-
+    .cat-nav::-webkit-scrollbar { display: none; }
     .cat-pill {
-      flex-shrink: 0;
-      padding: 5px 13px;
-      border: 1.5px solid var(--border);
-      border-radius: 2px;
-      background: transparent;
-      color: var(--green);
-      font-family: 'Arial', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      cursor: pointer;
+      flex-shrink: 0; padding: 4px 12px;
+      border: 1.5px solid var(--border); border-radius: 2px;
+      background: transparent; color: var(--green);
+      font-family: Arial, sans-serif; font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      cursor: pointer; white-space: nowrap;
       transition: background 0.15s, color 0.15s, border-color 0.15s;
-      white-space: nowrap;
     }
     .cat-pill:hover { background: var(--cream-mid); border-color: var(--green); }
     .cat-pill.active {
-      background: var(--green);
-      color: var(--cream-light);
-      border-color: var(--gold);
+      background: var(--green); color: var(--cream-light); border-color: var(--gold);
     }
 
-    /* ============================================================
-       SEARCH RESULTS NOTICE
-    ============================================================ */
-    #search-notice {
-      display: none;
-      text-align: center;
-      font-family: Georgia, serif;
-      font-style: italic;
-      font-size: 14px;
-      color: var(--muted-text);
-      padding: 20px 0 8px;
+    /* Menu canvas */
+    .menu-canvas-wrap {
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 20px clamp(40px,5vw,64px);
     }
-    #no-results {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--muted-text);
-      font-family: Georgia, serif;
-      font-style: italic;
-      font-size: 16px;
-    }
-
-    /* ============================================================
-       MENU CANVAS — TWO-COLUMN PRINTED MENU
-    ============================================================ */
     .menu-canvas {
-      /* printed menu canvas background */
       background: var(--cream-light);
       border: 2px solid var(--border);
-      outline: 1px solid var(--cream-mid);
-      outline-offset: 6px;
-      padding: 36px 40px;
+      margin-top: 24px;
+      padding: clamp(20px,3vw,40px) clamp(16px,3vw,40px);
       position: relative;
-      margin-top: 28px;
     }
     .menu-canvas::before {
       content: '';
-      position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(213,168,23,0.25);
+      position: absolute; inset: 7px;
+      border: 1px solid rgba(213,168,23,0.22);
       pointer-events: none;
     }
-
-    @media (max-width: 600px) {
-      .menu-canvas { padding: 20px 16px; outline: none; }
-      .menu-canvas::before { inset: 6px; }
+    @media (max-width: 520px) {
+      .menu-canvas { padding: 16px 12px; }
+      .menu-canvas::before { inset: 5px; }
     }
 
+    /* Search status */
+    #search-notice {
+      text-align: center;
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 13px; color: var(--muted-text);
+      padding: 0 0 14px; display: none;
+    }
+    #no-results {
+      text-align: center; padding: 36px 20px;
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 15px; color: var(--muted-text); display: none;
+    }
+
+    /* Two-column grid */
     .menu-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0 48px;
+      gap: 0 44px;
       align-items: start;
     }
     .menu-columns.single-col { grid-template-columns: 1fr; }
-
-    @media (max-width: 768px) {
-      .menu-columns { grid-template-columns: 1fr; gap: 0; }
-    }
-
+    @media (max-width: 720px) { .menu-columns { grid-template-columns: 1fr; } }
     .menu-col { min-width: 0; }
 
     /* ============================================================
        CATEGORY BLOCK
     ============================================================ */
-    .category-block {
-      margin-bottom: 36px;
-    }
-    .category-block[data-hidden="true"] { display: none; }
+    .cat-block { margin-bottom: 32px; }
 
-    /* Category Header */
     .cat-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--green);
-      color: var(--cream-light);
-      border-radius: 3px;
-      padding: 9px 20px;
-      margin-bottom: 16px;
-      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px;
+      background: var(--green); color: var(--cream-light);
+      border-radius: 2px; padding: 8px 18px;
+      margin-bottom: 14px; position: relative;
     }
-    .cat-header-leaf {
-      font-size: 14px;
-      opacity: 0.85;
-      line-height: 1;
-    }
+    .cat-leaf { font-size: 13px; opacity: 0.8; line-height: 1; }
     .cat-header h3 {
       font-family: 'Arial Black', Impact, sans-serif;
-      font-size: clamp(11px, 2vw, 13px);
-      font-weight: 900;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      text-align: center;
-      color: var(--cream-light);
-      line-height: 1;
+      font-size: clamp(10px, 1.8vw, 12.5px); font-weight: 900;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--cream-light);
+      text-align: center; line-height: 1;
     }
-    .cat-header-gold-rule {
-      position: absolute;
-      bottom: -3px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 1px;
-    }
-
-    /* Column Divider */
-    .menu-col-divider {
-      width: 1px;
-      background: linear-gradient(to bottom, transparent, var(--border) 15%, var(--border) 85%, transparent);
-      position: absolute;
-      top: 36px;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
+    .cat-gold-rule {
+      position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%);
+      width: 55%; height: 2px; background: var(--gold); border-radius: 1px;
     }
 
     /* ============================================================
-       MENU ITEM ROWS — DOTTED LEADER LINES
+       MENU ITEM ROW — DOTTED LEADER LINES
     ============================================================ */
-    .menu-item {
-      margin-bottom: 10px;
-    }
-    .menu-item-row {
+    .menu-item { margin-bottom: 9px; }
+    .item-row {
       display: grid;
       grid-template-columns: auto 1fr auto;
-      align-items: end;
-      gap: 6px;
+      align-items: end; gap: 5px;
     }
     .item-name {
-      font-family: 'Arial', sans-serif;
-      font-size: clamp(11.5px, 1.8vw, 13px);
-      font-weight: 700;
-      color: var(--dark-text);
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      white-space: normal;
-      line-height: 1.3;
+      font-family: Arial, sans-serif; font-size: clamp(11px, 1.7vw, 12.5px);
+      font-weight: 700; color: var(--dark-text);
+      letter-spacing: 0.3px; text-transform: uppercase;
+      white-space: normal; line-height: 1.3;
     }
-    .item-leader {
-      border-bottom: 2px dotted rgba(26, 64, 43, 0.28);
-      transform: translateY(-3px);
-      min-width: 20px;
-      flex: 1;
+    .item-dots {
+      border-bottom: 2px dotted rgba(26,64,43,0.25);
+      transform: translateY(-3px); min-width: 18px;
     }
     .item-price {
-      font-family: 'Arial', sans-serif;
-      font-size: clamp(11.5px, 1.8vw, 13px);
-      font-weight: 800;
-      color: var(--green);
+      font-family: Arial, sans-serif; font-size: clamp(11px, 1.7vw, 12.5px);
+      font-weight: 800; color: var(--green);
       white-space: nowrap;
-      letter-spacing: 0.3px;
     }
     .item-price .rupee { color: var(--gold); }
-
-    .item-description {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-style: italic;
-      font-size: 11.5px;
-      color: var(--muted-text);
-      margin-top: 2px;
-      padding-left: 0;
-      line-height: 1.4;
-    }
-
-    /* Category section separator */
-    .cat-separator {
-      text-align: center;
-      margin: 8px 0 20px;
-      color: var(--gold);
-      font-size: 13px;
-      opacity: 0.7;
-      letter-spacing: 4px;
+    .item-desc {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 11px; color: var(--muted-text);
+      margin-top: 2px; line-height: 1.4;
     }
 
     /* ============================================================
-       ICE CREAM SECTION — SPECIAL VISUAL TREATMENT
+       SECTION DIVIDER
     ============================================================ */
-    .ice-cream-intro {
+    .section-divider {
+      display: flex; align-items: center; gap: 14px;
+      margin: 32px 0 28px;
+    }
+    .section-divider .dl {
+      flex: 1; height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+    }
+    .section-divider .do { font-size: 16px; color: var(--gold); letter-spacing: 6px; }
+
+    /* ============================================================
+       ICE CREAM DELIGHTS — SPECIAL BLOCK
+    ============================================================ */
+    .ice-cream-block { margin-top: 8px; }
+    .ice-cream-header {
       text-align: center;
-      padding: 12px 0 20px;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      margin-bottom: 24px;
+      padding: 12px 0 14px; margin-bottom: 20px;
     }
-    .ice-cream-intro-title {
+    .ice-cream-header .ic-icon { font-size: 20px; }
+    .ice-cream-header h3 {
       font-family: 'Arial Black', Impact, sans-serif;
-      font-size: clamp(15px, 3vw, 20px);
-      font-weight: 900;
-      color: var(--green-dark);
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      font-size: clamp(14px, 2.8vw, 19px); font-weight: 900;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--green-dark);
     }
-    .ice-cream-intro-sub {
-      font-family: Georgia, serif;
-      font-style: italic;
-      font-size: 13px;
-      color: var(--muted-text);
-      margin-top: 4px;
+    .ice-cream-header p {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 12.5px; color: var(--muted-text); margin-top: 4px;
     }
-
-    /* Sub-heading for ice cream sub-categories */
-    .sub-cat-heading {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-style: italic;
-      font-size: clamp(12px, 2vw, 14px);
-      color: var(--green);
-      letter-spacing: 1px;
-      margin: 14px 0 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .ice-cream-cols {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0 40px; align-items: start;
     }
-    .sub-cat-heading::after {
-      content: '';
-      flex: 1;
-      height: 1px;
+    @media (max-width: 600px) { .ice-cream-cols { grid-template-columns: 1fr; } }
+    .ic-sub-heading {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: clamp(12px, 2vw, 13.5px);
+      color: var(--green); letter-spacing: 1px;
+      margin: 12px 0 8px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ic-sub-heading::after {
+      content: ''; flex: 1; height: 1px;
       background: linear-gradient(to right, var(--border), transparent);
     }
 
     /* ============================================================
-       FEATURED SECTION DIVIDERS
-    ============================================================ */
-    .menu-section-divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 40px 0 36px;
-      column-span: all;
-    }
-    .menu-section-divider .div-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--border), transparent);
-    }
-    .menu-section-divider .div-ornament {
-      font-size: 18px;
-      color: var(--gold);
-      letter-spacing: 6px;
-    }
-
-    .full-col-span {
-      grid-column: 1 / -1;
-    }
-
-    /* ============================================================
-       ABOUT SECTION
+       ABOUT
     ============================================================ */
     #about {
-      background: var(--green-dark);
-      color: var(--cream-light);
-      padding: 56px 24px;
+      background: var(--green-dark); color: var(--cream-light);
+      padding: clamp(44px,6vw,64px) 24px;
       text-align: center;
-      border-top: 3px solid var(--gold);
-      border-bottom: 3px solid var(--gold);
+      border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold);
     }
-    .about-inner { max-width: 760px; margin: 0 auto; }
+    .about-inner { max-width: 720px; margin: 0 auto; }
     .about-inner h2 {
       font-family: 'Arial Black', Impact, sans-serif;
-      font-size: clamp(20px, 4vw, 30px);
-      font-weight: 900;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 16px;
+      font-size: clamp(18px, 3.5vw, 28px); font-weight: 900;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light);
+      margin-bottom: 14px;
     }
     .about-inner p {
-      font-family: Georgia, serif;
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255,249,237,0.85);
-      margin-bottom: 12px;
+      font-family: Georgia, serif; font-size: 14.5px;
+      line-height: 1.85; color: rgba(255,249,237,0.84); margin-bottom: 10px;
     }
-    .about-gold-rule {
-      width: 80px; height: 2px;
-      background: var(--gold);
-      margin: 20px auto;
-    }
+    .about-rule { width: 70px; height: 2px; background: var(--gold); margin: 18px auto; }
 
     /* ============================================================
-       INSTAGRAM SECTION
+       INSTAGRAM
     ============================================================ */
     #instagram {
-      background: var(--cream);
-      padding: 48px 20px;
+      background: var(--cream); padding: clamp(40px,5vw,56px) 20px;
       border-bottom: 1px solid var(--border);
     }
-    .instagram-inner { max-width: 1200px; margin: 0 auto; }
-    .instagram-heading {
-      text-align: center;
-      margin-bottom: 28px;
+    .instagram-inner { max-width: 1160px; margin: 0 auto; }
+    .section-heading {
+      text-align: center; margin-bottom: 26px;
     }
-    .instagram-heading h2 {
+    .section-heading h2 {
       font-family: 'Arial Black', Impact, sans-serif;
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--green-dark);
+      font-size: clamp(17px, 3vw, 22px); font-weight: 900;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--green-dark);
     }
-    .instagram-heading p {
-      font-family: Georgia, serif;
-      font-style: italic;
-      font-size: 14px;
-      color: var(--muted-text);
-      margin-top: 4px;
+    .section-heading p {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 13px; color: var(--muted-text); margin-top: 4px;
     }
-    .instagram-heading a {
-      color: var(--green);
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .instagram-grid {
+    .section-heading a { color: var(--green); font-weight: 700; text-decoration: none; }
+    .insta-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
-    @media (max-width: 860px) { .instagram-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 480px) { .instagram-grid { grid-template-columns: repeat(2, 1fr); } }
-
-    .instagram-tile {
-      aspect-ratio: 1;
-      background: var(--cream-mid);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    @media (max-width: 768px) { .insta-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 420px) { .insta-grid { grid-template-columns: repeat(2,1fr); } }
+    .insta-tile {
+      aspect-ratio: 1; background: var(--cream-mid);
+      border: 1px solid var(--border); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
     }
-    .instagram-tile img, .instagram-tile svg {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .insta-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* ============================================================
-       LOCATION SECTION
+       LOCATION
     ============================================================ */
     #location {
-      background: var(--cream-light);
-      padding: 56px 20px;
+      background: var(--cream-light); padding: clamp(44px,5.5vw,60px) 20px;
       border-bottom: 1px solid var(--border);
     }
     .location-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 36px; align-items: start;
     }
-    @media (max-width: 768px) {
-      .location-inner { grid-template-columns: 1fr; }
-    }
-
+    @media (max-width: 720px) { .location-inner { grid-template-columns: 1fr; } }
     .location-info h2 {
       font-family: 'Arial Black', Impact, sans-serif;
-      font-size: clamp(18px, 3.5vw, 26px);
-      font-weight: 900;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--green-dark);
-      margin-bottom: 16px;
+      font-size: clamp(16px, 3vw, 24px); font-weight: 900;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--green-dark);
+      margin-bottom: 14px;
     }
-    .location-info p {
-      font-family: Georgia, serif;
-      font-size: 14.5px;
-      line-height: 1.7;
-      color: var(--dark-text);
-      margin-bottom: 10px;
+    .location-info p { font-family: Georgia, serif; font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+    .location-address {
+      border-left: 3px solid var(--gold); padding-left: 14px;
+      font-style: italic; color: var(--muted-text); margin: 14px 0;
     }
-    .location-info .address {
-      font-style: italic;
-      border-left: 3px solid var(--gold);
-      padding-left: 14px;
-      margin: 16px 0;
-      color: var(--muted-text);
+    .location-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .btn-map-p {
+      padding: 10px 18px; background: var(--green); color: var(--cream-light);
+      border: 2px solid var(--green); border-radius: 2px;
+      font-family: Arial, sans-serif; font-size: 11.5px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s;
     }
-    .location-btns {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .location-btns a {
-      padding: 10px 20px;
-      font-family: 'Arial', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
+    .btn-map-p:hover { background: var(--green-dark); border-color: var(--green-dark); }
+    .btn-map-s {
+      padding: 10px 18px; background: transparent; color: var(--green);
+      border: 2px solid var(--green); border-radius: 2px;
+      font-family: Arial, sans-serif; font-size: 11.5px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
       transition: background 0.2s, color 0.2s;
     }
-    .btn-map-primary { background: var(--green); color: var(--cream-light); border: 2px solid var(--green); }
-    .btn-map-primary:hover { background: var(--green-dark); border-color: var(--green-dark); }
-    .btn-map-secondary { background: transparent; color: var(--green); border: 2px solid var(--green); }
-    .btn-map-secondary:hover { background: var(--green); color: var(--cream-light); }
-
-    .location-map {
-      border: 2px solid var(--border);
-      border-radius: 3px;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-    }
-    .location-map iframe {
-      width: 100%; height: 100%;
-      border: none;
-      display: block;
-    }
+    .btn-map-s:hover { background: var(--green); color: var(--cream-light); }
+    .location-map { border: 2px solid var(--border); overflow: hidden; aspect-ratio: 4/3; }
+    .location-map iframe { width: 100%; height: 100%; border: none; display: block; }
 
     /* ============================================================
-       CONTACT SECTION
+       CONTACT
     ============================================================ */
     #contact {
-      background: var(--green-dark);
-      color: var(--cream-light);
-      padding: 48px 24px;
+      background: var(--green-dark); color: var(--cream-light);
+      padding: clamp(40px,5vw,56px) 24px;
       border-top: 3px solid var(--gold);
     }
-    .contact-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
+    .contact-inner { max-width: 760px; margin: 0 auto; text-align: center; }
     .contact-inner h2 {
       font-family: 'Arial Black', Impact, sans-serif;
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 24px;
+      font-size: clamp(16px, 3vw, 22px); font-weight: 900;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light);
+      margin-bottom: 22px;
     }
     .contact-grid {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
     }
     .contact-card {
       background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(213,168,23,0.3);
-      border-radius: 4px;
-      padding: 18px 22px;
-      text-decoration: none;
-      color: var(--cream-light);
-      font-family: 'Arial', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.2s, border-color 0.2s;
-      min-width: 120px;
+      border: 1px solid rgba(213,168,23,0.3); border-radius: 3px;
+      padding: 16px 20px; text-decoration: none; color: var(--cream-light);
+      font-family: Arial, sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
+      transition: background 0.2s, border-color 0.2s; min-width: 110px;
     }
-    .contact-card:hover { background: rgba(255,255,255,0.14); border-color: var(--gold-light); }
-    .contact-card svg { width: 22px; height: 22px; fill: var(--gold-light); }
-    .contact-card span { font-size: 11px; color: rgba(255,249,237,0.65); font-weight: 400; text-transform: none; letter-spacing: 0; font-style: italic; }
+    .contact-card:hover { background: rgba(255,255,255,0.13); border-color: var(--gold-light); }
+    .contact-card svg { width: 20px; height: 20px; fill: var(--gold-light); }
+    .contact-card span { font-size: 10.5px; color: rgba(255,249,237,0.6); font-weight: 400; text-transform: none; }
 
     /* ============================================================
        FOOTER
@@ -894,136 +567,120 @@
     footer {
       background: var(--green-dark);
       border-top: 1px solid rgba(213,168,23,0.2);
+      padding: 28px 20px;
       text-align: center;
-      padding: 20px;
-      font-family: 'Arial', sans-serif;
-      font-size: 12px;
-      color: rgba(255,249,237,0.45);
-      letter-spacing: 0.5px;
     }
-    footer a { color: rgba(255,249,237,0.55); text-decoration: none; }
+    .footer-inner { max-width: 800px; margin: 0 auto; }
+    .footer-brand-cafe {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 14px; color: var(--gold-light); letter-spacing: 1px;
+    }
+    .footer-brand-yashoda {
+      font-family: 'Arial Black', Impact, sans-serif;
+      font-size: 24px; font-weight: 900; color: #fff;
+      letter-spacing: 3px; text-transform: uppercase; display: block;
+    }
+    .footer-tagline {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 13px; color: rgba(255,249,237,0.6); margin: 6px 0 14px;
+    }
+    .footer-links {
+      display: flex; gap: 16px; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 12px;
+    }
+    .footer-links a {
+      color: rgba(255,249,237,0.55); text-decoration: none;
+      font-family: Arial, sans-serif; font-size: 11.5px; font-weight: 600;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-copy {
+      font-family: Arial, sans-serif; font-size: 11px;
+      color: rgba(255,249,237,0.35); letter-spacing: 0.3px;
+    }
 
     /* ============================================================
        MOBILE BOTTOM BAR
     ============================================================ */
-    #mobile-bottom-bar {
+    #mobile-bar {
       display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      background: var(--green-dark);
-      border-top: 2px solid var(--gold);
-      height: 58px;
-      grid-template-columns: repeat(4, 1fr);
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: var(--green-dark); border-top: 2px solid var(--gold);
+      height: 56px; grid-template-columns: repeat(4, 1fr);
     }
-    #mobile-bottom-bar a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      text-decoration: none;
-      color: rgba(255,249,237,0.8);
-      font-family: 'Arial', sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+    #mobile-bar a {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 3px;
+      text-decoration: none; color: rgba(255,249,237,0.8);
+      font-family: Arial, sans-serif; font-size: 8.5px; font-weight: 700;
+      letter-spacing: 0.5px; text-transform: uppercase;
       transition: color 0.15s, background 0.15s;
     }
-    #mobile-bottom-bar a:hover { background: rgba(255,255,255,0.06); color: var(--gold-light); }
-    #mobile-bottom-bar a:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.1); }
-    #mobile-bottom-bar svg { width: 18px; height: 18px; fill: currentColor; }
-
+    #mobile-bar a:hover { background: rgba(255,255,255,0.05); color: var(--gold-light); }
+    #mobile-bar a + a { border-left: 1px solid rgba(255,255,255,0.1); }
+    #mobile-bar svg { width: 17px; height: 17px; fill: currentColor; }
     @media (max-width: 768px) {
-      #mobile-bottom-bar { display: grid; }
-      body { padding-bottom: 58px; }
-    }
-
-    /* ============================================================
-       UTILITY
-    ============================================================ */
-    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
-
-    .ornamental-divider {
-      text-align: center;
-      color: var(--gold);
-      font-size: 15px;
-      letter-spacing: 6px;
-      margin: 12px 0 16px;
-      opacity: 0.65;
+      #mobile-bar { display: grid; }
+      body { padding-bottom: 56px; }
     }
 
   </style>
 </head>
 <body>
 
-<!-- ============================================================
-     BOTANICAL CORNER DECORATIONS
-============================================================ -->
+<!-- ═══ BOTANICAL CORNERS ═══ -->
 <div class="botanical-corner tl" aria-hidden="true">
-  <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#005A32" opacity="0.9">
-      <path d="M0 0 C30 10 55 35 40 65 C25 40 5 20 0 0Z"/>
-      <path d="M10 0 C45 5 70 28 60 58 C44 34 15 14 10 0Z" opacity="0.5"/>
-      <path d="M35 0 C55 15 65 40 48 62 C38 38 25 18 35 0Z" opacity="0.4"/>
-      <path d="M0 30 C18 50 28 80 12 100 C5 78 0 52 0 30Z" opacity="0.5"/>
-      <path d="M0 55 C16 68 24 92 10 112 C4 90 0 70 0 55Z" opacity="0.35"/>
-      <line x1="2" y1="2" x2="60" y2="60" stroke="#D5A817" stroke-width="1" opacity="0.4"/>
+  <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#005A32">
+      <path d="M0 0 C35 12 60 40 44 72 C28 48 5 22 0 0Z" opacity="0.9"/>
+      <path d="M12 0 C50 6 76 32 64 64 C46 38 16 16 12 0Z" opacity="0.5"/>
+      <path d="M38 0 C60 16 72 44 54 68 C42 44 28 20 38 0Z" opacity="0.4"/>
+      <path d="M0 32 C20 54 32 86 14 108 C6 84 0 56 0 32Z" opacity="0.5"/>
+      <path d="M0 60 C18 74 26 100 10 122 C4 98 0 76 0 60Z" opacity="0.35"/>
     </g>
+    <path d="M2 2 Q50 50 68 68" stroke="#D5A817" stroke-width="1" fill="none" opacity="0.3"/>
   </svg>
 </div>
 <div class="botanical-corner tr" aria-hidden="true">
-  <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#005A32" opacity="0.9">
-      <path d="M0 0 C30 10 55 35 40 65 C25 40 5 20 0 0Z"/>
-      <path d="M10 0 C45 5 70 28 60 58 C44 34 15 14 10 0Z" opacity="0.5"/>
-      <path d="M35 0 C55 15 65 40 48 62 C38 38 25 18 35 0Z" opacity="0.4"/>
-      <path d="M0 30 C18 50 28 80 12 100 C5 78 0 52 0 30Z" opacity="0.5"/>
-      <path d="M0 55 C16 68 24 92 10 112 C4 90 0 70 0 55Z" opacity="0.35"/>
-      <line x1="2" y1="2" x2="60" y2="60" stroke="#D5A817" stroke-width="1" opacity="0.4"/>
+  <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#005A32" transform="scale(-1,1) translate(-180,0)">
+      <path d="M0 0 C35 12 60 40 44 72 C28 48 5 22 0 0Z" opacity="0.9"/>
+      <path d="M12 0 C50 6 76 32 64 64 C46 38 16 16 12 0Z" opacity="0.5"/>
+      <path d="M38 0 C60 16 72 44 54 68 C42 44 28 20 38 0Z" opacity="0.4"/>
+      <path d="M0 32 C20 54 32 86 14 108 C6 84 0 56 0 32Z" opacity="0.5"/>
+      <path d="M0 60 C18 74 26 100 10 122 C4 98 0 76 0 60Z" opacity="0.35"/>
     </g>
   </svg>
 </div>
 <div class="botanical-corner bl" aria-hidden="true">
-  <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#005A32" opacity="0.9">
-      <path d="M0 0 C30 10 55 35 40 65 C25 40 5 20 0 0Z"/>
-      <path d="M10 0 C45 5 70 28 60 58 C44 34 15 14 10 0Z" opacity="0.5"/>
-      <path d="M35 0 C55 15 65 40 48 62 C38 38 25 18 35 0Z" opacity="0.4"/>
-      <path d="M0 30 C18 50 28 80 12 100 C5 78 0 52 0 30Z" opacity="0.5"/>
-      <path d="M0 55 C16 68 24 92 10 112 C4 90 0 70 0 55Z" opacity="0.35"/>
+  <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#005A32" transform="scale(1,-1) translate(0,-140)">
+      <path d="M0 0 C28 10 48 32 36 58 C22 38 4 18 0 0Z" opacity="0.8"/>
+      <path d="M10 0 C40 5 60 26 50 52 C36 30 12 12 10 0Z" opacity="0.45"/>
+      <path d="M0 26 C16 44 26 68 10 88 C4 68 0 46 0 26Z" opacity="0.45"/>
     </g>
   </svg>
 </div>
 <div class="botanical-corner br" aria-hidden="true">
-  <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#005A32" opacity="0.9">
-      <path d="M0 0 C30 10 55 35 40 65 C25 40 5 20 0 0Z"/>
-      <path d="M10 0 C45 5 70 28 60 58 C44 34 15 14 10 0Z" opacity="0.5"/>
-      <path d="M35 0 C55 15 65 40 48 62 C38 38 25 18 35 0Z" opacity="0.4"/>
-      <path d="M0 30 C18 50 28 80 12 100 C5 78 0 52 0 30Z" opacity="0.5"/>
-      <path d="M0 55 C16 68 24 92 10 112 C4 90 0 70 0 55Z" opacity="0.35"/>
+  <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#005A32" transform="scale(-1,-1) translate(-140,-140)">
+      <path d="M0 0 C28 10 48 32 36 58 C22 38 4 18 0 0Z" opacity="0.8"/>
+      <path d="M10 0 C40 5 60 26 50 52 C36 30 12 12 10 0Z" opacity="0.45"/>
+      <path d="M0 26 C16 44 26 68 10 88 C4 68 0 46 0 26Z" opacity="0.45"/>
     </g>
   </svg>
 </div>
 
-<!-- ============================================================
-     HEADER
-============================================================ -->
+<!-- ═══ HEADER ═══ -->
 <header id="site-header">
   <div class="header-inner">
     <div class="header-logo">
       <a href="#hero" aria-label="Cafe Yashoda Home">
-        <div class="header-logo-text">
-          <span class="header-logo-cafe">Cafe</span>
-          <span class="header-logo-yashoda">Yashoda</span>
-        </div>
+        <span class="header-logo-cafe">Cafe</span>
+        <span class="header-logo-yashoda">Yashoda</span>
       </a>
     </div>
-
     <nav aria-label="Main navigation">
       <ul class="header-nav">
         <li><a href="#hero">Home</a></li>
@@ -1034,269 +691,222 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-
-    <a href="tel:+919966818131" class="header-phone" aria-label="Call Cafe Yashoda">
+    <a href="tel:+919966818131" class="header-phone" aria-label="Call">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
       099668 18131
     </a>
-
-    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <button class="mobile-menu-toggle" id="mob-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-    <a href="#hero" class="mobile-nav-link">Home</a>
-    <a href="#menu" class="mobile-nav-link">Menu</a>
-    <a href="#about" class="mobile-nav-link">About</a>
-    <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" class="mobile-nav-link">Instagram</a>
-    <a href="#location" class="mobile-nav-link">Location</a>
-    <a href="#contact" class="mobile-nav-link">Contact</a>
-    <a href="tel:+919966818131" class="mobile-nav-link">📞 099668 18131</a>
+    <a href="#hero" class="mnl">Home</a>
+    <a href="#menu" class="mnl">Menu</a>
+    <a href="#about" class="mnl">About</a>
+    <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" class="mnl">Instagram</a>
+    <a href="#location" class="mnl">Location</a>
+    <a href="#contact" class="mnl">Contact</a>
+    <a href="tel:+919966818131" class="mnl">📞 099668 18131</a>
   </nav>
 </header>
 
-<!-- ============================================================
-     HERO
-============================================================ -->
-<section id="hero" aria-label="Welcome to Cafe Yashoda">
+<!-- ═══ HERO ═══ -->
+<section id="hero" aria-label="Cafe Yashoda">
   <div class="hero-inner">
-    <div class="hero-brand">
-      <span class="hero-cafe">Cafe</span>
-      <span class="hero-yashoda">YASHODA</span>
-      <div class="hero-underline"></div>
-    </div>
-    <p class="hero-tagline">Good Food <span>•</span> Brighter Days</p>
-    <div class="hero-art" aria-hidden="true">
-      <img src="assets/images/hero-art.svg" alt="Cafe Yashoda illustrated tea cup" width="160" height="160" />
-    </div>
-    <p class="hero-tagline" style="margin-top:0;margin-bottom:28px;">Fresh <span>•</span> Healthy <span>•</span> Refreshing</p>
+    <span class="hero-cafe">Cafe</span>
+    <span class="hero-yashoda">YASHODA</span>
+    <svg class="hero-swoosh" viewBox="0 0 180 14" fill="none" aria-hidden="true">
+      <path d="M8 9 Q90 2 172 8" stroke="#D5A817" stroke-width="4" stroke-linecap="round"/>
+      <path d="M166 4 L176 8 L169 14" stroke="#D5A817" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <p class="hero-tagline">Good Food <span class="dot">•</span> Brighter Days</p>
+    <img src="assets/images/hero-art.svg" alt="Cafe Yashoda" class="hero-art" width="170" height="170" />
+    <p class="hero-sub">Fresh <span class="dot" style="color:var(--gold)">•</span> Healthy <span class="dot" style="color:var(--gold)">•</span> Refreshing</p>
     <div class="hero-btns">
       <a href="#menu" class="btn-primary">View Menu</a>
       <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" class="btn-secondary">Get Directions</a>
     </div>
     <p class="hero-contact">
       <a href="tel:+919966818131">📞 099668 18131</a>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      Karimnagar, Telangana
+      &nbsp;|&nbsp; Karimnagar, Telangana
     </p>
   </div>
 </section>
 
-<!-- ============================================================
-     MENU SECTION
-============================================================ -->
+<!-- ═══ MENU ═══ -->
 <section id="menu" aria-label="Cafe Yashoda Menu">
 
-  <!-- Menu Heading + Search (contained) -->
-  <div style="max-width:1160px;margin:0 auto;padding:40px 20px 0;position:relative;">
-    <!-- Menu Heading -->
-    <div class="menu-page-heading">
-      <div class="menu-page-heading-ornament">
-        <div class="line"></div>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.5 2 5.5 4.5 5 8C4.5 11.5 6 14.5 8.5 16L8 22H16L15.5 16C18 14.5 19.5 11.5 19 8C18.5 4.5 15.5 2 12 2Z" fill="#D5A817" opacity="0.7"/></svg>
-        <div class="line"></div>
+  <!-- Heading + Search -->
+  <div class="menu-wrap">
+    <div class="menu-heading">
+      <div class="menu-heading-rule">
+        <div class="rl"></div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#D5A817" opacity="0.7" aria-hidden="true"><path d="M12 2C8.5 2 5.5 4.5 5 8c-.5 3.5 1 6.5 3.5 8L8 22h8l-.5-6C18 14.5 19.5 11.5 19 8 18.5 4.5 15.5 2 12 2Z"/></svg>
+        <div class="rl"></div>
       </div>
       <h2>Our Menu</h2>
       <p>Karimnagar's favourite café — crafted with love</p>
     </div>
-
-    <!-- Search -->
     <div class="menu-search-wrap">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-      <input type="search" id="menu-search" placeholder="Search tea, coffee, burger, juice…" aria-label="Search menu items" />
+      <input type="search" id="menu-search" placeholder="Search tea, coffee, burger, oreo…" aria-label="Search menu" autocomplete="off" />
     </div>
   </div>
 
-  <!-- Category Navigation — full-width strip -->
-  <div class="category-nav-wrap">
-    <div class="category-nav" id="category-nav" role="list" aria-label="Filter by category">
-      <!-- Rendered by JS -->
-    </div>
+  <!-- Category Nav -->
+  <div class="cat-nav-wrap">
+    <div class="cat-nav" id="cat-nav" role="list" aria-label="Filter by category"></div>
   </div>
 
-  <!-- Menu Content (contained) -->
-  <div style="max-width:1160px;margin:0 auto;padding:0 20px 60px;position:relative;">
-    <!-- Search Notice -->
+  <!-- Menu Canvas -->
+  <div class="menu-canvas-wrap">
     <div id="search-notice" role="status" aria-live="polite"></div>
-
-    <!-- Menu Canvas -->
-    <div class="menu-canvas" id="menu-canvas">
-      <div style="position:relative;">
-        <div class="menu-columns" id="menu-columns">
-          <div class="menu-col" id="menu-col-left"></div>
-          <div class="menu-col" id="menu-col-right"></div>
-        </div>
-        <div id="no-results">No items found matching your search.</div>
+    <div class="menu-canvas">
+      <div id="menu-columns" class="menu-columns">
+        <div class="menu-col" id="col-left"></div>
+        <div class="menu-col" id="col-right"></div>
       </div>
+      <div id="ice-cream-section"></div>
+      <div id="no-results">No items found. Try a different search term.</div>
     </div>
   </div>
 
 </section>
 
-<!-- ============================================================
-     ABOUT
-============================================================ -->
+<!-- ═══ ABOUT ═══ -->
 <section id="about" aria-label="About Cafe Yashoda">
   <div class="about-inner">
     <h2>About Cafe Yashoda</h2>
-    <div class="about-gold-rule"></div>
-    <p>
-      Nestled in the heart of Karimnagar, Telangana, Cafe Yashoda has been serving the community
-      with warmth, freshness and authentic flavours. From the first sip of our signature Yashoda Tea
-      to the last spoonful of our Ice Cream Delights — every bite tells a story of quality and care.
-    </p>
-    <p>
-      We believe good food creates brighter days. Come in, sit down, and let us take care of the rest.
-    </p>
-    <div class="about-gold-rule"></div>
-    <img src="assets/images/about-art.svg" alt="Cafe Yashoda botanical illustration" width="120" height="120" style="opacity:0.7;margin-top:8px;" />
+    <div class="about-rule"></div>
+    <p>Nestled in the heart of Karimnagar, Telangana, Cafe Yashoda has been serving the community with warmth, freshness and authentic flavours. From the first sip of our signature Yashoda Tea to the last spoonful of our Ice Cream Delights — every bite tells a story of quality and care.</p>
+    <p>We believe good food creates brighter days. Come in, sit down, and let us take care of the rest.</p>
+    <div class="about-rule"></div>
+    <img src="assets/images/about-art.svg" alt="" width="110" height="110" style="opacity:0.65;margin-top:8px;" aria-hidden="true" />
   </div>
 </section>
 
-<!-- ============================================================
-     INSTAGRAM
-============================================================ -->
+<!-- ═══ INSTAGRAM ═══ -->
 <section id="instagram" aria-label="Cafe Yashoda on Instagram">
   <div class="instagram-inner">
-    <div class="instagram-heading">
+    <div class="section-heading">
       <h2>Follow Us on Instagram</h2>
       <p><a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener">@cafeyashoda</a> — tag us in your moments</p>
     </div>
-    <div class="instagram-grid">
-      <a class="instagram-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram post 1">
-        <img src="assets/images/instagram/instagram-01.svg" alt="Cafe Yashoda Instagram" loading="lazy" />
-      </a>
-      <a class="instagram-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram post 2">
-        <img src="assets/images/instagram/instagram-02.svg" alt="Cafe Yashoda Instagram" loading="lazy" />
-      </a>
-      <a class="instagram-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram post 3">
-        <img src="assets/images/instagram/instagram-03.svg" alt="Cafe Yashoda Instagram" loading="lazy" />
-      </a>
-      <a class="instagram-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram post 4">
-        <img src="assets/images/instagram/instagram-04.svg" alt="Cafe Yashoda Instagram" loading="lazy" />
-      </a>
-      <a class="instagram-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram post 5">
-        <img src="assets/images/instagram/instagram-05.svg" alt="Cafe Yashoda Instagram" loading="lazy" />
-      </a>
-      <a class="instagram-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram post 6">
-        <img src="assets/images/instagram/instagram-06.svg" alt="Cafe Yashoda Instagram" loading="lazy" />
-      </a>
+    <div class="insta-grid">
+      <a class="insta-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 1"><img src="assets/images/instagram/instagram-01.svg" alt="" loading="lazy"/></a>
+      <a class="insta-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 2"><img src="assets/images/instagram/instagram-02.svg" alt="" loading="lazy"/></a>
+      <a class="insta-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 3"><img src="assets/images/instagram/instagram-03.svg" alt="" loading="lazy"/></a>
+      <a class="insta-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 4"><img src="assets/images/instagram/instagram-04.svg" alt="" loading="lazy"/></a>
+      <a class="insta-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 5"><img src="assets/images/instagram/instagram-05.svg" alt="" loading="lazy"/></a>
+      <a class="insta-tile" href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" aria-label="Instagram 6"><img src="assets/images/instagram/instagram-06.svg" alt="" loading="lazy"/></a>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     LOCATION
-============================================================ -->
-<section id="location" aria-label="Cafe Yashoda location and directions">
+<!-- ═══ LOCATION ═══ -->
+<section id="location" aria-label="Find Cafe Yashoda">
   <div class="location-inner">
     <div class="location-info">
       <h2>Find Us</h2>
-      <div class="address" aria-label="Address">
-        3-1-546, near KEA Hospital,<br/>
-        Vavilalapally,<br/>
+      <p class="location-address">
+        3-1-546, near KEA Hospital,<br>
+        Vavilalapally,<br>
         Karimnagar, Telangana 505001
-      </div>
-      <p>We're open every day — walk in, call ahead or reach us on WhatsApp.</p>
+      </p>
+      <p>Open every day — walk in, call ahead, or reach us on WhatsApp.</p>
       <p><strong>Phone:</strong> <a href="tel:+919966818131" style="color:var(--green);font-weight:700;text-decoration:none;">099668 18131</a></p>
       <div class="location-btns">
-        <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" class="btn-map-primary location-btns a">Get Directions</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Cafe+Yashoda+3-1-546+near+KEA+Hospital+Vavilalapally+Karimnagar+Telangana+505001" target="_blank" rel="noopener" class="btn-map-secondary">Open in Google Maps</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" class="btn-map-p">Get Directions</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Cafe+Yashoda+Karimnagar+Telangana" target="_blank" rel="noopener" class="btn-map-s">Open in Google Maps</a>
       </div>
     </div>
     <div class="location-map">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3791.5!2d79.1288!3d18.4386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbf3a1a1a1a1a1%3A0x1!2sCafe+Yashoda%2C+Karimnagar!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-        title="Cafe Yashoda Location Map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3791.5!2d79.1288!3d18.4386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a334abdb63cbf3b%3A0xa33a4b24f5db4a0a!2sCafe%20Yashoda!5e0!3m2!1sen!2sin!4v1700000000000"
+        title="Cafe Yashoda on Google Maps"
         loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen></iframe>
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     CONTACT
-============================================================ -->
+<!-- ═══ CONTACT ═══ -->
 <section id="contact" aria-label="Contact Cafe Yashoda">
   <div class="contact-inner">
     <h2>Get in Touch</h2>
     <div class="contact-grid">
-      <a href="tel:+919966818131" class="contact-card" aria-label="Call Cafe Yashoda">
+      <a href="tel:+919966818131" class="contact-card">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-        Call Us
-        <span>099668 18131</span>
+        Call Us <span>099668 18131</span>
       </a>
-      <a href="https://wa.me/919966818131?text=Hi%20Cafe%20Yashoda%2C%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener" class="contact-card" aria-label="WhatsApp Cafe Yashoda">
+      <a href="https://wa.me/919966818131?text=Hi%20Cafe%20Yashoda%2C%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener" class="contact-card">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-        <span>Message us</span>
+        WhatsApp <span>Message us</span>
       </a>
-      <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" class="contact-card" aria-label="Cafe Yashoda on Instagram">
+      <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener" class="contact-card">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        Instagram
-        <span>@cafeyashoda</span>
+        Instagram <span>@cafeyashoda</span>
       </a>
-      <a href="https://qrmenu.com/menus/cafe-yashoda/?menu=1" target="_blank" rel="noopener" class="contact-card" aria-label="Full digital menu">
+      <a href="https://qrmenu.com/menus/cafe-yashoda/?menu=1" target="_blank" rel="noopener" class="contact-card">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
-        Full Menu
-        <span>Digital QR menu</span>
+        Full Menu <span>Digital QR menu</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     FOOTER
-============================================================ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
-  <p>© 2025 Cafe Yashoda, Karimnagar, Telangana — <a href="tel:+919966818131">099668 18131</a></p>
+  <div class="footer-inner">
+    <span class="footer-brand-cafe">Cafe</span>
+    <span class="footer-brand-yashoda">YASHODA</span>
+    <p class="footer-tagline">Good Food • Brighter Days</p>
+    <p class="footer-tagline" style="margin-top:-8px;margin-bottom:14px;">Karimnagar, Telangana</p>
+    <div class="footer-links">
+      <a href="tel:+919966818131">📞 099668 18131</a>
+      <a href="https://wa.me/919966818131" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/cafeyashoda/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://qrmenu.com/menus/cafe-yashoda/?menu=1" target="_blank" rel="noopener">QR Menu</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener">Directions</a>
+    </div>
+    <p class="footer-copy">© 2025 Cafe Yashoda, Karimnagar</p>
+  </div>
 </footer>
 
-<!-- ============================================================
-     MOBILE BOTTOM BAR
-============================================================ -->
-<nav id="mobile-bottom-bar" aria-label="Quick contact">
-  <a href="tel:+919966818131" aria-label="Call">
+<!-- ═══ MOBILE BOTTOM BAR ═══ -->
+<nav id="mobile-bar" aria-label="Quick actions">
+  <a href="tel:+919966818131">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
     Call
   </a>
-  <a href="https://wa.me/919966818131" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <a href="https://wa.me/919966818131" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     WhatsApp
   </a>
-  <a href="#menu" aria-label="View Menu">
+  <a href="#menu">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
     Menu
   </a>
-  <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener" aria-label="Directions">
+  <a href="https://www.google.com/maps/dir/?api=1&destination=3-1-546,+near+KEA+Hospital,+Vavilalapally,+Karimnagar,+Telangana+505001" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.71 11.29l-9-9a1 1 0 00-1.41 0l-9 9a1 1 0 000 1.41l9 9a1 1 0 001.41 0l9-9a1 1 0 000-1.41zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
     Directions
   </a>
 </nav>
 
-<!-- ============================================================
-     JAVASCRIPT
-============================================================ -->
 <script>
 'use strict';
 
-// ===== CONFIG =====
-const CAFE_CONFIG = {
-  phone: '099668 18131',
-  phoneDial: 'tel:+919966818131',
-  whatsappUrl: 'https://wa.me/919966818131?text=Hi%20Cafe%20Yashoda%2C%20I%20would%20like%20to%20place%20an%20order.',
-  instagramUrl: 'https://www.instagram.com/cafeyashoda/',
-  qrMenuUrl: 'https://qrmenu.com/menus/cafe-yashoda/?menu=1',
-};
-
-// ===== MENU DATA =====
+/* ================================================================
+   CAFE YASHODA — COMPLETE MENU DATA (18 CATEGORIES · 118 ITEMS)
+   Single source of truth. Change a price by editing one number.
+================================================================ */
 const menuData = [
   {
     id: "tea-specials",
     category: "YASHODA TEA SPECIALS",
     shortName: "TEA",
-    leafIcon: "🍃",
+    icon: "🍃",
     items: [
       { name: "SINGLE TEA (PAPER CUP)", price: 12 },
       { name: "YASHODA TEA", price: 16 },
@@ -1315,7 +925,7 @@ const menuData = [
     id: "coffee-corner",
     category: "COFFEE CORNER",
     shortName: "COFFEE",
-    leafIcon: "☕",
+    icon: "☕",
     items: [
       { name: "BLACK COFFEE", price: 20 },
       { name: "BLACK COFFEE WITH LEMON", price: 25 },
@@ -1335,7 +945,7 @@ const menuData = [
     id: "milk",
     category: "MILK",
     shortName: "MILK",
-    leafIcon: "🥛",
+    icon: "🥛",
     items: [
       { name: "HOT MILK", price: 25 },
       { name: "HORLICKS MILK", price: 25 },
@@ -1348,7 +958,7 @@ const menuData = [
     id: "snacks",
     category: "SNACKS",
     shortName: "SNACKS",
-    leafIcon: "🥐",
+    icon: "🥐",
     items: [
       { name: "ALOO SAMOSA", price: 20 },
       { name: "SWEET CORN SAMOSA", price: 20 },
@@ -1361,7 +971,7 @@ const menuData = [
     id: "burgers",
     category: "BURGERS",
     shortName: "BURGERS",
-    leafIcon: "🍔",
+    icon: "🍔",
     items: [
       { name: "VEG BURGER", price: 99 },
       { name: "EGG BURGER", price: 109 },
@@ -1377,7 +987,7 @@ const menuData = [
     id: "sandwich",
     category: "SANDWICH",
     shortName: "SANDWICH",
-    leafIcon: "🥪",
+    icon: "🥪",
     items: [
       { name: "VEG SANDWICH", price: 109 },
       { name: "EGG SANDWICH", price: 119 },
@@ -1393,7 +1003,7 @@ const menuData = [
     id: "fries",
     category: "FRIES",
     shortName: "FRIES",
-    leafIcon: "🍟",
+    icon: "🍟",
     items: [
       { name: "FRENCH FRIES", price: 109 },
       { name: "PERI PERI FRENCH FRIES", price: 129 },
@@ -1404,7 +1014,7 @@ const menuData = [
     id: "bun-specials",
     category: "BUN SPECIALS",
     shortName: "BUNS",
-    leafIcon: "🫓",
+    icon: "🫓",
     items: [
       { name: "MASKA BUN", price: 65 },
       { name: "BASUNDI BUN", price: 69 },
@@ -1417,7 +1027,7 @@ const menuData = [
     id: "maggie",
     category: "MAGGIE",
     shortName: "MAGGIE",
-    leafIcon: "🍜",
+    icon: "🍜",
     items: [
       { name: "VEG MAGGIE", price: 40 },
       { name: "EGG MAGGIE", price: 50 },
@@ -1428,7 +1038,7 @@ const menuData = [
     id: "soups",
     category: "SOUPS",
     shortName: "SOUPS",
-    leafIcon: "🍲",
+    icon: "🍲",
     items: [
       { name: "TOMATO SOUP", price: 59 },
       { name: "SWEET CORN SOUP", price: 59 },
@@ -1439,7 +1049,7 @@ const menuData = [
     id: "milkshakes",
     category: "MILKSHAKES",
     shortName: "MILKSHAKES",
-    leafIcon: "🥤",
+    icon: "🥤",
     items: [
       { name: "BANANA SHAKE", price: 99 },
       { name: "BLACK CURRENT SHAKE", price: 99 },
@@ -1461,7 +1071,7 @@ const menuData = [
     id: "mocktails",
     category: "MOCKTAILS",
     shortName: "MOCKTAILS",
-    leafIcon: "🍹",
+    icon: "🍹",
     items: [
       { name: "BLUE LAGOON", price: 89 },
       { name: "MINT MOJITO", price: 89 },
@@ -1478,7 +1088,7 @@ const menuData = [
     id: "detox-drinks",
     category: "DETOX DRINKS",
     shortName: "DETOX",
-    leafIcon: "🌿",
+    icon: "🌿",
     items: [
       { name: "LEMON DETOX DRINK", price: 45 },
       { name: "JEERA DETOX DRINK", price: 45 },
@@ -1492,7 +1102,7 @@ const menuData = [
     id: "special-combo-mocktails",
     category: "SPECIAL COMBO MOCKTAILS",
     shortName: "COMBO",
-    leafIcon: "🍸",
+    icon: "🍸",
     items: [
       { name: "STRAWBERRY MINT MOJITO", price: 109 },
       { name: "MINT BERRY COOLER", price: 109 },
@@ -1503,7 +1113,7 @@ const menuData = [
     id: "kids-and-elders",
     category: "KIDS & ELDERS",
     shortName: "KIDS",
-    leafIcon: "🌟",
+    icon: "🌟",
     items: [
       { name: "KELLOGG'S WITH MILK", price: 89 },
       { name: "KELLOGG'S WITH HONEY", price: 99 },
@@ -1515,11 +1125,13 @@ const menuData = [
       { name: "VENNALA ICE CREAM WITH NUTELLA", price: 60 }
     ]
   },
+  /* ── ICE CREAM DELIGHTS (rendered as a unified special block) ── */
   {
     id: "classic-scoops",
     category: "CLASSIC SCOOPS",
     shortName: "SCOOPS",
-    leafIcon: "🍦",
+    icon: "🍦",
+    _iceCream: true,
     items: [
       { name: "VANILLA", price: 45 },
       { name: "CHOCOLATE", price: 50 },
@@ -1533,317 +1145,284 @@ const menuData = [
     id: "single-sundae",
     category: "SINGLE SUNDAES",
     shortName: "SINGLE SUNDAE",
-    leafIcon: "🍨",
+    icon: "🍨",
+    _iceCream: true,
     items: [
-      { name: "CHOCOLATE SUNDAE", description: "Ice cream topped with rich chocolate sauce", price: 80 },
-      { name: "STRAWBERRY SUNDAE", description: "Sweet strawberry topping with creamy scoops", price: 80 },
-      { name: "BUTTERSCOTCH SUNDAE", description: "Creamy butterscotch with caramel drizzle", price: 90 },
-      { name: "NUTTY GRITTY SUNDAE", description: "Nut-loaded sundae with crunchy textures", price: 90 },
-      { name: "CRISPY CHOCO SUNDAE", description: "Chocolate ice cream with crunchy toppings & choco drizzle", price: 90 }
+      { name: "CHOCOLATE SUNDAE",   description: "Ice cream topped with rich chocolate sauce", price: 80 },
+      { name: "STRAWBERRY SUNDAE",  description: "Sweet strawberry topping with creamy scoops", price: 80 },
+      { name: "BUTTERSCOTCH SUNDAE",description: "Creamy butterscotch with caramel drizzle", price: 90 },
+      { name: "NUTTY GRITTY SUNDAE",description: "Nut-loaded sundae with crunchy textures", price: 90 },
+      { name: "CRISPY CHOCO SUNDAE",description: "Chocolate ice cream with crunchy toppings & choco drizzle", price: 90 }
     ]
   },
   {
     id: "double-sundae",
     category: "DOUBLE SUNDAES",
     shortName: "DOUBLE SUNDAE",
-    leafIcon: "🍧",
+    icon: "🍧",
+    _iceCream: true,
     items: [
-      { name: "SHOCKING CURRANT", description: "Black currant and vanilla fusion with fruity twist", price: 110 },
-      { name: "TASTE OF HEAVEN", description: "Butterscotch and vanilla with nuts and caramel delight", price: 120 },
-      { name: "AWESOME 2 SOME", description: "Strawberry and chocolate combo with crunchy toppings", price: 120 },
-      { name: "CHOCO BANANA DOUBLE", description: "Chocolate and vanilla with banana and choco drizzle", price: 120 }
+      { name: "SHOCKING CURRANT",   description: "Black currant and vanilla fusion with fruity twist", price: 110 },
+      { name: "TASTE OF HEAVEN",    description: "Butterscotch and vanilla with nuts and caramel delight", price: 120 },
+      { name: "AWESOME 2 SOME",     description: "Strawberry and chocolate combo with crunchy toppings", price: 120 },
+      { name: "CHOCO BANANA DOUBLE",description: "Chocolate and vanilla with banana and choco drizzle", price: 120 }
     ]
   }
 ];
 
-// ===== COLUMN ASSIGNMENT =====
-// Balance categories across two columns
-const LEFT_COL_IDS = [
-  "tea-specials", "milk", "snacks", "bun-specials", "maggie",
-  "soups", "detox-drinks", "kids-and-elders"
-];
-const RIGHT_COL_IDS = [
-  "coffee-corner", "burgers", "sandwich", "fries",
-  "milkshakes", "mocktails", "special-combo-mocktails"
-];
+/* ================================================================
+   COLUMN LAYOUT (non-ice-cream cats only)
+================================================================ */
+const LEFT_IDS  = ["tea-specials","milk","snacks","bun-specials","maggie","soups","detox-drinks","kids-and-elders"];
+const RIGHT_IDS = ["coffee-corner","burgers","sandwich","fries","milkshakes","mocktails","special-combo-mocktails"];
+const IC_IDS    = ["classic-scoops","single-sundae","double-sundae"];
 
-// ===== ICE CREAM SECTION IDS =====
-const ICE_CREAM_IDS = ["classic-scoops", "single-sundae", "double-sundae"];
-
-// ===== STATE =====
+/* ================================================================
+   STATE
+================================================================ */
 let activeFilter = 'all';
-let searchQuery = '';
+let searchQuery  = '';
 
-// ===== ESCAPE HTML =====
-function esc(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+/* ================================================================
+   HELPERS
+================================================================ */
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
 }
 
-// ===== BUILD CATEGORY HTML =====
-function buildCategoryHTML(cat) {
-  let itemsHTML = '';
-  for (const item of cat.items) {
-    itemsHTML += `<div class="menu-item">
-      <div class="menu-item-row">
-        <span class="item-name">${esc(item.name)}</span>
-        <span class="item-leader" aria-hidden="true"></span>
-        <span class="item-price"><span class="rupee">₹</span>${item.price}</span>
-      </div>${item.description ? `<div class="item-description">${esc(item.description)}</div>` : ''}
-    </div>`;
-  }
-
-  return `<div class="category-block" id="cat-${esc(cat.id)}" data-id="${esc(cat.id)}">
-    <div class="cat-header">
-      <span class="cat-header-leaf" aria-hidden="true">${cat.leafIcon}</span>
-      <h3>${esc(cat.category)}</h3>
-      <span class="cat-header-leaf" aria-hidden="true">${cat.leafIcon}</span>
-      <div class="cat-header-gold-rule"></div>
-    </div>
-    ${itemsHTML}
+function itemRowHTML(item) {
+  return `<div class="menu-item">
+    <div class="item-row">
+      <span class="item-name">${esc(item.name)}</span>
+      <span class="item-dots" aria-hidden="true"></span>
+      <span class="item-price"><span class="rupee">₹</span>${item.price}</span>
+    </div>${item.description ? `<div class="item-desc">${esc(item.description)}</div>` : ''}
   </div>`;
 }
 
-// ===== BUILD ICE CREAM SECTION HTML =====
-function buildIceCreamSectionHTML(cats) {
-  // Build a special block for the ice cream section
-  let html = `<div class="category-block full-col-span" id="cat-ice-cream-delights" data-id="ice-cream-delights">
-    <div class="ice-cream-intro">
-      <div style="font-size:22px;margin-bottom:6px;" aria-hidden="true">🍦 🍨 🍧</div>
-      <div class="ice-cream-intro-title">ICE CREAM DELIGHTS</div>
-      <div class="ice-cream-intro-sub">Classic Scoops • Single Sundaes • Double Sundaes</div>
+function catBlockHTML(cat) {
+  let rows = '';
+  cat.items.forEach(item => { rows += itemRowHTML(item); });
+  return `<div class="cat-block">
+    <div class="cat-header">
+      <span class="cat-leaf" aria-hidden="true">${cat.icon}</span>
+      <h3>${esc(cat.category)}</h3>
+      <span class="cat-leaf" aria-hidden="true">${cat.icon}</span>
+      <div class="cat-gold-rule"></div>
     </div>
-    <div class="menu-columns" style="gap:0 40px;">
-      <div class="menu-col">`;
-
-  // Classic Scoops + Single Sundaes in left
-  for (const id of ["classic-scoops","single-sundae"]) {
-    const cat = cats.find(c => c.id === id);
-    if (!cat) continue;
-    html += `<div class="sub-cat-heading">${cat.leafIcon} ${esc(cat.category)}</div>`;
-    for (const item of cat.items) {
-      html += `<div class="menu-item" data-cat="${esc(cat.id)}">
-        <div class="menu-item-row">
-          <span class="item-name">${esc(item.name)}</span>
-          <span class="item-leader" aria-hidden="true"></span>
-          <span class="item-price"><span class="rupee">₹</span>${item.price}</span>
-        </div>${item.description ? `<div class="item-description">${esc(item.description)}</div>` : ''}
-      </div>`;
-    }
-  }
-
-  html += `</div><div class="menu-col">`;
-
-  // Double Sundaes in right
-  for (const id of ["double-sundae"]) {
-    const cat = cats.find(c => c.id === id);
-    if (!cat) continue;
-    html += `<div class="sub-cat-heading">${cat.leafIcon} ${esc(cat.category)}</div>`;
-    for (const item of cat.items) {
-      html += `<div class="menu-item" data-cat="${esc(cat.id)}">
-        <div class="menu-item-row">
-          <span class="item-name">${esc(item.name)}</span>
-          <span class="item-leader" aria-hidden="true"></span>
-          <span class="item-price"><span class="rupee">₹</span>${item.price}</span>
-        </div>${item.description ? `<div class="item-description">${esc(item.description)}</div>` : ''}
-      </div>`;
-    }
-  }
-
-  html += `</div></div></div>`;
-  return html;
+    ${rows}
+  </div>`;
 }
 
-// ===== RENDER CATEGORY PILLS =====
-function renderCategoryNav() {
-  const nav = document.getElementById('category-nav');
+function iceCreamHTML(cats) {
+  let leftCol  = '';
+  let rightCol = '';
+  ['classic-scoops','single-sundae'].forEach(id => {
+    const c = cats.find(x => x.id === id);
+    if (!c) return;
+    let rows = '';
+    c.items.forEach(item => { rows += itemRowHTML(item); });
+    leftCol += `<div class="ic-sub-heading">${c.icon} ${esc(c.category)}</div>${rows}`;
+  });
+  ['double-sundae'].forEach(id => {
+    const c = cats.find(x => x.id === id);
+    if (!c) return;
+    let rows = '';
+    c.items.forEach(item => { rows += itemRowHTML(item); });
+    rightCol += `<div class="ic-sub-heading">${c.icon} ${esc(c.category)}</div>${rows}`;
+  });
+  return `<div class="ice-cream-block">
+    <div class="ice-cream-header">
+      <div class="ic-icon">🍦 🍨 🍧</div>
+      <h3>ICE CREAM DELIGHTS</h3>
+      <p>Classic Scoops &bull; Single Sundaes &bull; Double Sundaes</p>
+    </div>
+    <div class="ice-cream-cols">
+      <div>${leftCol}</div>
+      <div>${rightCol}</div>
+    </div>
+  </div>`;
+}
+
+/* ================================================================
+   CATEGORY NAV
+================================================================ */
+function renderNav() {
+  const nav = document.getElementById('cat-nav');
   if (!nav) return;
-  let html = `<button class="cat-pill${activeFilter === 'all' ? ' active' : ''}" data-filter="all" role="listitem">ALL</button>`;
-  for (const cat of menuData) {
-    // Don't show ice cream sub-cats as separate pills; group under "ICE CREAM"
-    if (cat.id === 'single-sundae' || cat.id === 'double-sundae') continue;
-    if (cat.id === 'classic-scoops') {
-      html += `<button class="cat-pill${activeFilter === 'ice-cream' ? ' active' : ''}" data-filter="ice-cream" role="listitem">ICE CREAM</button>`;
-      continue;
-    }
-    html += `<button class="cat-pill${activeFilter === cat.id ? ' active' : ''}" data-filter="${esc(cat.id)}" role="listitem">${esc(cat.shortName)}</button>`;
-  }
+  let html = `<button class="cat-pill${activeFilter==='all'?' active':''}" data-f="all">ALL</button>`;
+  menuData.forEach(cat => {
+    if (cat.id === 'single-sundae' || cat.id === 'double-sundae') return;
+    const f = cat._iceCream ? 'ice-cream' : cat.id;
+    const label = cat._iceCream ? 'ICE CREAM' : cat.shortName;
+    const already = html.includes(`data-f="${f}"`);
+    if (already) return;
+    html += `<button class="cat-pill${activeFilter===f?' active':''}" data-f="${esc(f)}">${esc(label)}</button>`;
+  });
   nav.innerHTML = html;
   nav.querySelectorAll('.cat-pill').forEach(btn => {
     btn.addEventListener('click', () => {
-      activeFilter = btn.dataset.filter;
-      searchQuery = '';
+      activeFilter = btn.dataset.f;
+      searchQuery  = '';
       document.getElementById('menu-search').value = '';
+      renderNav();
       renderMenu();
-      renderCategoryNav();
     });
   });
 }
 
-// ===== RENDER MENU =====
+/* ================================================================
+   MENU RENDER — FIXED, NO STALE STATE
+================================================================ */
 function renderMenu() {
-  const colLeft = document.getElementById('menu-col-left');
-  const colRight = document.getElementById('menu-col-right');
+  const colLeft   = document.getElementById('col-left');
+  const colRight  = document.getElementById('col-right');
+  const icSection = document.getElementById('ice-cream-section');
   const noResults = document.getElementById('no-results');
-  const notice = document.getElementById('search-notice');
-  const columnsEl = document.getElementById('menu-columns');
+  const notice    = document.getElementById('search-notice');
+  const columns   = document.getElementById('menu-columns');
   if (!colLeft || !colRight) return;
 
-  const q = searchQuery.toLowerCase().trim();
+  const q        = searchQuery.toLowerCase().trim();
   const isSearch = q.length > 0;
   const isFilter = activeFilter !== 'all';
-
-  // Ice cream group filter
   const isIceCreamFilter = activeFilter === 'ice-cream';
 
-  // Determine which cats to show
-  let visibleCats = menuData.filter(cat => {
-    if (isIceCreamFilter) return ICE_CREAM_IDS.includes(cat.id);
-    if (isFilter) return cat.id === activeFilter;
+  /* ── 1. Determine visible cats ── */
+  let visible = menuData.filter(cat => {
+    if (isIceCreamFilter) return IC_IDS.includes(cat.id);
+    if (isFilter)         return cat.id === activeFilter;
     return true;
   });
 
-  // Apply search
-  let matchedCats = [];
+  /* ── 2. Apply search ── */
+  let matched = [];
   if (isSearch) {
-    for (const cat of visibleCats) {
-      const catNameMatch = cat.category.toLowerCase().includes(q) || cat.shortName.toLowerCase().includes(q);
-      const matchedItems = cat.items.filter(item =>
-        item.name.toLowerCase().includes(q) ||
-        (item.description && item.description.toLowerCase().includes(q)) ||
-        catNameMatch
+    visible.forEach(cat => {
+      const catMatch = cat.category.toLowerCase().includes(q) || cat.shortName.toLowerCase().includes(q);
+      const items = cat.items.filter(it =>
+        it.name.toLowerCase().includes(q) ||
+        (it.description && it.description.toLowerCase().includes(q)) ||
+        catMatch
       );
-      if (matchedItems.length > 0) {
-        matchedCats.push({ ...cat, items: catNameMatch ? cat.items : matchedItems });
-      }
-    }
+      if (items.length) matched.push({ ...cat, items: catMatch ? cat.items : items });
+    });
   } else {
-    matchedCats = visibleCats;
+    matched = visible;
   }
 
-  // Update notice
+  /* ── 3. Search notice ── */
   if (isSearch) {
-    const total = matchedCats.reduce((s, c) => s + c.items.length, 0);
+    const total = matched.reduce((s,c) => s + c.items.length, 0);
     notice.style.display = 'block';
     notice.textContent = total > 0
-      ? `Showing ${total} item${total !== 1 ? 's' : ''} for "${q}"`
+      ? `Showing ${total} item${total !== 1 ? 's' : ''} matching "${q}"`
       : '';
   } else {
     notice.style.display = 'none';
+    notice.textContent   = '';
   }
 
-  if (matchedCats.length === 0) {
-    colLeft.innerHTML = '';
-    colRight.innerHTML = '';
+  /* ── 4. No results ── */
+  if (matched.length === 0) {
+    colLeft.innerHTML   = '';
+    colRight.innerHTML  = '';
+    icSection.innerHTML = '';
+    columns.classList.add('single-col');
     noResults.style.display = 'block';
     return;
   }
   noResults.style.display = 'none';
 
-  // Single filter or search — show as single column
-  const isSingleColMode = isSearch || (isFilter && !isIceCreamFilter);
-
-  if (isSingleColMode) {
-    columnsEl.classList.add('single-col');
+  /* ── 5. Single-column mode (search or single-cat filter) ── */
+  if (isSearch || (isFilter && !isIceCreamFilter)) {
+    columns.classList.add('single-col');
+    /* For ice cream cats found via search, render them inline */
     let html = '';
-    for (const cat of matchedCats) {
-      html += buildCategoryHTML(cat);
-    }
-    colLeft.innerHTML = html;
-    colRight.innerHTML = '';
+    const nonIc = matched.filter(c => !IC_IDS.includes(c.id));
+    const ic    = matched.filter(c =>  IC_IDS.includes(c.id));
+    nonIc.forEach(c => { html += catBlockHTML(c); });
+    colLeft.innerHTML   = html;
+    colRight.innerHTML  = '';
+    icSection.innerHTML = ic.length ? iceCreamHTML(ic) : '';
     return;
   }
 
-  // Full two-column view
-  columnsEl.classList.remove('single-col');
-
-  // Ice cream section special layout
+  /* ── 6. Ice cream filter ── */
   if (isIceCreamFilter) {
-    const iceCreamHTML = buildIceCreamSectionHTML(matchedCats);
-    colLeft.innerHTML = iceCreamHTML;
-    colLeft.style.gridColumn = '1 / -1';
-    colRight.innerHTML = '';
-    colRight.style.display = 'none';
-    columnsEl.classList.add('single-col');
+    columns.classList.add('single-col');
+    colLeft.innerHTML   = '';
+    colRight.innerHTML  = '';
+    icSection.innerHTML = iceCreamHTML(matched);
     return;
   }
 
-  // Reset column styles for normal two-col
-  colLeft.style.gridColumn = '';
-  colRight.style.display = '';
+  /* ── 7. Full two-column view (ALL filter, no search) ── */
+  columns.classList.remove('single-col');
+  const nonIc = matched.filter(c => !IC_IDS.includes(c.id));
+  const ic    = matched.filter(c =>  IC_IDS.includes(c.id));
 
-  // Build ice cream section separately and place in columns
-  const nonIceCreamCats = matchedCats.filter(c => !ICE_CREAM_IDS.includes(c.id));
-  const iceCreamCats = matchedCats.filter(c => ICE_CREAM_IDS.includes(c.id));
-
-  // Assign non-ice-cream cats to columns
-  let leftHTML = '';
-  let rightHTML = '';
-
-  for (const cat of nonIceCreamCats) {
-    if (LEFT_COL_IDS.includes(cat.id)) {
-      leftHTML += buildCategoryHTML(cat);
-    } else {
-      rightHTML += buildCategoryHTML(cat);
-    }
-  }
-
-  colLeft.innerHTML = leftHTML;
-  colRight.innerHTML = rightHTML;
-
-  // Append ice cream section as full-span after columns
-  let iceCreamSection = document.getElementById('ice-cream-full-section');
-  if (iceCreamSection) iceCreamSection.remove();
-
-  if (iceCreamCats.length > 0) {
-    const wrapper = document.createElement('div');
-    wrapper.id = 'ice-cream-full-section';
-    wrapper.style.cssText = 'margin-top:32px;';
-
-    // Section divider
-    wrapper.innerHTML = `<div class="menu-section-divider full-col-span">
-      <div class="div-line"></div>
-      <div class="div-ornament">✦ ✦ ✦</div>
-      <div class="div-line"></div>
-    </div>` + buildIceCreamSectionHTML(iceCreamCats);
-
-    // Insert after the columns grid
-    columnsEl.parentNode.insertBefore(wrapper, columnsEl.nextSibling);
-  }
+  let leftHTML = '', rightHTML = '';
+  nonIc.forEach(cat => {
+    if (LEFT_IDS.includes(cat.id))       leftHTML  += catBlockHTML(cat);
+    else if (RIGHT_IDS.includes(cat.id)) rightHTML += catBlockHTML(cat);
+    else                                 rightHTML += catBlockHTML(cat); /* fallback */
+  });
+  colLeft.innerHTML   = leftHTML;
+  colRight.innerHTML  = rightHTML;
+  icSection.innerHTML = ic.length ? `<div class="section-divider">
+    <div class="dl"></div><div class="do">✦ ✦ ✦</div><div class="dl"></div>
+  </div>${iceCreamHTML(ic)}` : '';
 }
 
-// ===== SEARCH HANDLER =====
+/* ================================================================
+   SEARCH INPUT
+================================================================ */
 document.getElementById('menu-search').addEventListener('input', function() {
-  searchQuery = this.value;
+  searchQuery  = this.value;
   activeFilter = 'all';
-  renderCategoryNav();
+  renderNav();
   renderMenu();
 });
 
-// ===== HEADER SCROLL =====
+/* ================================================================
+   HEADER SCROLL
+================================================================ */
 window.addEventListener('scroll', () => {
-  const header = document.getElementById('site-header');
-  if (header) header.classList.toggle('scrolled', window.scrollY > 20);
+  document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
-// ===== MOBILE MENU TOGGLE =====
-document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-  const nav = document.getElementById('mobile-nav');
-  const expanded = this.getAttribute('aria-expanded') === 'true';
-  this.setAttribute('aria-expanded', String(!expanded));
-  nav.style.display = expanded ? 'none' : 'block';
+/* ================================================================
+   MOBILE MENU TOGGLE
+================================================================ */
+document.getElementById('mob-toggle').addEventListener('click', function() {
+  const open = this.getAttribute('aria-expanded') === 'true';
+  this.setAttribute('aria-expanded', String(!open));
+  document.getElementById('mobile-nav').style.display = open ? 'none' : 'block';
 });
-
-// Close mobile nav on link click
-document.querySelectorAll('.mobile-nav-link').forEach(link => {
-  link.addEventListener('click', () => {
+document.querySelectorAll('.mnl').forEach(l => {
+  l.addEventListener('click', () => {
     document.getElementById('mobile-nav').style.display = 'none';
-    document.getElementById('mobile-menu-toggle').setAttribute('aria-expanded', 'false');
+    document.getElementById('mob-toggle').setAttribute('aria-expanded','false');
   });
 });
 
-// ===== INIT =====
-renderCategoryNav();
-renderMenu();
+/* ================================================================
+   INIT — render on DOMContentLoaded for safety
+================================================================ */
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    renderNav();
+    renderMenu();
+  });
+} else {
+  renderNav();
+  renderMenu();
+}
 
 </script>
 </body>
