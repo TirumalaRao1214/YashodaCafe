@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="100%" height="auto">
+  <!-- "Cafe" with gold underline -->
+  <text x="75" y="65" font-family="'Playfair Display', 'Georgia', serif" font-weight="700" font-size="52" fill="#075734">Cafe</text>
+  <path d="M72 82 Q120 72 165 80" stroke="#D2A51A" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+
+  <!-- Botanical leaf on top of 'A' -->
+  <g transform="translate(420, 48) rotate(-15)">
+    <path d="M0 25 C-5 15 2 4 14 0 C16 12 10 22 0 25 Z" fill="#075734"/>
+    <path d="M12 20 C8 12 14 3 24 1 C25 10 20 18 12 20 Z" fill="#075734"/>
+    <path d="M-2 28 Q8 18 16 2" stroke="#D2A51A" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- "YASHODA" in massive bold condensed display -->
+  <text x="250" y="165" font-family="'League Spartan', 'Bebas Neue', 'Oswald', sans-serif" font-weight="900" font-size="108" letter-spacing="4" fill="#075734" text-anchor="middle">YASHODA</text>
+
+  <!-- Gold Smile / Swoosh curve with right arrow -->
+  <path d="M210 190 Q270 220 330 192" stroke="#D2A51A" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+  <path d="M324 186 L338 190 L330 204" stroke="#D2A51A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

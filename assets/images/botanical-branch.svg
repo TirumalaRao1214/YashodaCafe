@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 800" width="100%" height="100%">
+  <!-- Vertical botanical leafy branch -->
+  <g stroke="#C69E2E" stroke-width="1.6" fill="none" opacity="0.65">
+    <path d="M120 20 Q100 200 115 400 T110 780" />
+    
+    <!-- Leaves Left & Right along branch -->
+    <!-- Node 1 -->
+    <path d="M118 60 C80 50 65 25 70 15 C85 20 105 40 118 60 Z" fill="#E8D8A0" fill-opacity="0.25"/>
+    <path d="M118 60 Q90 35 70 15"/>
+    
+    <!-- Node 2 -->
+    <path d="M110 140 C145 130 160 100 150 90 C135 100 120 120 110 140 Z" fill="#E8D8A0" fill-opacity="0.25"/>
+    <path d="M110 140 Q135 110 150 90"/>
+
+    <!-- Node 3 -->
+    <path d="M108 220 C60 210 40 180 50 170 C65 180 90 200 108 220 Z" fill="#E8D8A0" fill-opacity="0.25"/>
+    <path d="M108 220 Q75 190 50 170"/>
+
+    <!-- Node 4 -->
+    <path d="M112 300 C150 290 165 260 155 250 C140 260 125 280 112 300 Z" fill="#E8D8A0" fill-opacity="0.25"/>
+    <path d="M112 300 Q140 270 155 250"/>
+
+    <!-- Node 5 -->
+    <path d="M115 390 C65 380 45 350 55 340 C70 350 95 370 115 390 Z" fill="#E8D8A0" fill-opacity="0.25"/>
+    <path d="M115 390 Q80 360 55 340"/>
+
+    <!-- Node 6 -->
+    <path d="M114 480 C155 470 168 440 158 430 C142 440 126 460 114 480 Z" fill="#E8D8A0" fill-opacity="0.25"/>
+    <path d="M114 480 Q142 450 158 430"/>
+
+    <!-- Node 7 -->
+    <path d="M112 570 C62 560 42 530 52 520 C68 530 92 550 112 570 Z" fill="#E8D8A0" fill-opacity="0.25"/>
+    <path d="M112 570 Q78 540 52 520"/>
+
+    <!-- Node 8 -->
+    <path d="M110 660 C150 650 165 620 155 610 C140 620 125 640 110 660 Z" fill="#E8D8A0" fill-opacity="0.25"/>
+    <path d="M110 660 Q138 630 155 610"/>
+
+    <!-- Node 9 -->
+    <path d="M110 740 C65 730 45 700 55 690 C70 700 95 720 110 740 Z" fill="#E8D8A0" fill-opacity="0.25"/>
+    <path d="M110 740 Q80 710 55 690"/>
+  </g>
+</svg>
