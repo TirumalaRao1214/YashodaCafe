@@ -1298,13 +1298,17 @@ const menuData = [
     shortName: "TEA",
     leafIcon: "🍃",
     items: [
-      { name: "SINGLE TEA PAPER", price: 12 },
+      { name: "SINGLE TEA (PAPER CUP)", price: 12 },
       { name: "YASHODA TEA", price: 16 },
       { name: "GINGER TEA", price: 20 },
       { name: "ELAICHI TEA", price: 20 },
       { name: "LEMON TEA", price: 20 },
+      { name: "BLACK TEA", price: 20 },
+      { name: "BLACK TEA WITH HONEY", price: 25 },
+      { name: "BLACK TEA WITH LEMON HONEY", price: 30 },
+      { name: "SPECIAL TEA", price: 49 },
       { name: "GREEN TEA", price: 20 },
-      { name: "BLACK TEA", price: 20 }
+      { name: "ORGANIC GREEN TEA", price: 25 }
     ]
   },
   {
@@ -1313,13 +1317,18 @@ const menuData = [
     shortName: "COFFEE",
     leafIcon: "☕",
     items: [
-      { name: "COFFEE", price: 20 },
       { name: "BLACK COFFEE", price: 20 },
+      { name: "BLACK COFFEE WITH LEMON", price: 25 },
+      { name: "STRONG COFFEE", price: 25 },
       { name: "BLACK COFFEE WITH HONEY", price: 25 },
+      { name: "BLACK COFFEE WITH LEMON HONEY", price: 30 },
       { name: "DOUBLE STRONG COFFEE", price: 30 },
-      { name: "CHOCOLATE COFFEE", price: 30 },
-      { name: "GHEE BULLETPROOF COFFEE", price: 45 },
-      { name: "COLD COFFEE", price: 89 }
+      { name: "CHOCOLATE COFFEE", price: 35 },
+      { name: "BLACK COFFEE WITH GHEE", price: 40 },
+      { name: "GHEE BULLETPROOF COFFEE", price: 49 },
+      { name: "BLACK ICED COFFEE", price: 89 },
+      { name: "COLD ICED COFFEE", price: 160 },
+      { name: "BASIC CAPPUCCINO", price: 99 }
     ]
   },
   {
@@ -1328,12 +1337,11 @@ const menuData = [
     shortName: "MILK",
     leafIcon: "🥛",
     items: [
-      { name: "HOT MILK", price: 20 },
-      { name: "HORLICKS", price: 25 },
-      { name: "BOOST", price: 25 },
-      { name: "HOT CHOCOLATE", price: 35 },
+      { name: "HOT MILK", price: 25 },
+      { name: "HORLICKS MILK", price: 25 },
+      { name: "BOOST MILK", price: 25 },
       { name: "BADAM MILK", price: 35 },
-      { name: "ROSE MILK", price: 50 }
+      { name: "HOT CHOCOLATE", price: 35 }
     ]
   },
   {
@@ -1342,42 +1350,11 @@ const menuData = [
     shortName: "SNACKS",
     leafIcon: "🥐",
     items: [
-      { name: "DIL PASAND", price: 20 },
       { name: "ALOO SAMOSA", price: 20 },
-      { name: "CORN SAMOSA", price: 23 },
+      { name: "SWEET CORN SAMOSA", price: 20 },
       { name: "PANEER PUFF", price: 25 },
       { name: "EGG PUFF", price: 25 },
-      { name: "CHICKEN PUFF", price: 25 },
-      { name: "MAGGIE", price: 40 },
-      { name: "EGG MAGGIE", price: 55 }
-    ]
-  },
-  {
-    id: "bun-specials",
-    category: "BUN SPECIALS",
-    shortName: "BUNS",
-    leafIcon: "🫓",
-    items: [
-      { name: "MASKA BUN", price: 60 },
-      { name: "BUN BASUNDI", price: 65 },
-      { name: "CHOCOLATE CREAM BUN", price: 50 },
-      { name: "OREO BUN DELIGHT", price: 59 },
-      { name: "CHOCO CRUNCH BUN", price: 59 },
-      { name: "HIDE & SEEK BUN BLAST", price: 59 }
-    ]
-  },
-  {
-    id: "sandwich",
-    category: "SANDWICH",
-    shortName: "SANDWICH",
-    leafIcon: "🥪",
-    items: [
-      { name: "VEG SANDWICH", price: 89 },
-      { name: "CHOCOLATE SANDWICH", price: 89 },
-      { name: "CORN CHEESE SANDWICH", price: 119 },
-      { name: "CHICKEN SANDWICH", price: 119 },
-      { name: "GARLIC SANDWICH", price: 79 },
-      { name: "CHEESE GARLIC SANDWICH", price: 109 }
+      { name: "CHICKEN PUFF", price: 25 }
     ]
   },
   {
@@ -1386,12 +1363,30 @@ const menuData = [
     shortName: "BURGERS",
     leafIcon: "🍔",
     items: [
-      { name: "VEG BURGER", price: 79 },
-      { name: "EGG BURGER", price: 89 },
-      { name: "ALOO TIKKI BURGER", price: 89 },
-      { name: "VEG CHEESE BURGER", price: 89 },
-      { name: "CHICKEN BURGER", price: 99 },
-      { name: "CHICKEN CHEESE BURGER", price: 109 }
+      { name: "VEG BURGER", price: 99 },
+      { name: "EGG BURGER", price: 109 },
+      { name: "ALOO TIKKI BURGER", price: 119 },
+      { name: "VEG CHEESE BURGER", price: 129 },
+      { name: "CHICKEN BURGER", price: 129 },
+      { name: "CHICKEN CHEESE BURGER", price: 149 },
+      { name: "CHICKEN GARLIC BURGER", price: 149 },
+      { name: "CHICKEN CHEESE GARLIC BURGER", price: 159 }
+    ]
+  },
+  {
+    id: "sandwich",
+    category: "SANDWICH",
+    shortName: "SANDWICH",
+    leafIcon: "🥪",
+    items: [
+      { name: "VEG SANDWICH", price: 109 },
+      { name: "EGG SANDWICH", price: 119 },
+      { name: "VEG CHEESE SANDWICH", price: 129 },
+      { name: "VEG GARLIC SANDWICH", price: 139 },
+      { name: "CHICKEN SANDWICH", price: 149 },
+      { name: "CHICKEN CHEESE SANDWICH", price: 159 },
+      { name: "CHICKEN GARLIC SANDWICH", price: 179 },
+      { name: "CHICKEN CHEESE GARLIC SANDWICH", price: 189 }
     ]
   },
   {
@@ -1400,112 +1395,44 @@ const menuData = [
     shortName: "FRIES",
     leafIcon: "🍟",
     items: [
-      { name: "FRENCH FRIES", price: 89 },
-      { name: "PERI PERI FRENCH FRIES", price: 99 }
+      { name: "FRENCH FRIES", price: 109 },
+      { name: "PERI PERI FRENCH FRIES", price: 129 },
+      { name: "POTATO GARLIC POPS", price: 129 }
     ]
   },
   {
-    id: "chocolate-heaven",
-    category: "CHOCOLATE HEAVEN",
-    shortName: "CHOCOLATE",
-    leafIcon: "🍫",
+    id: "bun-specials",
+    category: "BUN SPECIALS",
+    shortName: "BUNS",
+    leafIcon: "🫓",
     items: [
-      { name: "CHOCOLATE CREAM CUP", price: 50 },
-      { name: "CHOCOLATE LAVA CAKE", price: 50 },
-      { name: "OREO CHOCOLATE CUP", price: 60 },
-      { name: "CHOCOLATE FRUIT BOWL", price: 70 }
+      { name: "MASKA BUN", price: 65 },
+      { name: "BASUNDI BUN", price: 69 },
+      { name: "OREO BUN DELIGHT", price: 69 },
+      { name: "CHOCO CRUNCH BUN", price: 69 },
+      { name: "HIDE AND SEEK BUN BLAST", price: 69 }
     ]
   },
   {
-    id: "healthy-juice-corner",
-    category: "HEALTHY JUICE CORNER",
-    shortName: "JUICES",
-    leafIcon: "🥤",
+    id: "maggie",
+    category: "MAGGIE",
+    shortName: "MAGGIE",
+    leafIcon: "🍜",
     items: [
-      { name: "MINT WATER", price: 20 },
-      { name: "RAGI JAVA", price: 20 },
-      { name: "MILLETS JAVA", price: 35 },
-      { name: "ASHGOURD JUICE", price: 40 },
-      { name: "BOTTLEGOURD JUICE", price: 40 },
-      { name: "BEETROOT JUICE", price: 40 },
-      { name: "BITTERGOURD JUICE", price: 40 },
-      { name: "CARROT JUICE", price: 40 },
-      { name: "CARROT BEETROOT JUICE", price: 50 },
-      { name: "CORIANDER MINT TULASI JUICE", price: 50 },
-      { name: "WATERMELON", price: 50 },
-      { name: "MUSKMELON JUICE", price: 60 },
-      { name: "PINEAPPLE JUICE", price: 60 },
-      { name: "ABC JUICE", price: 89 },
-      { name: "SPINACH GREEN APPLE JUICE", price: 89 }
+      { name: "VEG MAGGIE", price: 40 },
+      { name: "EGG MAGGIE", price: 50 },
+      { name: "CHICKEN MAGGIE", price: 65 }
     ]
   },
   {
-    id: "detox-drinks",
-    category: "DETOX DRINKS",
-    shortName: "DETOX",
-    leafIcon: "🌿",
+    id: "soups",
+    category: "SOUPS",
+    shortName: "SOUPS",
+    leafIcon: "🍲",
     items: [
-      { name: "LEMON DETOX DRINK", price: 35 },
-      { name: "JEERA DETOX DRINK", price: 35 },
-      { name: "GREEN DETOX DRINK", price: 35 },
-      { name: "GINGER LEMON DETOX DRINK", price: 35 },
-      { name: "CUCUMBER COOLER", price: 35 },
-      { name: "MINT DETOX DRINK", price: 35 }
-    ]
-  },
-  {
-    id: "refreshing-traditionals",
-    category: "REFRESHING TRADITIONALS",
-    shortName: "LASSI",
-    leafIcon: "🍶",
-    items: [
-      { name: "BUTTERMILK", price: 20 },
-      { name: "MASALA BUTTERMILK", price: 25 },
-      { name: "CUCUMBER BUTTERMILK", price: 35 },
-      { name: "SWEET LASSI", price: 40 },
-      { name: "SALT LASSI", price: 40 },
-      { name: "ROSE LASSI", price: 50 },
-      { name: "MANGO LASSI", price: 50 },
-      { name: "STRAWBERRY LASSI", price: 50 },
-      { name: "EXTRA VANILLA ICE CREAM SCOOP", price: 10 }
-    ]
-  },
-  {
-    id: "seasonal-juices",
-    category: "SEASONAL JUICES",
-    shortName: "SEASONAL",
-    leafIcon: "🍊",
-    items: [
-      { name: "WATERMELON", price: 50 },
-      { name: "MANGO", price: 60 },
-      { name: "MUSKMELON", price: 60 },
-      { name: "PINEAPPLE", price: 60 },
-      { name: "MANGO LASSI", price: 55 },
-      { name: "STRAWBERRY LASSI", price: 55 },
-      { name: "LASSI", price: 40 },
-      { name: "LASSI WITH VANILLA SCOOP", price: 50 },
-      { name: "BUTTERMILK", price: 20 },
-      { name: "BUTTERMILK FULL", price: 30 },
-      { name: "LEMON JUICE", price: 30 }
-    ]
-  },
-  {
-    id: "cold-press-juices",
-    category: "COLD PRESS JUICES",
-    shortName: "COLD PRESS",
-    leafIcon: "🧃",
-    items: [
-      { name: "ABC JUICE", price: 89 },
-      { name: "BCC JUICE", price: 80 },
-      { name: "BC JUICE", price: 55 },
-      { name: "BEETROOT JUICE", price: 50 },
-      { name: "BITTERGOURD JUICE", price: 40 },
-      { name: "BOTTLEGOURD JUICE", price: 40 },
-      { name: "CARROT JUICE", price: 45 },
-      { name: "KEERA COOLER", price: 40 },
-      { name: "MUSKMELON JUICE", price: 65 },
-      { name: "PINEAPPLE JUICE", price: 70 },
-      { name: "WATERMELON JUICE", price: 55 }
+      { name: "TOMATO SOUP", price: 59 },
+      { name: "SWEET CORN SOUP", price: 59 },
+      { name: "GARLIC SOUP", price: 59 }
     ]
   },
   {
@@ -1514,17 +1441,19 @@ const menuData = [
     shortName: "MILKSHAKES",
     leafIcon: "🥤",
     items: [
-      { name: "STRAWBERRY SHAKE", price: 89 },
-      { name: "BLACK CURRANT SHAKE", price: 89 },
-      { name: "BUTTERSCOTCH SHAKE", price: 89 },
-      { name: "MANGO SHAKE", price: 89 },
-      { name: "SPL. ROSE SHAKE", price: 89 },
-      { name: "VANILLA SHAKE", price: 89 },
-      { name: "BLUE CHOCO SHAKE", price: 99 },
-      { name: "CHOCOLATE BANANA SHAKE", price: 99 },
-      { name: "HIDE & SEEK CRUSH SHAKE", price: 99 },
-      { name: "KITKAT SHAKE", price: 99 },
-      { name: "OREO SHAKE", price: 99 },
+      { name: "BANANA SHAKE", price: 99 },
+      { name: "BLACK CURRENT SHAKE", price: 99 },
+      { name: "BUTTERSCOTCH SHAKE", price: 99 },
+      { name: "MANGO SHAKE", price: 99 },
+      { name: "SPL. ROSE SHAKE", price: 99 },
+      { name: "STRAWBERRY SHAKE", price: 99 },
+      { name: "VANILA SHAKE", price: 99 },
+      { name: "BLUE CHOCO SHAKE", price: 109 },
+      { name: "CHOCOLATE BANANA SHAKE", price: 109 },
+      { name: "HIDE&SEEK CRUSH SHAKE", price: 109 },
+      { name: "KITKAT SHAKE", price: 109 },
+      { name: "OREO SHAKE", price: 109 },
+      { name: "STRAWBERRY OREO MILKSHAKE", price: 119 },
       { name: "DRY FRUIT SHAKE", price: 149 }
     ]
   },
@@ -1534,14 +1463,29 @@ const menuData = [
     shortName: "MOCKTAILS",
     leafIcon: "🍹",
     items: [
-      { name: "BLUE LAGOON", price: 79 },
-      { name: "BLUE LAGOON FLOAT", price: 89 },
-      { name: "MINT MOJITO", price: 79 },
-      { name: "MINT ICED TEA", price: 79 },
-      { name: "GALAXY LEMONADE", price: 89 },
-      { name: "STRAWBERRY MOJITO", price: 89 },
-      { name: "STRAWBERRY SODA", price: 79 },
-      { name: "STRAWBERRY LEMONADE", price: 89 }
+      { name: "BLUE LAGOON", price: 89 },
+      { name: "MINT MOJITO", price: 89 },
+      { name: "MINT ICED TEA", price: 89 },
+      { name: "STRAWBERRY SODA", price: 89 },
+      { name: "BLUE LAGOON FLOAT", price: 99 },
+      { name: "GALAXY LEMONADE", price: 99 },
+      { name: "STRAWBERRY MOJITO", price: 99 },
+      { name: "STRAWBERRY LEMONADE", price: 99 },
+      { name: "POMEGRANATE MOJITO", price: 109 }
+    ]
+  },
+  {
+    id: "detox-drinks",
+    category: "DETOX DRINKS",
+    shortName: "DETOX",
+    leafIcon: "🌿",
+    items: [
+      { name: "LEMON DETOX DRINK", price: 45 },
+      { name: "JEERA DETOX DRINK", price: 45 },
+      { name: "GREEN DETOX DRINK", price: 45 },
+      { name: "GINGER LEMON DRINK", price: 45 },
+      { name: "CUCUMBER COOLER", price: 45 },
+      { name: "MINT DETOX DRINK", price: 45 }
     ]
   },
   {
@@ -1550,55 +1494,25 @@ const menuData = [
     shortName: "COMBO",
     leafIcon: "🍸",
     items: [
-      { name: "STRAWBERRY MINT MOJITO", price: 99 },
-      { name: "MINT BERRY COOLER", price: 99 },
-      { name: "RED GREEN FIZZ", price: 99 }
+      { name: "STRAWBERRY MINT MOJITO", price: 109 },
+      { name: "MINT BERRY COOLER", price: 109 },
+      { name: "RED GREEN FIZZ", price: 109 }
     ]
   },
   {
-    id: "millets-food",
-    category: "MILLETS FOOD",
-    shortName: "MILLETS",
-    leafIcon: "🌾",
+    id: "kids-and-elders",
+    category: "KIDS & ELDERS",
+    shortName: "KIDS",
+    leafIcon: "🌟",
     items: [
-      { name: "JONNA GATKA", price: 40 },
-      { name: "KORRA PONGAL", price: 49 },
-      { name: "MILLET JAVA", price: 40 },
-      { name: "RAGI JAVA", price: 20 }
-    ]
-  },
-  {
-    id: "fruit-bowls",
-    category: "FRUIT BOWLS",
-    shortName: "FRUIT BOWLS",
-    leafIcon: "🥣",
-    items: [
-      { name: "CHOCOLATE BOWL", price: 59 },
-      { name: "FRUIT BOWL", price: 59 },
-      { name: "FRUIT MUESLI BOWL", price: 79 }
-    ]
-  },
-  {
-    id: "salads",
-    category: "SALADS",
-    shortName: "SALADS",
-    leafIcon: "🥗",
-    items: [
-      { name: "VEGETABLE SALAD", price: 59 },
-      { name: "VEGETABLE SALAD WITH CURD", price: 69 },
-      { name: "VEGETABLE SALAD WITH MASALA", price: 69 },
-      { name: "VEGETABLE SALAD WITH MASALA ADDED CURD", price: 79 }
-    ]
-  },
-  {
-    id: "soups",
-    category: "SOUPS",
-    shortName: "SOUPS",
-    leafIcon: "🍲",
-    items: [
-      { name: "HOT & SOUR SOUP", price: 59 },
-      { name: "TOMATO CHATPATA SOUP", price: 59 },
-      { name: "SWEET CORN SOUP", price: 69 }
+      { name: "KELLOGG'S WITH MILK", price: 89 },
+      { name: "KELLOGG'S WITH HONEY", price: 99 },
+      { name: "NUTELLA MILK", price: 55 },
+      { name: "NUTELLA BREAD", price: 89 },
+      { name: "NUTELLA BUN BLAST", price: 99 },
+      { name: "NUTELLA GRILLED SANDWICH", price: 129 },
+      { name: "NUTELLA MILKSHAKE", price: 149 },
+      { name: "VENNALA ICE CREAM WITH NUTELLA", price: 60 }
     ]
   },
   {
@@ -1617,7 +1531,7 @@ const menuData = [
   },
   {
     id: "single-sundae",
-    category: "SINGLE SUNDAE",
+    category: "SINGLE SUNDAES",
     shortName: "SINGLE SUNDAE",
     leafIcon: "🍨",
     items: [
@@ -1630,7 +1544,7 @@ const menuData = [
   },
   {
     id: "double-sundae",
-    category: "DOUBLE SUNDAE",
+    category: "DOUBLE SUNDAES",
     shortName: "DOUBLE SUNDAE",
     leafIcon: "🍧",
     items: [
@@ -1645,14 +1559,12 @@ const menuData = [
 // ===== COLUMN ASSIGNMENT =====
 // Balance categories across two columns
 const LEFT_COL_IDS = [
-  "tea-specials", "milk", "bun-specials", "chocolate-heaven",
-  "healthy-juice-corner", "detox-drinks", "seasonal-juices",
-  "millets-food", "fruit-bowls", "soups", "classic-scoops", "single-sundae"
+  "tea-specials", "milk", "snacks", "bun-specials", "maggie",
+  "soups", "detox-drinks", "kids-and-elders", "classic-scoops", "single-sundae"
 ];
 const RIGHT_COL_IDS = [
-  "coffee-corner", "snacks", "sandwich", "burgers", "fries",
-  "refreshing-traditionals", "cold-press-juices", "milkshakes",
-  "mocktails", "special-combo-mocktails", "salads", "double-sundae"
+  "coffee-corner", "burgers", "sandwich", "fries",
+  "milkshakes", "mocktails", "special-combo-mocktails", "double-sundae"
 ];
 
 // ===== ICE CREAM SECTION IDS =====
