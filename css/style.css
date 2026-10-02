@@ -174,14 +174,16 @@ ul, ol {
 }
 
 .hero-logo-lockup-wrapper {
-  max-width: 440px;
+  max-width: 480px;
   margin-bottom: 8px;
   transition: transform var(--transition-normal);
+  overflow: visible;
 }
 
 .hero-logo-img {
   width: 100%;
   height: auto;
+  display: block;
   filter: drop-shadow(0 4px 12px rgba(0, 91, 53, 0.08));
 }
 
